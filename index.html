@@ -367,7 +367,7 @@
       margin-top: 0;
     }
 
-    /* 📹 비디오 그리드 & 텍스트 패널 스타일 */
+    /* 📹 비디오 그리드 & 텍스트 패널 스타일 (모바일 과부하 방지 최적화 포함) */
     .video-grid { 
       display: grid !important; 
       grid-template-columns: repeat(3, 1fr) !important; 
@@ -384,6 +384,9 @@
       border: 1px solid #e2e8f0; 
       background: #ffffff;
       transition: all 0.25s ease; 
+      /* 🚀 모바일 렌더링 과부하 방지 스타일 */
+      content-visibility: auto;
+      contain-intrinsic-size: 200px;
     }
     .video-item:hover { transform: translateY(-4px); border-color: #cbd5e1; box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
     
@@ -619,55 +622,54 @@
     <!-- 1. Vocal Cover (Solo, Duet, Group) -->
     <div id="tab-vocal-cover" class="sub-tab-content active">
       
-      <!-- 🎤 Solo 섹션 -->
+      <!-- 🎤 Solo 섹션 (지연 로딩 최적화 적용) -->
       <div class="section-divider">🎤 Solo</div>
       <div class="video-grid">
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Edit + Mix + Master</span>
-          </div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/15WjS4UJVWE" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Edit + Mix + Master</span>
-          </div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/GrQJrtYSzJk" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Edit + Mix + Master</span>
-          </div>
-        </div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/15WjS4UJVWE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/GrQJrtYSzJk" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        
+        <!-- 플레이리스트 30개 추가 영역 (src 주소만 교체해주시면 됩니다) -->
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
       </div>
 
       <!-- 👥 Duet 섹션 -->
       <div class="section-divider">👥 Duet</div>
       <div class="video-grid">
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Mix + Master</span>
-          </div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Edit + Mix + Master</span>
-          </div>
-        </div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
       </div>
 
       <!-- 🎶 Group 섹션 -->
       <div class="section-divider">🎶 Group</div>
       <div class="video-grid">
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Mix + Master</span>
-          </div>
-        </div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Mix + Master</span></div></div>
       </div>
 
     </div>
@@ -675,48 +677,18 @@
     <!-- 2. Multi-Track / Group -->
     <div id="tab-multitrack" class="sub-tab-content">
       <div class="video-grid">
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Edit + Mix + Master</span>
-          </div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Edit + Mix + Master</span>
-          </div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/0lxrTardYqo" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Mix + Master</span>
-          </div>
-        </div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/0lxrTardYqo" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Mix + Master</span></div></div>
       </div>
     </div>
 
     <!-- 3. Official Release -->
     <div id="tab-official" class="sub-tab-content">
       <div class="video-grid">
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/cdpdanFRy7g" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Vocal Edit + Mix + Master</span>
-          </div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/dipqyUvUGNo" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Mix + Master</span>
-          </div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/01Ivq45ZHIw" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Vocal Edit + Mix + Master</span>
-          </div>
-        </div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/cdpdanFRy7g" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Vocal Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/dipqyUvUGNo" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/01Ivq45ZHIw" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Vocal Edit + Mix + Master</span></div></div>
       </div>
     </div>
 
