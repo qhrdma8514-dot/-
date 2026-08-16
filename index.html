@@ -339,11 +339,11 @@
       animation: fadeIn 0.3s ease-out;
     }
 
-    /* 📹 비디오 그리드 */
+    /* 📹 비디오 그리드 & 텍스트 패널 스타일 */
     .video-grid { 
       display: grid !important; 
       grid-template-columns: repeat(3, 1fr) !important; 
-      gap: 12px !important; 
+      gap: 14px !important; 
       width: 100% !important;
     }
     
@@ -354,7 +354,7 @@
       border-radius: 12px; 
       overflow: hidden; 
       border: 1px solid #e2e8f0; 
-      background: #f8fafc;
+      background: #ffffff;
       transition: all 0.25s ease; 
     }
     .video-item:hover { transform: translateY(-4px); border-color: #cbd5e1; box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
@@ -364,6 +364,37 @@
       aspect-ratio: 16 / 9 !important; 
       height: auto !important; 
       border: none; 
+      display: block;
+    }
+
+    /* 영상 하단 상세 설명 박스 */
+    .video-info {
+      padding: 10px 12px;
+      background: #f8fafc;
+      border-top: 1px solid #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .work-tag {
+      font-size: 11px;
+      font-weight: 800;
+      color: #4f46e5;
+      background: #e0e7ff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      width: fit-content;
+      letter-spacing: 0.3px;
+    }
+
+    .video-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #334155;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* 📱 모바일 디스플레이 */
@@ -572,43 +603,119 @@
     <!-- 1. Multi-Track / Group -->
     <div id="tab-multitrack" class="sub-tab-content active">
       <div class="video-grid">
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen></iframe></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen></iframe></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/0lxrTardYqo" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Edit + Mix + Master</span>
+            <span class="video-title">Multi-Track Cover 1</span>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Edit + Mix + Master</span>
+            <span class="video-title">Multi-Track Cover 2</span>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/0lxrTardYqo" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Mix + Master</span>
+            <span class="video-title">Multi-Track Cover 3</span>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- 2. Solo Vocal Cover -->
     <div id="tab-solo" class="sub-tab-content">
       <div class="video-grid">
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen></iframe></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/15WjS4UJVWE" frameborder="0" allowfullscreen></iframe></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen></iframe></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/GrQJrtYSzJk" frameborder="0" allowfullscreen></iframe></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen></iframe></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Edit + Mix + Master</span>
+            <span class="video-title">Female Cover 1</span>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/15WjS4UJVWE" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Edit + Mix + Master</span>
+            <span class="video-title">Female Cover 2</span>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Mix + Master</span>
+            <span class="video-title">Female Cover 3</span>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/GrQJrtYSzJk" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Edit + Mix + Master</span>
+            <span class="video-title">Male Cover 1</span>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Edit + Mix + Master</span>
+            <span class="video-title">Male Cover 2</span>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="url?id=19embed/JyLTO4AYlNg" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Mix + Master</span>
+            <span class="video-title">Male Cover 3</span>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- 3. Official Release -->
     <div id="tab-official" class="sub-tab-content">
       <div class="video-grid">
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/cdpdanFRy7g" frameborder="0" allowfullscreen></iframe></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/dipqyUvUGNo" frameborder="0" allowfullscreen></iframe></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/01Ivq45ZHIw" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/cdpdanFRy7g" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Vocal Edit + Mix + Master</span>
+            <span class="video-title">Official Song 1</span>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/watch?v=we5CPYq7oHU9embed/dipqyUvUGNo" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Mix + Master</span>
+            <span class="video-title">Official Song 2</span>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/01Ivq45ZHIw" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Vocal Edit + Mix + Master</span>
+            <span class="video-title">Official Song 3</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- 4. Shorts & Clip (트위터 및 숏폼) -->
+    <!-- 4. Shorts & Clip -->
     <div id="tab-shorts" class="sub-tab-content">
-      <div style="display: flex; justify-content: center;">
-        <div style="width: 100%; max-width: 560px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; padding: 10px;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+        <div style="width: 100%; max-width: 560px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; padding: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
           <blockquote class="twitter-tweet" data-media-max-width="560" style="margin: 0; background: transparent;">
             <p lang="ja" dir="ltr">Hello, Worker - KEI feat.巡音ルカ / 歌ってみた<a href="https://x.com/hashtag/%E3%82%A8%E3%82%A4%E3%83%97%E3%83%AA%E3%83%AB%E3%83%95%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#エイプリルフール</a> <a href="https://x.com/hashtag/cover?src=hash&amp;ref_src=twsrc%5Etfw">#cover</a> <a href="https://t.co/iaL9OmJEva">pic.twitter.com/iaL9OmJEva</a>
             </p>&mdash; 우엉 Wooung (@Wooung_twt) 
             <a href="https://x.com/Wooung_twt/status/2039308311632429486?ref_src=twsrc%5Etfw">April 1, 2026</a>
           </blockquote>
           <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+          <div class="video-info" style="margin-top: 8px; border-radius: 8px; border: 1px solid #f1f5f9;">
+            <span class="work-tag">Vocal Edit + Mix</span>
+            <span class="video-title">Hello, Worker - Cover Clip</span>
+          </div>
         </div>
       </div>
     </div>
@@ -618,7 +725,6 @@
 </div>
 
 <script>
-  // 상단 콘솔 메인 탭 전환 함수
   function openTab(tabId, btnElement) {
     var panels = document.querySelectorAll('.tab-panel');
     panels.forEach(function(panel) {
@@ -641,7 +747,6 @@
     }
   }
 
-  // 하단 포트폴리오 서브 탭 전환 함수
   function openSubTab(subTabId, btnElement) {
     var subPanels = document.querySelectorAll('.sub-tab-content');
     subPanels.forEach(function(panel) {
@@ -662,7 +767,6 @@
     }
   }
 
-  // 포트폴리오 바로가기 스크롤 함수
   function scrollToPortfolio() {
     var portfolioSection = document.getElementById('portfolio-section');
     if (portfolioSection) {
