@@ -35,6 +35,18 @@
       border-bottom: 1px solid #334155;
       letter-spacing: 1px;
     }
+
+    /* 모바일 전용 스크롤 안내 문구 (PC에서는 기본 숨김) */
+    .scroll-hint {
+      display: none;
+      font-size: 12px;
+      font-weight: 700;
+      color: #818cf8;
+      text-align: right;
+      padding: 0 4px 6px 4px;
+      letter-spacing: -0.3px;
+    }
+
     .menu-inner { display: flex; flex-direction: column; gap: 6px; }
     .tab-btn { 
       display: block; 
@@ -98,25 +110,28 @@
     .badge-standard { background: linear-gradient(135deg, #3b82f6, #2563eb); }
     .badge-lite { background: linear-gradient(135deg, #a855f7, #9333ea); }
 
-    /* 📱 모바일 반응형 (768px 이하) - 메뉴 가로 스크롤 강화 */
+    /* 📱 모바일 반응형 설정 (768px 이하) */
     @media (max-width: 768px) {
       body { padding: 8px; }
-      .container { flex-direction: column; gap: 14px; }
+      .container { flex-direction: column; gap: 10px; }
       
+      /* 모바일에서 스크롤 안내 문구 보이기 */
+      .scroll-hint { display: block; }
+
       .menu { 
         width: 100%; 
         position: relative; 
         top: 0; 
         padding: 8px; 
         border-radius: 12px; 
-        overflow-x: auto; /* 박스 자체 가로 스크롤 허용 */
+        overflow-x: auto; 
       }
       .menu-header { display: none; }
       .menu-inner { 
         display: flex !important; 
         flex-direction: row !important; 
         gap: 8px; 
-        width: max-content; /* 버튼 길이만큼 전체 영역 확장 */
+        width: max-content; 
       }
       
       .tab-btn { 
@@ -141,6 +156,7 @@
   <!-- 메뉴 영역 -->
   <div class="menu">
     <div class="menu-header">HR SOUND</div>
+    <div class="scroll-hint">👈 옆으로 넘겨서 메뉴 확인</div>
     <div class="menu-inner">
       <button class="tab-btn active" onclick="openTab('about', this)">About Studio</button>
       <button class="tab-btn" onclick="openTab('price', this)">Price & Type</button>
