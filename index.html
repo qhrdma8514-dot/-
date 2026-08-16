@@ -36,7 +36,7 @@
       letter-spacing: 1px;
     }
     .menu-inner { display: flex; flex-direction: column; gap: 6px; }
-    .menu button { 
+    .tab-btn { 
       display: block; 
       width: 100%; 
       text-align: left; 
@@ -51,8 +51,8 @@
       transition: all 0.25s ease; 
       white-space: nowrap;
     }
-    .menu button:hover { background: #334155; color: #f8fafc; }
-    .menu button.active { color: #ffffff; background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35); }
+    .tab-btn:hover { background: #334155; color: #f8fafc; }
+    .tab-btn.active { color: #ffffff; background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35); }
 
     /* 메인 컨텐츠 영역 */
     .content { flex-grow: 1; min-width: 0; }
@@ -87,7 +87,7 @@
     summary { font-size: 15px; font-weight: 700; cursor: pointer; color: #818cf8; outline: none; }
     .type-desc { margin-top: 14px; font-size: 14px; line-height: 1.8; color: #94a3b8; border-top: 1px solid #1e293b; padding-top: 12px; word-break: keep-all; }
 
-    /* 영상 그리드 (모바일 호환) */
+    /* 영상 그리드 */
     .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
     .video-item { display: flex; flex-direction: column; align-items: center; width: 100%; }
     .video-item iframe { width: 100%; height: 180px; border-radius: 10px; border: 1px solid #334155; }
@@ -98,14 +98,11 @@
     .badge-standard { background: linear-gradient(135deg, #3b82f6, #2563eb); }
     .badge-lite { background: linear-gradient(135deg, #a855f7, #9333ea); }
 
-    /* =================================================== */
-    /* 📱 모바일 및 스마트폰 화면 대응 (768px 이하) */
-    /* =================================================== */
+    /* 📱 모바일 반응형 (768px 이하) */
     @media (max-width: 768px) {
       body { padding: 8px; }
       .container { flex-direction: column; gap: 14px; }
       
-      /* 메뉴를 상단 가로 스크롤 바 형태로 변경 */
       .menu { 
         width: 100%; 
         position: relative; 
@@ -113,7 +110,7 @@
         padding: 10px; 
         border-radius: 12px; 
       }
-      .menu-header { display: none; } /* 모바일에서는 타이틀 생략 */
+      .menu-header { display: none; }
       .menu-inner { 
         display: flex; 
         flex-direction: row; 
@@ -122,20 +119,18 @@
         -webkit-overflow-scrolling: touch; 
         scrollbar-width: none; 
       }
-      .menu-inner::-webkit-scrollbar { display: none; } /* 스크롤바 숨기기 */
+      .menu-inner::-webkit-scrollbar { display: none; }
       
-      .menu button { 
+      .tab-btn { 
         flex: 0 0 auto; 
         padding: 10px 14px; 
         font-size: 14px; 
         text-align: center; 
       }
 
-      /* 패널 여백 축소 */
       .tab-panel { padding: 20px 16px; border-radius: 12px; }
       h2 { font-size: 20px; }
       
-      /* 모바일 비디오 카드 세로 1열 정렬 및 비율 유지 */
       .video-grid { grid-template-columns: 1fr; }
       .video-item iframe { height: 200px; }
     }
@@ -148,11 +143,11 @@
   <div class="menu">
     <div class="menu-header">HR SOUND</div>
     <div class="menu-inner">
-      <button class="active" onclick="openTab(event, 'about')">About Studio</button>
-      <button onclick="openTab(event, 'price')">Price & Type</button>
-      <button onclick="openTab(event, 'portfolio')">Portfolio</button>
-      <button onclick="openTab(event, 'form')">문의 양식</button>
-      <button onclick="openTab(event, 'notice')">Notice</button>
+      <button class="tab-btn active" onclick="openTab(event, 'about')">About Studio</button>
+      <button class="tab-btn" onclick="openTab(event, 'price')">Price & Type</button>
+      <button class="tab-btn" onclick="openTab(event, 'portfolio')">Portfolio</button>
+      <button class="tab-btn" onclick="openTab(event, 'form')">문의 양식</button>
+      <button class="tab-btn" onclick="openTab(event, 'notice')">Notice</button>
     </div>
   </div>
 
@@ -216,14 +211,30 @@
       
       <h3>🎵 Album Portfolio</h3>
       <div class="video-grid">
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/videoseries?list=PL..." frameborder="0" allowfullscreen></iframe></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/videoseries?list=PL..." frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/cdpdanFRy7g" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/dipqyUvUGNo" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/01Ivq45ZHIw" frameborder="0" allowfullscreen></iframe></div>
       </div>
 
       <h3 style="margin-top:32px;">🎤 Vocal Mixing Portfolio</h3>
       <div class="video-grid">
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/videoseries?list=PL..." frameborder="0" allowfullscreen></iframe></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/videoseries?list=PL..." frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/OlxrTardYqo" frameborder="0" allowfullscreen></iframe></div>
+      </div>
+
+      <h3 style="margin-top:32px;">👩 Female Vocal Covers</h3>
+      <div class="video-grid">
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/15WjS4UJVWE" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen></iframe></div>
+      </div>
+
+      <h3 style="margin-top:32px;">👨 Male Vocal Covers</h3>
+      <div class="video-grid">
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/GrQJrtYSzJk" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen></iframe></div>
       </div>
     </div>
 
@@ -270,9 +281,15 @@
 <script>
   function openTab(evt, tabName) {
     var panels = document.getElementsByClassName("tab-panel");
-    for (var i = 0; i < panels.length; i++) { panels[i].classList.remove("active"); }
-    var buttons = document.querySelectorAll(".menu button");
-    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove("active"); }
+    for (var i = 0; i < panels.length; i++) { 
+      panels[i].classList.remove("active"); 
+    }
+    
+    var buttons = document.getElementsByClassName("tab-btn");
+    for (var i = 0; i < buttons.length; i++) { 
+      buttons[i].classList.remove("active"); 
+    }
+    
     document.getElementById(tabName).classList.add("active");
     evt.currentTarget.classList.add("active");
   }
