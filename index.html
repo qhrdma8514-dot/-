@@ -271,26 +271,34 @@
     
     .type-desc { margin-top: 14px; font-size: 14.5px; line-height: 1.85; color: #475569; border-top: 1px solid #f1f5f9; padding-top: 12px; word-break: keep-all; }
 
-    /* 📹 영상 카드 그리드 (PC 3개 / 모바일 1개 반응형 설정) */
+    /* 📹 아트머그 내부에서도 강제로 3개씩 배치되도록 설정 */
     .video-grid { 
-      display: grid; 
-      grid-template-columns: repeat(3, 1fr); 
-      gap: 18px; 
-      margin-top: 20px; 
+      display: grid !important; 
+      grid-template-columns: repeat(3, 1fr) !important; 
+      gap: 10px !important; 
+      margin-top: 16px !important; 
+      width: 100% !important;
     }
     
     .video-item { 
       display: flex; 
       flex-direction: column; 
-      width: 100%; 
-      border-radius: 14px; 
+      width: 100% !important; 
+      border-radius: 10px; 
       overflow: hidden; 
       border: 1px solid #e2e8f0; 
       background: #f8fafc;
       transition: all 0.25s ease; 
     }
-    .video-item:hover { transform: translateY(-4px); border-color: #cbd5e1; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06); }
-    .video-item iframe { width: 100%; height: 180px; border: none; }
+    .video-item:hover { transform: translateY(-3px); border-color: #cbd5e1; }
+    
+    /* 16:9 비율 유지 */
+    .video-item iframe { 
+      width: 100% !important; 
+      aspect-ratio: 16 / 9 !important; 
+      height: auto !important; 
+      border: none; 
+    }
 
     .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 11.5px; font-weight: 900; color: white; margin-right: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
     .badge-premium { background: #dc2626; }
@@ -298,7 +306,7 @@
     .badge-lite { background: #9333ea; }
 
     /* 📱 모바일 디스플레이 설정 */
-    @media (max-width: 768px) {
+    @media (max-width: 500px) {
       body { padding: 8px; }
       
       .brand-header-card {
@@ -348,12 +356,11 @@
       .tab-panel { padding: 20px 14px; border-radius: 14px; }
       h2 { font-size: 19px; }
       
-      /* 모바일 비디오 그리드 1열 처리 */
+      /* 모바일에서는 1열 처리 */
       .video-grid { 
-        grid-template-columns: 1fr; 
-        gap: 16px;
+        grid-template-columns: 1fr !important; 
+        gap: 14px !important;
       }
-      .video-item iframe { height: 210px; }
     }
   </style>
 </head>
@@ -363,7 +370,7 @@
   
   <!-- 👑 상단 독립 스튜디오 브랜드 패널 -->
   <div class="brand-header-card">
-    <img src="logo.png" alt="HR SOUND Logo" class="brand-logo-img" onerror="this.style.display='none'">
+    <img src="logo.jpg" alt="HR SOUND Logo" class="brand-logo-img" onerror="this.style.display='none'">
     <div class="brand-info">
       <div class="brand-title">
         HR SOUND
