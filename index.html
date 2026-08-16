@@ -11,29 +11,14 @@
     /* PC 기본 데스크톱 레이아웃 */
     .container { display: flex; gap: 20px; max-width: 1280px; margin: 0 auto; }
     
-    /* 좌측 사이드바 네비게이션 */
-    .menu { 
-      width: 220px; 
-      flex-shrink: 0; 
-      background: #1e293b; 
-      border: 1px solid #334155; 
-      border-radius: 16px; 
-      padding: 16px; 
-      height: fit-content; 
-      position: sticky; 
-      top: 10px; 
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    /* 좌측 사이드바 네비게이션 영역 */
+    .menu-wrapper {
+      width: 220px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 10px;
+      height: fit-content;
       z-index: 10;
-    }
-    .menu-header {
-      font-size: 18px;
-      font-weight: 900;
-      color: #6366f1;
-      text-align: center;
-      padding-bottom: 12px;
-      margin-bottom: 12px;
-      border-bottom: 1px solid #334155;
-      letter-spacing: 1px;
     }
 
     /* 모바일 전용 스크롤 안내 문구 (PC에서는 기본 숨김) */
@@ -45,6 +30,26 @@
       text-align: right;
       padding: 0 4px 6px 4px;
       letter-spacing: -0.3px;
+    }
+
+    .menu { 
+      width: 100%; 
+      background: #1e293b; 
+      border: 1px solid #334155; 
+      border-radius: 16px; 
+      padding: 16px; 
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    .menu-header {
+      font-size: 18px;
+      font-weight: 900;
+      color: #6366f1;
+      text-align: center;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #334155;
+      letter-spacing: 1px;
     }
 
     .menu-inner { display: flex; flex-direction: column; gap: 6px; }
@@ -115,13 +120,18 @@
       body { padding: 8px; }
       .container { flex-direction: column; gap: 10px; }
       
-      /* 모바일에서 스크롤 안내 문구 보이기 */
-      .scroll-hint { display: block; }
-
-      .menu { 
+      .menu-wrapper { 
         width: 100%; 
         position: relative; 
         top: 0; 
+      }
+
+      /* 모바일에서 스크롤 안내 문구를 메뉴 박스 위에 독단적으로 배치 */
+      .scroll-hint { 
+        display: block; 
+      }
+
+      .menu { 
         padding: 8px; 
         border-radius: 12px; 
         overflow-x: auto; 
@@ -153,16 +163,21 @@
 <body>
 
 <div class="container">
-  <!-- 메뉴 영역 -->
-  <div class="menu">
-    <div class="menu-header">HR SOUND</div>
+  <!-- 메뉴 전체 영역 Wrapper -->
+  <div class="menu-wrapper">
+    <!-- 스크롤 영향 안 받는 독립 안내 문구 -->
     <div class="scroll-hint">👈 옆으로 넘겨서 메뉴 확인</div>
-    <div class="menu-inner">
-      <button class="tab-btn active" onclick="openTab('about', this)">About Studio</button>
-      <button class="tab-btn" onclick="openTab('price', this)">Price & Type</button>
-      <button class="tab-btn" onclick="openTab('portfolio', this)">Portfolio</button>
-      <button class="tab-btn" onclick="openTab('form', this)">문의 양식</button>
-      <button class="tab-btn" onclick="openTab('notice', this)">Notice</button>
+    
+    <!-- 가로 스크롤 메뉴 박스 -->
+    <div class="menu">
+      <div class="menu-header">HR SOUND</div>
+      <div class="menu-inner">
+        <button class="tab-btn active" onclick="openTab('about', this)">About Studio</button>
+        <button class="tab-btn" onclick="openTab('price', this)">Price & Type</button>
+        <button class="tab-btn" onclick="openTab('portfolio', this)">Portfolio</button>
+        <button class="tab-btn" onclick="openTab('form', this)">문의 양식</button>
+        <button class="tab-btn" onclick="openTab('notice', this)">Notice</button>
+      </div>
     </div>
   </div>
 
