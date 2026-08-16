@@ -5,110 +5,179 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HR SOUND</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
-    body { background: transparent; padding: 10px; color: #333; }
-    .container { display: flex; gap: 20px; max-width: 1000px; margin: 0 auto; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif; }
+    body { background: #0f172a; color: #f8fafc; padding: 12px; }
     
-    /* 좌측 사이드바 메뉴 */
-    .menu { width: 180px; flex-shrink: 0; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px; height: fit-content; position: sticky; top: 10px; }
-    .menu button { display: block; width: 100%; text-align: left; padding: 12px 14px; border: none; background: none; font-size: 14px; font-weight: bold; color: #475569; cursor: pointer; border-radius: 8px; margin-bottom: 4px; transition: 0.2s; }
-    .menu button:hover { background: #f1f5f9; color: #1e293b; }
-    .menu button.active { color: #ffffff; background: #4f46e5; }
+    /* 전체 레이아웃 구획 */
+    .container { display: flex; gap: 24px; max-width: 1280px; margin: 0 auto; }
+    
+    /* 좌측 사이드바 네비게이션 */
+    .menu { 
+      width: 220px; 
+      flex-shrink: 0; 
+      background: #1e293b; 
+      border: 1px solid #334155; 
+      border-radius: 16px; 
+      padding: 16px; 
+      height: fit-content; 
+      position: sticky; 
+      top: 10px; 
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+    .menu-header {
+      font-size: 18px;
+      font-weight: 900;
+      color: #6366f1;
+      text-align: center;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #334155;
+      letter-spacing: 1px;
+    }
+    .menu button { 
+      display: block; 
+      width: 100%; 
+      text-align: left; 
+      padding: 14px 16px; 
+      border: none; 
+      background: none; 
+      font-size: 15px; 
+      font-weight: 700; 
+      color: #94a3b8; 
+      cursor: pointer; 
+      border-radius: 10px; 
+      margin-bottom: 6px; 
+      transition: all 0.25s ease; 
+    }
+    .menu button:hover { background: #334155; color: #f8fafc; }
+    .menu button.active { color: #ffffff; background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35); }
 
-    /* 우측 콘텐츠 영역 */
+    /* 우측 메인 컨텐츠 영역 */
     .content { flex-grow: 1; min-width: 0; }
-    .tab-panel { display: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 28px; }
-    .tab-panel.active { display: block; }
+    .tab-panel { 
+      display: none; 
+      background: #1e293b; 
+      border: 1px solid #334155; 
+      border-radius: 16px; 
+      padding: 36px; 
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+    .tab-panel.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     
-    h2 { font-size: 20px; font-weight: 800; color: #4f46e5; margin-bottom: 16px; border-bottom: 2px solid #e0e7ff; padding-bottom: 8px; }
-    h3 { font-size: 16px; font-weight: bold; color: #0f172a; margin-top: 20px; margin-bottom: 10px; }
-    p { font-size: 14px; line-height: 1.7; color: #334155; }
-    ul, ol { margin-left: 20px; font-size: 14px; color: #334155; line-height: 1.8; }
-    li { margin-bottom: 6px; }
+    h2 { font-size: 24px; font-weight: 800; color: #818cf8; margin-bottom: 20px; border-bottom: 2px solid #334155; padding-bottom: 12px; }
+    h3 { font-size: 18px; font-weight: 700; color: #f1f5f9; margin-top: 24px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    p { font-size: 15px; line-height: 1.8; color: #cbd5e1; }
+    ul, ol { margin-left: 20px; font-size: 15px; color: #cbd5e1; line-height: 1.9; }
+    li { margin-bottom: 8px; }
 
-    /* 박스 및 아코디언 스타일 */
-    .info-box { background: #f8fafc; border-left: 4px solid #6366f1; padding: 14px 16px; border-radius: 4px; margin: 16px 0; font-size: 14px; color: #334155; line-height: 1.7; }
-    .form-box { background: #fff5f5; border: 1px solid #fed7d7; border-radius: 8px; padding: 16px; margin: 12px 0; font-size: 14px; line-height: 1.8; color: #2d3748; }
+    /* 핵심 포인트 박스 디자인 */
+    .info-box { 
+      background: #0f172a; 
+      border: 1px solid #312e81; 
+      border-left: 4px solid #6366f1; 
+      padding: 20px; 
+      border-radius: 10px; 
+      margin: 20px 0; 
+      font-size: 15px; 
+      color: #e0e7ff; 
+      line-height: 1.8; 
+    }
+    .form-box { 
+      background: #0f172a; 
+      border: 1px solid #451a03; 
+      border-left: 4px solid #f97316; 
+      border-radius: 10px; 
+      padding: 22px; 
+      margin: 16px 0; 
+      font-size: 15px; 
+      line-height: 1.9; 
+      color: #ffedd5; 
+    }
     
-    details { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; margin: 12px 0 20px 0; }
-    summary { font-weight: bold; cursor: pointer; color: #4f46e5; outline: none; }
-    .type-desc { margin-top: 12px; font-size: 13px; line-height: 1.7; color: #475569; }
+    /* 아코디언 드롭다운 세련화 */
+    details { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 16px 20px; margin: 14px 0 24px 0; transition: border 0.2s; }
+    details[open] { border-color: #6366f1; }
+    summary { font-size: 16px; font-weight: 700; cursor: pointer; color: #818cf8; outline: none; }
+    .type-desc { margin-top: 16px; font-size: 14px; line-height: 1.8; color: #94a3b8; border-top: 1px solid #1e293b; padding-top: 12px; }
 
-    /* 비디오 그리드 레이아웃 */
-    .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
-    .video-item { display: flex; flex-direction: column; align-items: center; text-align: center; font-size: 12px; color: #64748b; font-weight: 600; }
-    .video-item iframe { width: 100%; height: 140px; border-radius: 6px; margin-bottom: 6px; }
+    /* 포트폴리오 영상 그리드 */
+    .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 16px; }
+    .video-item { display: flex; flex-direction: column; align-items: center; text-align: center; font-size: 13px; color: #94a3b8; font-weight: 600; }
+    .video-item iframe { width: 100%; height: 180px; border-radius: 10px; margin-bottom: 8px; border: 1px solid #334155; }
 
-    .main-video { width: 100%; height: 320px; border-radius: 8px; margin: 10px 0; }
-    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; color: white; margin-right: 6px; }
-    .badge-premium { background: #ef4444; }
-    .badge-standard { background: #3b82f6; }
-    .badge-lite { background: #a855f7; }
+    /* Type 배지 */
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 800; color: white; margin-right: 6px; text-transform: uppercase; }
+    .badge-premium { background: linear-gradient(135deg, #ef4444, #dc2626); }
+    .badge-standard { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+    .badge-lite { background: linear-gradient(135deg, #a855f7, #9333ea); }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <!-- 좌측 카테고리 메뉴 -->
+  <!-- 좌측 메뉴 -->
   <div class="menu">
-    <button class="active" onclick="openTab(event, 'about')">About HR SOUND</button>
+    <div class="menu-header">HR SOUND</div>
+    <button class="active" onclick="openTab(event, 'about')">About Studio</button>
     <button onclick="openTab(event, 'price')">Price & Type</button>
     <button onclick="openTab(event, 'portfolio')">Portfolio</button>
     <button onclick="openTab(event, 'form')">문의 양식</button>
     <button onclick="openTab(event, 'notice')">Notice</button>
   </div>
 
-  <!-- 우측 본문 콘텐츠 -->
+  <!-- 우측 본문 영역 -->
   <div class="content">
     
     <!-- 1. ABOUT -->
     <div id="about" class="tab-panel active">
       <h2>ABOUT HR SOUND</h2>
-      <p style="font-weight: bold; font-size: 16px; color: #4f46e5; margin-bottom: 12px;">High-Quality Vocal Editing & Mixing Studio</p>
-      <p>안녕하세요. 음원 보정 및 보컬 믹싱/마스터링 전문 <strong>HR SOUND</strong>입니다.<br>
-      찾아주시는 모든 클라이언트분의 보컬 느낌을 살려 완벽하고 자연스러운 사운드를 만듭니다.</p>
+      <p style="font-weight: bold; font-size: 18px; color: #818cf8; margin-bottom: 14px;">High-Quality Vocal Editing & Mixing Studio</p>
+      <p>안녕하세요. 음원 보정 및 보컬 믹싱/마스터링 전문 스튜디오 <strong>HR SOUND</strong>입니다.<br>
+      아티스트 고유의 톤과 감정을 극대화하면서도 완벽하게 다듬어진 프로페셔널 사운드를 완성합니다.</p>
 
       <div class="info-box">
-        💡 <strong>주요 작업 특징</strong><br>
-        • Pro Tools / Melodyne / Auto-Tune 기반의 섬세한 정밀 파형 튠<br>
-        • 립노이즈 및 잡음 한 땀 한 땀 수작업 제거 (iZotope RX 11 / Acon Digital)<br>
-        • 1:1 맞춤 피드백 반영 및 레퍼런스 맞춤 톤매칭
+        💡 <strong>핵심 작업 가치</strong><br>
+        • Pro Tools / Melodyne / Auto-Tune 기반 정밀 파형 튜닝<br>
+        • iZotope RX 11 & Acon Digital 수작업 립노이즈 및 미세 잡음 완벽 제어<br>
+        • 1:1 디테일 피드백 반영 및 레퍼런스 맞춤형 톤매칭/믹싱
       </div>
     </div>
 
     <!-- 2. PRICE & TYPE -->
     <div id="price" class="tab-panel">
       <h2>PRICE & TYPE</h2>
-      <p>의뢰자 분들의 다양한 요청에 맞추어 세부적인 작업 Type을 제공합니다.</p>
+      <p>작업 난이도 및 보컬 에디팅 디테일에 따른 세부 Type 구분입니다.</p>
 
-      <!-- Premium Type -->
       <h3><span class="badge badge-premium">Premium</span> Premium Type</h3>
       <details>
-        <summary>▶ Premium Type 세부 프로세스 (Click)</summary>
+        <summary>▶ Premium Type 세부 작업 공정 (Click)</summary>
         <div class="type-desc">
-          <strong>• Edit:</strong> Pro Tools 기반 정밀 파형튠(박자) → Melodyne Studio → Auto Tune Graph Mode & Repitch → Pro Tools Pencil Tool & iZotope RX 11 / Acon Digital (립노이즈 및 미세 잡음 한 땀 한 땀 수작업 제거) → Inst & Vocal Rough Mix<br>
-          <strong>• Mix:</strong> Vocal Automation (곡의 기승전결에 따른 세밀한 수작업 조정으로 타격감과 감정선 극대화) → 레퍼런스 맞춤 톤매칭 → 전체 밸런스 조정 → Mix Bus 작업<br>
-          <strong>• Master:</strong> 단순 볼륨 조절을 넘어 레퍼런스 음악의 완성도에 맞춘 정밀 마스터링
+          <strong>• Edit:</strong> Pro Tools 기반 정밀 파형튠(박자) → Melodyne Studio → Auto Tune Graph Mode & Repitch → Pro Tools Pencil Tool & iZotope RX 11 / Acon Digital (립노이즈 및 잡음 수작업 일대일 제거) → Inst & Vocal Rough Mix<br>
+          <strong>• Mix:</strong> Vocal Automation (곡의 기승전결에 따른 세밀한 보컬 수작업 제어로 타격감과 감정선 극대화) → 레퍼런스 맞춤 톤매칭 → 전체 밸런스 조정 → Mix Bus 작업<br>
+          <strong>• Master:</strong> 단순히 볼륨을 높이는 것에 그치지 않고 전체적인 입체감과 완성도를 끌어올리는 정밀 마스터링
         </div>
       </details>
 
-      <!-- Standard Type -->
-      <h3><span class="badge badge-standard">Standard</span> Standard Type</h3>
+      <h3><span class="badge badge-standard">Standard</span> Standard Type (기본 단독)</h3>
       <details>
-        <summary>▶ Standard Type 세부 프로세스 (Click)</summary>
+        <summary>▶ Standard Type 세부 작업 공정 (Click)</summary>
         <div class="type-desc">
           <strong>• Edit:</strong> Melodyne Studio (음정 & 박자) → Auto Tune Graph Mode & Repitch → iZotope RX 11 / Acon Digital (잡음 일괄 제거) → Inst & Vocal Rough Mix<br>
-          <strong>• Mix:</strong> 레퍼런스 및 보컬 맞춤 톤매칭 → 전체 밸런스 조정 → Mix Bus 작업<br>
-          <strong>• Master:</strong> 음악적 레퍼런스 기준 완성도 높은 마스터링
+          <strong>• Mix:</strong> 레퍼런스 및 보컬에 맞춘 이상적인 톤매칭 → 전체 밸런스 조정 → Mix Bus 작업<br>
+          <strong>• Master:</strong> 레퍼런스 기준 완성도 높은 밸런스 마스터링
         </div>
       </details>
 
-      <!-- Lite Type -->
       <h3><span class="badge badge-lite">Lite</span> Lite Type</h3>
       <details>
-        <summary>▶ Lite Type 세부 프로세스 (Click)</summary>
+        <summary>▶ Lite Type 세부 작업 공정 (Click)</summary>
         <div class="type-desc">
-          Lite Type은 박자는 거의 손대지 않으며 음정 보정 위주로 진행됩니다. HR Sound 독자 프리셋을 적용하여 간단한 작업이나 분위기 확인에 적합합니다.<br>
+          Lite Type은 박자 수정을 최소화하고 음정 보정 위주로 진행됩니다. HR Sound 독자 프리셋을 적용하여 가볍게 작업하시거나 연출감을 테스트하기에 적합합니다.<br>
           <strong>• Edit:</strong> Melodyne Studio → iZotope RX 11 / Acon Digital (잡음 일괄 제거) → Inst & Vocal Rough Mix<br>
           <strong>• Mix/Master:</strong> 독자 프리셋 적용 → 밸런스 조정 → 러프 마스터링
         </div>
@@ -126,21 +195,21 @@
         <div class="video-item"><iframe src="https://www.youtube.com/embed/01Ivq45ZHIw" frameborder="0" allowfullscreen></iframe></div>
       </div>
 
-      <h3 style="margin-top:28px;">🎤 Vocal Mixing Portfolio</h3>
+      <h3 style="margin-top:32px;">🎤 Vocal Mixing Portfolio</h3>
       <div class="video-grid">
         <div class="video-item"><iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen></iframe></div>
         <div class="video-item"><iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen></iframe></div>
         <div class="video-item"><iframe src="https://www.youtube.com/embed/OlxrTardYqo" frameborder="0" allowfullscreen></iframe></div>
       </div>
 
-      <h3 style="margin-top:28px;">👩 Female Vocal Covers</h3>
+      <h3 style="margin-top:32px;">👩 Female Vocal Covers</h3>
       <div class="video-grid">
         <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen></iframe></div>
         <div class="video-item"><iframe src="https://www.youtube.com/embed/15WjS4UJVWE" frameborder="0" allowfullscreen></iframe></div>
         <div class="video-item"><iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen></iframe></div>
       </div>
 
-      <h3 style="margin-top:28px;">👨 Male Vocal Covers</h3>
+      <h3 style="margin-top:32px;">👨 Male Vocal Covers</h3>
       <div class="video-grid">
         <div class="video-item"><iframe src="https://www.youtube.com/embed/GrQJrtYSzJk" frameborder="0" allowfullscreen></iframe></div>
         <div class="video-item"><iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen></iframe></div>
@@ -151,26 +220,26 @@
     <!-- 4. FORM -->
     <div id="form" class="tab-panel">
       <h2>문의 양식</h2>
-      <p style="color:#ef4444; font-weight:bold; margin-bottom:8px;">⚠️ 문의 전 아래 안내사항을 반드시 읽어보신 후 양식에 맞게 문의 부탁드립니다.</p>
+      <p style="color:#f97316; font-weight:bold; margin-bottom:10px;">⚠️ 아래 안내사항을 읽으신 뒤 내용 작성 및 녹음 파일과 함께 문의 바랍니다.</p>
       
       <div class="form-box">
         <strong>1. 곡 제목 / 원곡 링크</strong><br>
-        (작업하실 곡의 제목과 원곡이 있다면 링크를 함께 남겨주세요)<br><br>
+        (작업 곡 제목 및 원곡 유튜브/링크 기입)<br><br>
         
         <strong>2. 업로드 예정 플랫폼 주소</strong><br>
-        (YouTube, SoundCloud 등 업로드하실 플랫폼 주소를 적어주세요)<br><br>
+        (YouTube, SoundCloud 등 게시 플랫폼 주소)<br><br>
         
         <strong>3. 보컬 에디팅 및 인공화음 여부</strong><br>
-        - 기본적으로 원곡 기반 기계음이 나지 않는 선에서 타이트하게 작업해 드립니다.<br>
-        - 자연스러운 연출을 원하시면 세부 사항 기재, 에디팅 불필요 시 'X' 기입.<br>
-        - 인공화음 필요 여부 기재.<br><br>
+        - 기본적으로 원곡 기반 기계음이 느껴지지 않는 선에서 타이트하게 보정합니다.<br>
+        - 부른 느낌을 살린 자연스러운 연출 희망 시 별도 세부사항 기재 (미필요시 'X').<br>
+        - 인공화음 추가 필요 여부 기입.<br><br>
         
-        <strong>4. 작업 방향 및 요청 사항 (타입 함께 기재)</strong><br>
-        원하시는 사운드 방향, 참고 레퍼런스, 분위기('묵직하게', '시원하게' 등)를 적어주세요.<br>
-        (별도 요청이 없을 경우 엔지니어 스타일에 맞춰 진행됩니다)<br><br>
+        <strong>4. 작업 방향 및 요청 사항 (선택 Type 기재)</strong><br>
+        원하시는 사운드 톤앤매너, 레퍼런스, 분위기('묵직하게', '시원하게' 등) 작성.<br>
+        (별도 요청이 없을 시 엔지니어의 해석과 스타일에 따라 진행됩니다)<br><br>
         
         <strong>5. 빠른마감 여부</strong><br>
-        (빠른마감이 필요하시다면 기입해주세요)
+        (빠른마감 필요 시 기입)
       </div>
     </div>
 
@@ -178,10 +247,10 @@
     <div id="notice" class="tab-panel">
       <h2>NOTICE</h2>
       <ul>
-        <li><strong>수정 횟수:</strong> 기본 3회 제공되며 이후 추가금이 발생합니다. 피드백은 정리해서 한 번에 전달해 주시면 감사하겠습니다. (단, 작업자 과실 수정은 차감 제외)</li>
-        <li><strong>작업 기한:</strong> 솔로 및 듀엣 기준 1차 완성본 전달까지 <strong>5일 ~ 최대 2주</strong> 소요됩니다.</li>
-        <li><strong>기본 트랙 수:</strong> 보컬 기준 MR 제외 메인 트랙 포함 <strong>5트랙</strong>입니다. (LR 트랙, 숨소리 분할 트랙은 1트랙으로 적용)</li>
-        <li><strong>타입 선택:</strong> 기본 단독 타입은 <u>Standard 타입</u>입니다. 상세 구현 내역은 Price & Type 탭을 참고 부탁드립니다.</li>
+        <li><strong>수정 횟수:</strong> 기본 3회 무료 제공 (이후 추가금 발생). 피드백 전달 시 한 번에 정리해서 전달 부탁드립니다. (작업자 과실 수정은 횟수 차감 제외)</li>
+        <li><strong>작업 기한:</strong> 솔로 및 듀엣 기준 1차 결과물 전달까지 <strong>5일 ~ 최대 2주</strong> 소요됩니다.</li>
+        <li><strong>기본 트랙 수:</strong> MR 제외 메인 보컬 포함 <strong>최대 5트랙</strong> 기준입니다. (LR 분할, 숨소리 분할 트랙은 1트랙으로 산정)</li>
+        <li><strong>기본 적용 Type:</strong> 별도 지정이 없으실 경우 <u>Standard 타입</u>으로 진행됩니다.</li>
       </ul>
     </div>
 
