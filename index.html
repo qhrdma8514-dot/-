@@ -24,7 +24,7 @@
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
     }
 
     /* 👑 상단 독립 스튜디오 브랜드 패널 */
@@ -83,7 +83,7 @@
       word-break: keep-all;
     }
 
-    /* 하단 메인 콘솔 레이아웃 */
+    /* 메인 콘솔 레이아웃 */
     .container { 
       display: flex; 
       gap: 20px; 
@@ -150,7 +150,6 @@
       letter-spacing: 1.5px;
     }
 
-    /* 이퀄라이저 아이콘 */
     .eq-bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
     .eq-bar { width: 3px; background: #4f46e5; border-radius: 1px; animation: eqBounce 1s ease-in-out infinite alternate; }
     .eq-bar:nth-child(1) { height: 60%; animation-delay: 0.1s; }
@@ -188,6 +187,16 @@
       background: #0f172a; 
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25); 
       border-color: #0f172a;
+    }
+
+    .portfolio-link-btn {
+      background: #e0e7ff;
+      color: #4338ca;
+      border: 1px dashed #6366f1;
+    }
+    .portfolio-link-btn:hover {
+      background: #c7d2fe;
+      color: #3730a3;
     }
 
     /* 메인 콘텐츠 패널 */
@@ -271,12 +280,70 @@
     
     .type-desc { margin-top: 14px; font-size: 14.5px; line-height: 1.85; color: #475569; border-top: 1px solid #f1f5f9; padding-top: 12px; word-break: keep-all; }
 
-    /* 📹 아트머그 내부에서도 강제로 3개씩 배치되도록 설정 */
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 11.5px; font-weight: 900; color: white; margin-right: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .badge-premium { background: #dc2626; }
+    .badge-standard { background: #2563eb; }
+    .badge-lite { background: #9333ea; }
+
+    /* 🎧 하단 독립 포트폴리오 섹션 스타일 */
+    .portfolio-section {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      width: 100%;
+    }
+
+    /* 서브 탭 서식 */
+    .sub-tab-nav {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 12px;
+      overflow-x: auto;
+    }
+
+    .sub-tab-btn {
+      padding: 10px 18px;
+      border-radius: 30px;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      color: #64748b;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .sub-tab-btn:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    .sub-tab-btn.active {
+      background: #4f46e5;
+      color: #ffffff;
+      border-color: #4f46e5;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+    }
+
+    .sub-tab-content {
+      display: none;
+    }
+
+    .sub-tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    /* 📹 비디오 그리드 */
     .video-grid { 
       display: grid !important; 
       grid-template-columns: repeat(3, 1fr) !important; 
-      gap: 10px !important; 
-      margin-top: 16px !important; 
+      gap: 12px !important; 
       width: 100% !important;
     }
     
@@ -284,15 +351,14 @@
       display: flex; 
       flex-direction: column; 
       width: 100% !important; 
-      border-radius: 10px; 
+      border-radius: 12px; 
       overflow: hidden; 
       border: 1px solid #e2e8f0; 
       background: #f8fafc;
       transition: all 0.25s ease; 
     }
-    .video-item:hover { transform: translateY(-3px); border-color: #cbd5e1; }
+    .video-item:hover { transform: translateY(-4px); border-color: #cbd5e1; box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
     
-    /* 16:9 비율 유지 */
     .video-item iframe { 
       width: 100% !important; 
       aspect-ratio: 16 / 9 !important; 
@@ -300,12 +366,7 @@
       border: none; 
     }
 
-    .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 11.5px; font-weight: 900; color: white; margin-right: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .badge-premium { background: #dc2626; }
-    .badge-standard { background: #2563eb; }
-    .badge-lite { background: #9333ea; }
-
-    /* 📱 모바일 디스플레이 설정 */
+    /* 📱 모바일 디스플레이 */
     @media (max-width: 500px) {
       body { padding: 8px; }
       
@@ -318,10 +379,7 @@
         border-top: 5px solid #4f46e5;
       }
 
-      .brand-logo-img {
-        width: 80px;
-        height: 80px;
-      }
+      .brand-logo-img { width: 80px; height: 80px; }
 
       .container { flex-direction: column; gap: 12px; }
       .menu-wrapper { width: 100%; position: relative; top: 0; }
@@ -353,10 +411,9 @@
         border-radius: 10px;
       }
 
-      .tab-panel { padding: 20px 14px; border-radius: 14px; }
+      .tab-panel, .portfolio-section { padding: 20px 14px; border-radius: 14px; }
       h2 { font-size: 19px; }
       
-      /* 모바일에서는 1열 처리 */
       .video-grid { 
         grid-template-columns: 1fr !important; 
         gap: 14px !important;
@@ -368,13 +425,11 @@
 
 <div class="wrapper">
   
-  <!-- 👑 상단 독립 스튜디오 브랜드 패널 -->
+  <!-- 👑 상단 스튜디오 브랜드 패널 -->
   <div class="brand-header-card">
     <img src="logo.jpg" alt="HR SOUND Logo" class="brand-logo-img" onerror="this.style.display='none'">
     <div class="brand-info">
-      <div class="brand-title">
-        HR SOUND
-      </div>
+      <div class="brand-title">HR SOUND</div>
       <div class="brand-subtitle">High-Quality Vocal Editing & Mixing Studio</div>
       <div class="brand-desc">
         안녕하세요. 음원 보정 및 보컬 믹싱/마스터링 전문 스튜디오 <strong>HR SOUND</strong>입니다.<br>
@@ -383,8 +438,9 @@
     </div>
   </div>
 
+  <!-- 상단 메인 콘솔 레이아웃 -->
   <div class="container">
-    <!-- 메뉴 영역 -->
+    <!-- 좌측 메뉴 -->
     <div class="menu-wrapper">
       <div class="scroll-hint">
         <span>👈 옆으로 스크롤하여 메뉴 이동</span>
@@ -402,14 +458,14 @@
         <div class="menu-inner">
           <button class="tab-btn active" onclick="openTab('about', this)">About Studio</button>
           <button class="tab-btn" onclick="openTab('price', this)">Price & Type</button>
-          <button class="tab-btn" onclick="openTab('portfolio', this)">Portfolio</button>
           <button class="tab-btn" onclick="openTab('form', this)">문의 양식</button>
           <button class="tab-btn" onclick="openTab('notice', this)">Notice</button>
+          <button class="tab-btn portfolio-link-btn" onclick="scrollToPortfolio()">👇 Portfolio</button>
         </div>
       </div>
     </div>
 
-    <!-- 콘텐츠 영역 -->
+    <!-- 우측 메인 콘텐츠 패널 -->
     <div class="content">
       
       <!-- 1. ABOUT -->
@@ -461,52 +517,7 @@
         </details>
       </div>
 
-      <!-- 3. PORTFOLIO -->
-      <div id="portfolio" class="tab-panel">
-        <h2>🎧 PORTFOLIO</h2>
-        
-        <h3>🎵 Album Portfolio</h3>
-        <div class="video-grid">
-          <div class="video-item"><iframe src="https://www.youtube.com/embed/cdpdanFRy7g" frameborder="0" allowfullscreen></iframe></div>
-          <div class="video-item"><iframe src="https://www.youtube.com/embed/dipqyUvUGNo" frameborder="0" allowfullscreen></iframe></div>
-          <div class="video-item"><iframe src="https://www.youtube.com/embed/01Ivq45ZHIw" frameborder="0" allowfullscreen></iframe></div>
-        </div>
-
-        <h3 style="margin-top:36px;">🎤 Vocal Mixing Portfolio</h3>
-        <div class="video-grid">
-          <div class="video-item"><iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen></iframe></div>
-          <div class="video-item"><iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen></iframe></div>
-          <div class="video-item"><iframe src="https://www.youtube.com/embed/0lxrTardYqo" frameborder="0" allowfullscreen></iframe></div>
-        </div>
-
-        <h3 style="margin-top:36px;">👩 Female Vocal Covers</h3>
-        <div class="video-grid">
-          <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen></iframe></div>
-          <div class="video-item"><iframe src="https://www.youtube.com/embed/15WjS4UJVWE" frameborder="0" allowfullscreen></iframe></div>
-          <div class="video-item"><iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen></iframe></div>
-        </div>
-
-        <!-- 🐦 트위터 포트폴리오 영상 -->
-        <div style="margin-top: 20px; display: flex; justify-content: center;">
-          <div style="width: 100%; max-width: 560px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03); padding: 10px;">
-            <blockquote class="twitter-tweet" data-media-max-width="560" style="margin: 0; background: transparent;">
-              <p lang="ja" dir="ltr">Hello, Worker - KEI feat.巡音ルカ / 歌ってみた<a href="https://x.com/hashtag/%E3%82%A8%E3%82%A4%E3%83%97%E3%83%AA%E3%83%AB%E3%83%95%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#エイプリルフール</a> <a href="https://x.com/hashtag/cover?src=hash&amp;ref_src=twsrc%5Etfw">#cover</a> <a href="https://t.co/iaL9OmJEva">pic.twitter.com/iaL9OmJEva</a>
-              </p>&mdash; 우엉 Wooung (@Wooung_twt) 
-              <a href="https://x.com/Wooung_twt/status/2039308311632429486?ref_src=twsrc%5Etfw">April 1, 2026</a>
-            </blockquote>
-            <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
-          </div>
-        </div>
-
-        <h3 style="margin-top:36px;">👨 Male Vocal Covers</h3>
-        <div class="video-grid">
-          <div class="video-item"><iframe src="https://www.youtube.com/embed/GrQJrtYSzJk" frameborder="0" allowfullscreen></iframe></div>
-          <div class="video-item"><iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen></iframe></div>
-          <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen></iframe></div>
-        </div>
-      </div>
-
-      <!-- 4. FORM -->
+      <!-- 3. FORM -->
       <div id="form" class="tab-panel">
         <h2>📝 문의 양식</h2>
         <p style="color:#ea580c; font-weight:bold; margin-bottom:12px;">⚠️ 아래 안내사항을 읽으신 뒤 내용 작성 및 녹음 파일과 함께 문의 바랍니다.</p>
@@ -532,7 +543,7 @@
         </div>
       </div>
 
-      <!-- 5. NOTICE -->
+      <!-- 4. NOTICE -->
       <div id="notice" class="tab-panel">
         <h2>📌 NOTICE</h2>
         <ul>
@@ -545,9 +556,69 @@
 
     </div>
   </div>
+
+  <!-- 🎧 하단 독립 포트폴리오 섹션 -->
+  <div id="portfolio-section" class="portfolio-section">
+    <h2>🎧 PORTFOLIO ARCHIVE</h2>
+    
+    <!-- 서브 탭 카테고리 메뉴 -->
+    <div class="sub-tab-nav">
+      <button class="sub-tab-btn active" onclick="openSubTab('tab-multitrack', this)">👥 Multi-Track / Group</button>
+      <button class="sub-tab-btn" onclick="openSubTab('tab-solo', this)">🎤 Solo Vocal Cover</button>
+      <button class="sub-tab-btn" onclick="openSubTab('tab-official', this)">🎵 Official Release</button>
+      <button class="sub-tab-btn" onclick="openSubTab('tab-shorts', this)">📱 Shorts & Clip</button>
+    </div>
+
+    <!-- 1. Multi-Track / Group -->
+    <div id="tab-multitrack" class="sub-tab-content active">
+      <div class="video-grid">
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/0lxrTardYqo" frameborder="0" allowfullscreen></iframe></div>
+      </div>
+    </div>
+
+    <!-- 2. Solo Vocal Cover -->
+    <div id="tab-solo" class="sub-tab-content">
+      <div class="video-grid">
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/15WjS4UJVWE" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/GrQJrtYSzJk" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen></iframe></div>
+      </div>
+    </div>
+
+    <!-- 3. Official Release -->
+    <div id="tab-official" class="sub-tab-content">
+      <div class="video-grid">
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/cdpdanFRy7g" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/dipqyUvUGNo" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/01Ivq45ZHIw" frameborder="0" allowfullscreen></iframe></div>
+      </div>
+    </div>
+
+    <!-- 4. Shorts & Clip (트위터 및 숏폼) -->
+    <div id="tab-shorts" class="sub-tab-content">
+      <div style="display: flex; justify-content: center;">
+        <div style="width: 100%; max-width: 560px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; padding: 10px;">
+          <blockquote class="twitter-tweet" data-media-max-width="560" style="margin: 0; background: transparent;">
+            <p lang="ja" dir="ltr">Hello, Worker - KEI feat.巡音ルカ / 歌ってみた<a href="https://x.com/hashtag/%E3%82%A8%E3%82%A4%E3%83%97%E3%83%AA%E3%83%AB%E3%83%95%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#エイプリルフール</a> <a href="https://x.com/hashtag/cover?src=hash&amp;ref_src=twsrc%5Etfw">#cover</a> <a href="https://t.co/iaL9OmJEva">pic.twitter.com/iaL9OmJEva</a>
+            </p>&mdash; 우엉 Wooung (@Wooung_twt) 
+            <a href="https://x.com/Wooung_twt/status/2039308311632429486?ref_src=twsrc%5Etfw">April 1, 2026</a>
+          </blockquote>
+          <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
 <script>
+  // 상단 콘솔 메인 탭 전환 함수
   function openTab(tabId, btnElement) {
     var panels = document.querySelectorAll('.tab-panel');
     panels.forEach(function(panel) {
@@ -556,15 +627,46 @@
 
     var buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(function(btn) {
-      btn.classList.remove('active');
+      if (!btn.classList.contains('portfolio-link-btn')) {
+        btn.classList.remove('active');
+      }
     });
 
     var targetPanel = document.getElementById(tabId);
     if (targetPanel) {
       targetPanel.classList.add('active');
     }
+    if (btnElement && !btnElement.classList.contains('portfolio-link-btn')) {
+      btnElement.classList.add('active');
+    }
+  }
+
+  // 하단 포트폴리오 서브 탭 전환 함수
+  function openSubTab(subTabId, btnElement) {
+    var subPanels = document.querySelectorAll('.sub-tab-content');
+    subPanels.forEach(function(panel) {
+      panel.classList.remove('active');
+    });
+
+    var subButtons = document.querySelectorAll('.sub-tab-btn');
+    subButtons.forEach(function(btn) {
+      btn.classList.remove('active');
+    });
+
+    var targetSubPanel = document.getElementById(subTabId);
+    if (targetSubPanel) {
+      targetSubPanel.classList.add('active');
+    }
     if (btnElement) {
       btnElement.classList.add('active');
+    }
+  }
+
+  // 포트폴리오 바로가기 스크롤 함수
+  function scrollToPortfolio() {
+    var portfolioSection = document.getElementById('portfolio-section');
+    if (portfolioSection) {
+      portfolioSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
 </script>
