@@ -313,7 +313,11 @@
       border-bottom: 2px solid #f1f5f9;
       padding-bottom: 12px;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
+
+    .sub-tab-nav::-webkit-scrollbar { height: 4px; }
+    .sub-tab-nav::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 
     .sub-tab-btn {
       padding: 10px 18px;
@@ -499,6 +503,14 @@
       }
 
       .tab-panel, .about-standalone-card, .portfolio-section { padding: 20px 14px; border-radius: 14px; }
+      
+      /* 포트폴리오 스크롤 힌트 위치 조절 */
+      .portfolio-section .scroll-hint {
+        display: block;
+        margin-top: -10px;
+        margin-bottom: 12px;
+      }
+
       h2 { font-size: 19px; }
       
       .video-grid, .sns-grid { 
@@ -647,6 +659,11 @@
   <div id="portfolio-section" class="portfolio-section">
     <h2>🎧 PORTFOLIO ARCHIVE</h2>
     
+    <!-- 모바일 스크롤 안내 문구 -->
+    <div class="scroll-hint">
+      <span>👈 옆으로 스크롤하여 메뉴 이동</span>
+    </div>
+
     <!-- 서브 탭 순서: MR -> Short -> Multi -> Live -->
     <div class="sub-tab-nav">
       <button class="sub-tab-btn active" onclick="openSubTab('tab-mr-track', this)">🎤 MR Track Work</button>
