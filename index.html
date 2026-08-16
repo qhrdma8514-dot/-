@@ -83,6 +83,16 @@
       word-break: keep-all;
     }
 
+    /* 🎙️ 독립형 ABOUT STUDIO 섹션 */
+    .about-standalone-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 28px 32px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      width: 100%;
+    }
+
     /* 메인 콘솔 레이아웃 */
     .container { 
       display: flex; 
@@ -189,12 +199,12 @@
       border-color: #0f172a;
     }
 
-    .portfolio-link-btn {
+    .scroll-link-btn {
       background: #e0e7ff;
       color: #4338ca;
       border: 1px dashed #6366f1;
     }
-    .portfolio-link-btn:hover {
+    .scroll-link-btn:hover {
       background: #c7d2fe;
       color: #3730a3;
     }
@@ -240,7 +250,7 @@
       border-left: 4px solid #4f46e5; 
       padding: 20px; 
       border-radius: 14px; 
-      margin: 22px 0; 
+      margin: 18px 0 0 0; 
       font-size: 15px; 
       color: #1e293b; 
       line-height: 1.85; 
@@ -367,7 +377,6 @@
       display: block;
     }
 
-    /* 영상 하단 상세 설명 박스 */
     .video-info {
       padding: 10px 12px;
       background: #f8fafc;
@@ -442,7 +451,7 @@
         border-radius: 10px;
       }
 
-      .tab-panel, .portfolio-section { padding: 20px 14px; border-radius: 14px; }
+      .tab-panel, .about-standalone-card, .portfolio-section { padding: 20px 14px; border-radius: 14px; }
       h2 { font-size: 19px; }
       
       .video-grid { 
@@ -456,7 +465,7 @@
 
 <div class="wrapper">
   
-  <!-- 👑 상단 스튜디오 브랜드 패널 -->
+  <!-- 👑 1. 상단 스튜디오 브랜드 패널 -->
   <div class="brand-header-card">
     <img src="logo.jpg" alt="HR SOUND Logo" class="brand-logo-img" onerror="this.style.display='none'">
     <div class="brand-info">
@@ -469,7 +478,20 @@
     </div>
   </div>
 
-  <!-- 상단 메인 콘솔 레이아웃 -->
+  <!-- 🎙️ 2. 독립형 ABOUT STUDIO 카드 (상단 소개 바로 아래 배치) -->
+  <div id="about-section" class="about-standalone-card">
+    <h2>🎙️ ABOUT HR SOUND</h2>
+    <p>프로페셔널 오디오 보정 및 사운드 엔지니어링 프로세스를 적용하여 완성도 높은 음원을 제작합니다.</p>
+
+    <div class="info-box">
+      💡 <strong>핵심 작업 가치</strong><br>
+      • Pro Tools / Melodyne / Auto-Tune 기반 정밀 파형 튜닝<br>
+      • iZotope RX 11 & Acon Digital 수작업 립노이즈 및 미세 잡음 완벽 제어<br>
+      • 1:1 디테일 피드백 반영 및 레퍼런스 맞춤형 톤매칭/믹싱
+    </div>
+  </div>
+
+  <!-- 3. 메인 CONSOLE 레이아웃 -->
   <div class="container">
     <!-- 좌측 메뉴 -->
     <div class="menu-wrapper">
@@ -487,11 +509,11 @@
           CONSOLE
         </div>
         <div class="menu-inner">
-          <button class="tab-btn active" onclick="openTab('about', this)">About Studio</button>
-          <button class="tab-btn" onclick="openTab('price', this)">Price & Type</button>
+          <button class="tab-btn scroll-link-btn" onclick="scrollToElement('about-section')">👇 About Studio</button>
+          <button class="tab-btn active" onclick="openTab('price', this)">Price & Type</button>
           <button class="tab-btn" onclick="openTab('form', this)">문의 양식</button>
           <button class="tab-btn" onclick="openTab('notice', this)">Notice</button>
-          <button class="tab-btn portfolio-link-btn" onclick="scrollToPortfolio()">👇 Portfolio</button>
+          <button class="tab-btn scroll-link-btn" onclick="scrollToElement('portfolio-section')">👇 Portfolio</button>
         </div>
       </div>
     </div>
@@ -499,21 +521,8 @@
     <!-- 우측 메인 콘텐츠 패널 -->
     <div class="content">
       
-      <!-- 1. ABOUT -->
-      <div id="about" class="tab-panel active">
-        <h2>🎙️ ABOUT HR SOUND</h2>
-        <p>프로페셔널 오디오 보정 및 사운드 엔지니어링 프로세스를 적용하여 완성도 높은 음원을 제작합니다.</p>
-
-        <div class="info-box">
-          💡 <strong>핵심 작업 가치</strong><br>
-          • Pro Tools / Melodyne / Auto-Tune 기반 정밀 파형 튜닝<br>
-          • iZotope RX 11 & Acon Digital 수작업 립노이즈 및 미세 잡음 완벽 제어<br>
-          • 1:1 디테일 피드백 반영 및 레퍼런스 맞춤형 톤매칭/믹싱
-        </div>
-      </div>
-
-      <!-- 2. PRICE & TYPE -->
-      <div id="price" class="tab-panel">
+      <!-- PRICE & TYPE -->
+      <div id="price" class="tab-panel active">
         <h2>🎚️ PRICE & TYPE</h2>
         <p>작업 난이도 및 보컬 에디팅 디테일에 따른 세부 Type 구분입니다.</p>
 
@@ -548,7 +557,7 @@
         </details>
       </div>
 
-      <!-- 3. FORM -->
+      <!-- FORM -->
       <div id="form" class="tab-panel">
         <h2>📝 문의 양식</h2>
         <p style="color:#ea580c; font-weight:bold; margin-bottom:12px;">⚠️ 아래 안내사항을 읽으신 뒤 내용 작성 및 녹음 파일과 함께 문의 바랍니다.</p>
@@ -574,7 +583,7 @@
         </div>
       </div>
 
-      <!-- 4. NOTICE -->
+      <!-- NOTICE -->
       <div id="notice" class="tab-panel">
         <h2>📌 NOTICE</h2>
         <ul>
@@ -588,7 +597,7 @@
     </div>
   </div>
 
-  <!-- 🎧 하단 독립 포트폴리오 섹션 -->
+  <!-- 🎧 4. 하단 독립 포트폴리오 섹션 -->
   <div id="portfolio-section" class="portfolio-section">
     <h2>🎧 PORTFOLIO ARCHIVE</h2>
     
@@ -666,7 +675,7 @@
           </div>
         </div>
         <div class="video-item">
-          <iframe src="url?id=19embed/JyLTO4AYlNg" frameborder="0" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <span class="work-tag">Mix + Master</span>
             <span class="video-title">Male Cover 3</span>
@@ -686,7 +695,7 @@
           </div>
         </div>
         <div class="video-item">
-          <iframe src="https://www.youtube.com/watch?v=we5CPYq7oHU9embed/dipqyUvUGNo" frameborder="0" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/dipqyUvUGNo" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <span class="work-tag">Mix + Master</span>
             <span class="video-title">Official Song 2</span>
@@ -725,6 +734,7 @@
 </div>
 
 <script>
+  // 메인 콘솔 탭 전환 함수
   function openTab(tabId, btnElement) {
     var panels = document.querySelectorAll('.tab-panel');
     panels.forEach(function(panel) {
@@ -733,7 +743,7 @@
 
     var buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(function(btn) {
-      if (!btn.classList.contains('portfolio-link-btn')) {
+      if (!btn.classList.contains('scroll-link-btn')) {
         btn.classList.remove('active');
       }
     });
@@ -742,11 +752,12 @@
     if (targetPanel) {
       targetPanel.classList.add('active');
     }
-    if (btnElement && !btnElement.classList.contains('portfolio-link-btn')) {
+    if (btnElement && !btnElement.classList.contains('scroll-link-btn')) {
       btnElement.classList.add('active');
     }
   }
 
+  // 하단 포트폴리오 서브 탭 전환 함수
   function openSubTab(subTabId, btnElement) {
     var subPanels = document.querySelectorAll('.sub-tab-content');
     subPanels.forEach(function(panel) {
@@ -767,10 +778,11 @@
     }
   }
 
-  function scrollToPortfolio() {
-    var portfolioSection = document.getElementById('portfolio-section');
-    if (portfolioSection) {
-      portfolioSection.scrollIntoView({ behavior: 'smooth' });
+  // 부드러운 스크롤 이동 함수 (About 및 Portfolio 전용)
+  function scrollToElement(elementId) {
+    var targetElement = document.getElementById(elementId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
     }
   }
 </script>
