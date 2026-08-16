@@ -478,7 +478,7 @@
     </div>
   </div>
 
-  <!-- 🎙️ 2. 독립형 ABOUT STUDIO 카드 (상단 소개 바로 아래 배치) -->
+  <!-- 🎙️ 2. 독립형 ABOUT STUDIO 카드 -->
   <div id="about-section" class="about-standalone-card">
     <h2>🎙️ ABOUT HR SOUND</h2>
     <p>프로페셔널 오디오 보정 및 사운드 엔지니어링 프로세스를 적용하여 완성도 높은 음원을 제작합니다.</p>
@@ -509,9 +509,8 @@
           CONSOLE
         </div>
         <div class="menu-inner">
-          <button class="tab-btn scroll-link-btn" onclick="scrollToElement('about-section')">👇 About Studio</button>
-          <button class="tab-btn active" onclick="openTab('price', this)">Price & Type</button>
-          <button class="tab-btn" onclick="openTab('form', this)">문의 양식</button>
+          <button class="tab-btn active" onclick="openTab('form', this)">문의 양식</button>
+          <button class="tab-btn" onclick="openTab('price', this)">Price & Type</button>
           <button class="tab-btn" onclick="openTab('notice', this)">Notice</button>
           <button class="tab-btn scroll-link-btn" onclick="scrollToElement('portfolio-section')">👇 Portfolio</button>
         </div>
@@ -521,8 +520,34 @@
     <!-- 우측 메인 콘텐츠 패널 -->
     <div class="content">
       
+      <!-- FORM (최상단) -->
+      <div id="form" class="tab-panel active">
+        <h2>📝 문의 양식</h2>
+        <p style="color:#ea580c; font-weight:bold; margin-bottom:12px;">⚠️ 아래 안내사항을 읽으신 뒤 내용 작성 및 녹음 파일과 함께 문의 바랍니다.</p>
+        
+        <div class="form-box">
+          <strong>1. 곡 제목 / 원곡 링크</strong><br>
+          (작업 곡 제목 및 원곡 유튜브/링크 기입)<br><br>
+          
+          <strong>2. 업로드 예정 플랫폼 주소</strong><br>
+          (YouTube, SoundCloud 등 게시 플랫폼 주소)<br><br>
+          
+          <strong>3. 보컬 에디팅 및 인공화음 여부</strong><br>
+          - 기본적으로 원곡 기반 기계음이 느껴지지 않는 선에서 타이트하게 보정합니다.<br>
+          - 부른 느낌을 살린 자연스러운 연출 희망 시 별도 세부사항 기재 (미필요시 'X').<br>
+          - 인공화음 추가 필요 여부 기입.<br><br>
+          
+          <strong>4. 작업 방향 및 요청 사항 (선택 Type 기재)</strong><br>
+          원하시는 사운드 톤앤매너, 레퍼런스, 분위기('묵직하게', '시원하게' 등) 작성.<br>
+          (별도 요청이 없을 시 엔지니어의 해석과 스타일에 따라 진행됩니다)<br><br>
+          
+          <strong>5. 빠른마감 여부</strong><br>
+          (빠른마감 필요 시 기입)
+        </div>
+      </div>
+
       <!-- PRICE & TYPE -->
-      <div id="price" class="tab-panel active">
+      <div id="price" class="tab-panel">
         <h2>🎚️ PRICE & TYPE</h2>
         <p>작업 난이도 및 보컬 에디팅 디테일에 따른 세부 Type 구분입니다.</p>
 
@@ -555,32 +580,6 @@
             <strong>• Mix/Master:</strong> 독자 프리셋 적용 → 밸런스 조정 → 러프 마스터링
           </div>
         </details>
-      </div>
-
-      <!-- FORM -->
-      <div id="form" class="tab-panel">
-        <h2>📝 문의 양식</h2>
-        <p style="color:#ea580c; font-weight:bold; margin-bottom:12px;">⚠️ 아래 안내사항을 읽으신 뒤 내용 작성 및 녹음 파일과 함께 문의 바랍니다.</p>
-        
-        <div class="form-box">
-          <strong>1. 곡 제목 / 원곡 링크</strong><br>
-          (작업 곡 제목 및 원곡 유튜브/링크 기입)<br><br>
-          
-          <strong>2. 업로드 예정 플랫폼 주소</strong><br>
-          (YouTube, SoundCloud 등 게시 플랫폼 주소)<br><br>
-          
-          <strong>3. 보컬 에디팅 및 인공화음 여부</strong><br>
-          - 기본적으로 원곡 기반 기계음이 느껴지지 않는 선에서 타이트하게 보정합니다.<br>
-          - 부른 느낌을 살린 자연스러운 연출 희망 시 별도 세부사항 기재 (미필요시 'X').<br>
-          - 인공화음 추가 필요 여부 기입.<br><br>
-          
-          <strong>4. 작업 방향 및 요청 사항 (선택 Type 기재)</strong><br>
-          원하시는 사운드 톤앤매너, 레퍼런스, 분위기('묵직하게', '시원하게' 등) 작성.<br>
-          (별도 요청이 없을 시 엔지니어의 해석과 스타일에 따라 진행됩니다)<br><br>
-          
-          <strong>5. 빠른마감 여부</strong><br>
-          (빠른마감 필요 시 기입)
-        </div>
       </div>
 
       <!-- NOTICE -->
@@ -778,7 +777,7 @@
     }
   }
 
-  // 부드러운 스크롤 이동 함수 (About 및 Portfolio 전용)
+  // 부드러운 스크롤 이동 함수
   function scrollToElement(elementId) {
     var targetElement = document.getElementById(elementId);
     if (targetElement) {
