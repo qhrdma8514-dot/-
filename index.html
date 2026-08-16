@@ -349,6 +349,24 @@
       animation: fadeIn 0.3s ease-out;
     }
 
+    /* 📌 포트폴리오 칸 나누기 구분 헤더 서식 */
+    .section-divider {
+      font-size: 15px;
+      font-weight: 800;
+      color: #4f46e5;
+      background: #f1f5f9;
+      padding: 8px 14px;
+      border-radius: 8px;
+      margin: 24px 0 14px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-left: 4px solid #4f46e5;
+    }
+    .section-divider:first-child {
+      margin-top: 0;
+    }
+
     /* 📹 비디오 그리드 & 텍스트 패널 스타일 */
     .video-grid { 
       display: grid !important; 
@@ -520,7 +538,7 @@
     <!-- 우측 메인 콘텐츠 패널 -->
     <div class="content">
       
-      <!-- FORM (최상단) -->
+      <!-- FORM -->
       <div id="form" class="tab-panel active">
         <h2>📝 문의 양식</h2>
         <p style="color:#ea580c; font-weight:bold; margin-bottom:12px;">⚠️ 아래 안내사항을 읽으신 뒤 내용 작성 및 녹음 파일과 함께 문의 바랍니다.</p>
@@ -600,16 +618,78 @@
   <div id="portfolio-section" class="portfolio-section">
     <h2>🎧 PORTFOLIO ARCHIVE</h2>
     
-    <!-- 서브 탭 카테고리 메뉴 -->
+    <!-- 서브 탭 카테고리 메뉴 (Vocal Cover가 첫 번째) -->
     <div class="sub-tab-nav">
-      <button class="sub-tab-btn active" onclick="openSubTab('tab-multitrack', this)">👥 Multi-Track / Group</button>
-      <button class="sub-tab-btn" onclick="openSubTab('tab-solo', this)">🎤 Solo Vocal Cover</button>
+      <button class="sub-tab-btn active" onclick="openSubTab('tab-vocal-cover', this)">🎤 Vocal Cover</button>
+      <button class="sub-tab-btn" onclick="openSubTab('tab-multitrack', this)">👥 Multi-Track / Group</button>
       <button class="sub-tab-btn" onclick="openSubTab('tab-official', this)">🎵 Official Release</button>
       <button class="sub-tab-btn" onclick="openSubTab('tab-shorts', this)">📱 Shorts & Clip</button>
     </div>
 
-    <!-- 1. Multi-Track / Group -->
-    <div id="tab-multitrack" class="sub-tab-content active">
+    <!-- 1. Vocal Cover (첫 번째 탭: Solo, Duet, Chorus 세부 분리) -->
+    <div id="tab-vocal-cover" class="sub-tab-content active">
+      
+      <!-- 🎙️ Solo Vocal 섹션 -->
+      <div class="section-divider">🎤 Solo Vocal</div>
+      <div class="video-grid">
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Edit + Mix + Master</span>
+            <span class="video-title">Female Cover 1</span>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/15WjS4UJVWE" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Edit + Mix + Master</span>
+            <span class="video-title">Female Cover 2</span>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/GrQJrtYSzJk" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Edit + Mix + Master</span>
+            <span class="video-title">Male Cover 1</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 👥 Duet Vocal 섹션 -->
+      <div class="section-divider">👥 Duet Vocal</div>
+      <div class="video-grid">
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Mix + Master</span>
+            <span class="video-title">Duet Cover Sample 1</span>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Edit + Mix + Master</span>
+            <span class="video-title">Duet Cover Sample 2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🎶 Chorus / Group Vocal 섹션 -->
+      <div class="section-divider">🎶 Chorus / Group Vocal</div>
+      <div class="video-grid">
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <span class="work-tag">Mix + Master</span>
+            <span class="video-title">Chorus Cover Sample 1</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 2. Multi-Track / Group -->
+    <div id="tab-multitrack" class="sub-tab-content">
       <div class="video-grid">
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen></iframe>
@@ -630,54 +710,6 @@
           <div class="video-info">
             <span class="work-tag">Mix + Master</span>
             <span class="video-title">Multi-Track Cover 3</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2. Solo Vocal Cover -->
-    <div id="tab-solo" class="sub-tab-content">
-      <div class="video-grid">
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Edit + Mix + Master</span>
-            <span class="video-title">Female Cover 1</span>
-          </div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/15WjS4UJVWE" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Edit + Mix + Master</span>
-            <span class="video-title">Female Cover 2</span>
-          </div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Mix + Master</span>
-            <span class="video-title">Female Cover 3</span>
-          </div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/GrQJrtYSzJk" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Edit + Mix + Master</span>
-            <span class="video-title">Male Cover 1</span>
-          </div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Edit + Mix + Master</span>
-            <span class="video-title">Male Cover 2</span>
-          </div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <span class="work-tag">Mix + Master</span>
-            <span class="video-title">Male Cover 3</span>
           </div>
         </div>
       </div>
