@@ -402,14 +402,15 @@
     }
 
     .empty-slot {
+      width: 100%;
       aspect-ratio: 16 / 9;
-      background: #f8fafc;
+      background: #f1f5f9;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #94a3b8;
-      font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 14px;
     }
 
     /* 트위터/SNS 전용 컨테이너 그리드 */
@@ -664,7 +665,7 @@
       <span>👈 옆으로 스크롤하여 메뉴 이동</span>
     </div>
 
-    <!-- 서브 탭 순서: MR -> Short -> Multi -> Live -->
+    <!-- 서브 탭 -->
     <div class="sub-tab-nav">
       <button class="sub-tab-btn active" onclick="openSubTab('tab-mr-track', this)">🎤 MR Track Work</button>
       <button class="sub-tab-btn" onclick="openSubTab('tab-shorts', this)">📱 Shorts & Clip</button>
@@ -672,46 +673,55 @@
       <button class="sub-tab-btn" onclick="openSubTab('tab-livetrack', this)">🎙️ Live Track Work</button>
     </div>
 
-    <!-- 1. MR Track Work (Solo, Duet, Group) -->
+    <!-- 1. MR Track Work (Solo) -->
     <div id="tab-mr-track" class="sub-tab-content active">
-      
-      <!-- 🎤 Solo 섹션 (11개 적용 / 총 30개 슬롯) -->
       <div class="section-divider">🎤 Solo</div>
       <div class="video-grid">
         <!-- 01 -->
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/NRhVSaM5lZc" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/aM_1IClnllI" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
         <!-- 02 -->
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/6UgBpSv9QqM" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/5aM2gK_A8_s" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
         <!-- 03 -->
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/RBFeEXZKk68" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
         <!-- 04 -->
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/-nvnm6U6HBE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/-nvnm6UH6BE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
         <!-- 05 -->
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/OlxrTardYqo" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/0lxRTardYqo" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
         <!-- 06 -->
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/cTVuBsYovRA" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/cTVUbSYovRA" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
         <!-- 07 -->
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/gxQaAxLDk3c" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/gxQaAXLDk3c" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
         <!-- 08 -->
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/OosZeIGF4_w" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/0osZeIGF4_w" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
         <!-- 09 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/vSGyQp6uNcg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
         <!-- 10 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/q6M8A4yR6ag" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
         <!-- 11 -->
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/nIDKgfIl7uE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/nIDKgfIL7uE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
 
-        <!-- 12~30 예비 슬롯 -->
-        <div class="video-item"><div class="empty-slot">Slot 12</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><div class="empty-slot">Slot 13</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><div class="empty-slot">Slot 14</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><div class="empty-slot">Slot 15</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><div class="empty-slot">Slot 16</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><div class="empty-slot">Slot 17</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><div class="empty-slot">Slot 18</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><div class="empty-slot">Slot 19</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><div class="empty-slot">Slot 20</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><div class="empty-slot">Slot 21</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <!-- 12 -->
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/gW4jPTIlaDI" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <!-- 13 -->
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/zmNH_eywN2w" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <!-- 14 -->
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/tn2oqAkFpjU" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <!-- 15 -->
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/a15ODH6sSaw" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <!-- 16 -->
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/YtO2m8W0iLE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <!-- 17 -->
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <!-- 18 -->
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/19WPBI_X-uk" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <!-- 19 -->
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/F_YdazVYTlk" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <!-- 20 -->
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <!-- 21 -->
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/v4_QV87j478" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+
+        <!-- 22~30 예비 슬롯 -->
         <div class="video-item"><div class="empty-slot">Slot 22</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
         <div class="video-item"><div class="empty-slot">Slot 23</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
         <div class="video-item"><div class="empty-slot">Slot 24</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
@@ -722,29 +732,6 @@
         <div class="video-item"><div class="empty-slot">Slot 29</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
         <div class="video-item"><div class="empty-slot">Slot 30</div><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
       </div>
-
-      <!-- 👥 Duet 섹션 (6개 슬롯) -->
-      <div class="section-divider">👥 Duet</div>
-      <div class="video-grid">
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-      </div>
-
-      <!-- 🎶 Group 섹션 (6개 슬롯) -->
-      <div class="section-divider">🎶 Group</div>
-      <div class="video-grid">
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-      </div>
-
     </div>
 
     <!-- 2. Shorts & Clip -->
@@ -763,53 +750,26 @@
       </div>
     </div>
 
-    <!-- 3. Multi-Track Work (6개 슬롯) -->
+    <!-- 3. Multi-Track Work -->
     <div id="tab-multitrack" class="sub-tab-content">
       <div class="video-grid">
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/OlxrTardYqo" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/OlxrTardYqo" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/gW4jPTIlaDI" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
+        <div class="video-item"><iframe src="https://www.youtube.com/embed/zmNH_eywN2w" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
       </div>
     </div>
 
-    <!-- 4. Live Track Work (유튜브 1개 + 트위터 3개) -->
+    <!-- 4. Live Track Work -->
     <div id="tab-livetrack" class="sub-tab-content">
-      <!-- 유튜브 대표 영상 1개 -->
       <div class="section-divider">🎥 Live Performance (YouTube)</div>
       <div class="video-grid" style="grid-template-columns: 1fr !important; max-width: 600px; margin: 0 auto 24px auto;">
         <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          <iframe src="https://www.youtube.com/embed/tn2oqAkFpjU" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Live Mix + Vocal Tuning</span></div>
         </div>
       </div>
 
-      <!-- 트위터 영상 3개 -->
       <div class="section-divider">📱 Live Clips (Twitter / X)</div>
       <div class="sns-grid">
-        <!-- 트위터 Clip 1 -->
-        <div class="sns-card">
-          <blockquote class="twitter-tweet" data-media-max-width="560">
-            <a href="https://x.com/herahera_uta/status/2070763811276214709">https://x.com/herahera_uta/status/2070763811276214709</a>
-          </blockquote>
-          <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
-            <span class="work-tag">Live Audio Editing</span>
-          </div>
-        </div>
-
-        <!-- 트위터 Clip 2 -->
-        <div class="sns-card">
-          <blockquote class="twitter-tweet" data-media-max-width="560">
-            <a href="https://x.com/herahera_uta/status/2070763811276214709">https://x.com/herahera_uta/status/2070763811276214709</a>
-          </blockquote>
-          <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
-            <span class="work-tag">Live Audio Editing</span>
-          </div>
-        </div>
-
-        <!-- 트위터 Clip 3 -->
         <div class="sns-card">
           <blockquote class="twitter-tweet" data-media-max-width="560">
             <a href="https://x.com/herahera_uta/status/2070763811276214709">https://x.com/herahera_uta/status/2070763811276214709</a>
@@ -825,16 +785,13 @@
 
 </div>
 
-<!-- Twitter Widgets 스크립트 (페이지 내 1회 로드) -->
+<!-- Twitter Widgets 스크립트 -->
 <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 
 <script>
-  // 메인 콘솔 탭 전환 함수
   function openTab(tabId, btnElement) {
     var panels = document.querySelectorAll('.tab-panel');
-    panels.forEach(function(panel) {
-      panel.classList.remove('active');
-    });
+    panels.forEach(function(panel) { panel.classList.remove('active'); });
 
     var buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(function(btn) {
@@ -844,36 +801,24 @@
     });
 
     var targetPanel = document.getElementById(tabId);
-    if (targetPanel) {
-      targetPanel.classList.add('active');
-    }
+    if (targetPanel) { targetPanel.classList.add('active'); }
     if (btnElement && !btnElement.classList.contains('scroll-link-btn')) {
       btnElement.classList.add('active');
     }
   }
 
-  // 하단 포트폴리오 서브 탭 전환 함수
   function openSubTab(subTabId, btnElement) {
     var subPanels = document.querySelectorAll('.sub-tab-content');
-    subPanels.forEach(function(panel) {
-      panel.classList.remove('active');
-    });
+    subPanels.forEach(function(panel) { panel.classList.remove('active'); });
 
     var subButtons = document.querySelectorAll('.sub-tab-btn');
-    subButtons.forEach(function(btn) {
-      btn.classList.remove('active');
-    });
+    subButtons.forEach(function(btn) { btn.classList.remove('active'); });
 
     var targetSubPanel = document.getElementById(subTabId);
-    if (targetSubPanel) {
-      targetSubPanel.classList.add('active');
-    }
-    if (btnElement) {
-      btnElement.classList.add('active');
-    }
+    if (targetSubPanel) { targetSubPanel.classList.add('active'); }
+    if (btnElement) { btnElement.classList.add('active'); }
   }
 
-  // 부드러운 스크롤 이동 함수
   function scrollToElement(elementId) {
     var targetElement = document.getElementById(elementId);
     if (targetElement) {
