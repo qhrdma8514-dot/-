@@ -400,8 +400,7 @@
       background: #f8fafc;
       border-top: 1px solid #f1f5f9;
       display: flex;
-      flex-direction: column;
-      gap: 4px;
+      align-items: center;
     }
 
     .work-tag {
@@ -409,19 +408,10 @@
       font-weight: 800;
       color: #4f46e5;
       background: #e0e7ff;
-      padding: 2px 8px;
+      padding: 3px 8px;
       border-radius: 4px;
       width: fit-content;
       letter-spacing: 0.3px;
-    }
-
-    .video-title {
-      font-size: 12.5px;
-      font-weight: 700;
-      color: #334155;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     /* 📱 모바일 디스플레이 */
@@ -618,7 +608,7 @@
   <div id="portfolio-section" class="portfolio-section">
     <h2>🎧 PORTFOLIO ARCHIVE</h2>
     
-    <!-- 서브 탭 카테고리 메뉴 (Vocal Cover가 첫 번째) -->
+    <!-- 서브 탭 카테고리 메뉴 -->
     <div class="sub-tab-nav">
       <button class="sub-tab-btn active" onclick="openSubTab('tab-vocal-cover', this)">🎤 Vocal Cover</button>
       <button class="sub-tab-btn" onclick="openSubTab('tab-multitrack', this)">👥 Multi-Track / Group</button>
@@ -626,62 +616,56 @@
       <button class="sub-tab-btn" onclick="openSubTab('tab-shorts', this)">📱 Shorts & Clip</button>
     </div>
 
-    <!-- 1. Vocal Cover (첫 번째 탭: Solo, Duet, Chorus 세부 분리) -->
+    <!-- 1. Vocal Cover (Solo, Duet, Group) -->
     <div id="tab-vocal-cover" class="sub-tab-content active">
       
-      <!-- 🎙️ Solo Vocal 섹션 -->
-      <div class="section-divider">🎤 Solo Vocal</div>
+      <!-- 🎤 Solo 섹션 -->
+      <div class="section-divider">🎤 Solo</div>
       <div class="video-grid">
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <span class="work-tag">Edit + Mix + Master</span>
-            <span class="video-title">Female Cover 1</span>
           </div>
         </div>
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/15WjS4UJVWE" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <span class="work-tag">Edit + Mix + Master</span>
-            <span class="video-title">Female Cover 2</span>
           </div>
         </div>
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/GrQJrtYSzJk" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <span class="work-tag">Edit + Mix + Master</span>
-            <span class="video-title">Male Cover 1</span>
           </div>
         </div>
       </div>
 
-      <!-- 👥 Duet Vocal 섹션 -->
-      <div class="section-divider">👥 Duet Vocal</div>
+      <!-- 👥 Duet 섹션 -->
+      <div class="section-divider">👥 Duet</div>
       <div class="video-grid">
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <span class="work-tag">Mix + Master</span>
-            <span class="video-title">Duet Cover Sample 1</span>
           </div>
         </div>
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <span class="work-tag">Edit + Mix + Master</span>
-            <span class="video-title">Duet Cover Sample 2</span>
           </div>
         </div>
       </div>
 
-      <!-- 🎶 Chorus / Group Vocal 섹션 -->
-      <div class="section-divider">🎶 Chorus / Group Vocal</div>
+      <!-- 🎶 Group 섹션 -->
+      <div class="section-divider">🎶 Group</div>
       <div class="video-grid">
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <span class="work-tag">Mix + Master</span>
-            <span class="video-title">Chorus Cover Sample 1</span>
           </div>
         </div>
       </div>
@@ -695,21 +679,18 @@
           <iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <span class="work-tag">Edit + Mix + Master</span>
-            <span class="video-title">Multi-Track Cover 1</span>
           </div>
         </div>
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <span class="work-tag">Edit + Mix + Master</span>
-            <span class="video-title">Multi-Track Cover 2</span>
           </div>
         </div>
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/0lxrTardYqo" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <span class="work-tag">Mix + Master</span>
-            <span class="video-title">Multi-Track Cover 3</span>
           </div>
         </div>
       </div>
@@ -722,21 +703,18 @@
           <iframe src="https://www.youtube.com/embed/cdpdanFRy7g" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <span class="work-tag">Vocal Edit + Mix + Master</span>
-            <span class="video-title">Official Song 1</span>
           </div>
         </div>
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/dipqyUvUGNo" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <span class="work-tag">Mix + Master</span>
-            <span class="video-title">Official Song 2</span>
           </div>
         </div>
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/01Ivq45ZHIw" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <span class="work-tag">Vocal Edit + Mix + Master</span>
-            <span class="video-title">Official Song 3</span>
           </div>
         </div>
       </div>
@@ -754,7 +732,6 @@
           <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
           <div class="video-info" style="margin-top: 8px; border-radius: 8px; border: 1px solid #f1f5f9;">
             <span class="work-tag">Vocal Edit + Mix</span>
-            <span class="video-title">Hello, Worker - Cover Clip</span>
           </div>
         </div>
       </div>
