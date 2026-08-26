@@ -27,7 +27,7 @@
       gap: 20px;
     }
 
-    /* 👑 상단 독립 스튜디오 브랜드 패널 */
+    /* 상단 독립 스튜디오 브랜드 패널 */
     .brand-header-card {
       background: #ffffff;
       background-image: 
@@ -83,7 +83,7 @@
       word-break: keep-all;
     }
 
-    /* 🎙️ 독립형 ABOUT STUDIO 섹션 */
+    /* 독립형 ABOUT STUDIO 섹션 */
     .about-standalone-card {
       background: #ffffff;
       border: 1px solid #e2e8f0;
@@ -295,7 +295,7 @@
     .badge-standard { background: #2563eb; }
     .badge-lite { background: #9333ea; }
 
-    /* 🎧 하단 독립 포트폴리오 섹션 스타일 */
+    /* 하단 독립 포트폴리오 섹션 스타일 */
     .portfolio-section {
       background: #ffffff;
       border: 1px solid #e2e8f0;
@@ -353,7 +353,7 @@
       animation: fadeIn 0.3s ease-out;
     }
 
-    /* 📌 포트폴리오 구분 헤더 */
+    /* 포트폴리오 구분 헤더 */
     .section-divider {
       font-size: 15px;
       font-weight: 800;
@@ -371,7 +371,7 @@
       margin-top: 0;
     }
 
-    /* 📹 비디오 그리드 & 임베드 카드 */
+    /* 가로형 비디오 그리드 & 임베드 카드 (16:9) */
     .video-grid { 
       display: grid !important; 
       grid-template-columns: repeat(3, 1fr) !important; 
@@ -401,15 +401,34 @@
       display: block;
     }
 
-    .empty-slot {
-      aspect-ratio: 16 / 9;
-      background: #f8fafc;
+    /*  쇼츠 전용 세로형 비디오 그리드 (9:16) */
+    .shorts-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 16px !important;
+      width: 100% !important;
+      margin-bottom: 24px;
+    }
+
+    .shorts-item {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #94a3b8;
-      font-size: 13px;
-      font-weight: 600;
+      flex-direction: column;
+      width: 100% !important;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .shorts-item:hover { transform: translateY(-4px); border-color: #4f46e5; box-shadow: 0 8px 20px rgba(79,70,229,0.12); }
+
+    .shorts-item iframe {
+      width: 100% !important;
+      aspect-ratio: 9 / 16 !important;
+      height: auto !important;
+      border: none;
+      display: block;
     }
 
     /* 트위터/SNS 전용 컨테이너 그리드 */
@@ -457,7 +476,7 @@
       letter-spacing: 0.3px;
     }
 
-    /* 📱 모바일 디스플레이 */
+    /* 모바일 디스플레이 */
     @media (max-width: 500px) {
       body { padding: 8px; }
       
@@ -504,7 +523,6 @@
 
       .tab-panel, .about-standalone-card, .portfolio-section { padding: 20px 14px; border-radius: 14px; }
       
-      /* 포트폴리오 스크롤 힌트 위치 조절 */
       .portfolio-section .scroll-hint {
         display: block;
         margin-top: -10px;
@@ -513,7 +531,7 @@
 
       h2 { font-size: 19px; }
       
-      .video-grid, .sns-grid { 
+      .video-grid, .shorts-grid, .sns-grid { 
         grid-template-columns: 1fr !important; 
         gap: 14px !important;
       }
@@ -524,7 +542,7 @@
 
 <div class="wrapper">
   
-  <!-- 👑 1. 상단 스튜디오 브랜드 패널 -->
+  <!-- 1. 상단 스튜디오 브랜드 패널 -->
   <div class="brand-header-card">
     <img src="logo.jpg" alt="HR SOUND Logo" class="brand-logo-img" onerror="this.style.display='none'">
     <div class="brand-info">
@@ -537,16 +555,16 @@
     </div>
   </div>
 
-  <!-- 🎙️ 2. 독립형 ABOUT STUDIO 카드 -->
+  <!-- 2. 독립형 ABOUT STUDIO 카드 -->
   <div id="about-section" class="about-standalone-card">
-    <h2>🎙️ ABOUT HR SOUND</h2>
+    <h2> ABOUT HR SOUND</h2>
     <p>프로페셔널 오디오 보정 및 사운드 엔지니어링 프로세스를 적용하여 완성도 높은 음원을 제작합니다.</p>
 
     <div class="info-box">
-      💡 <strong>핵심 작업 가치</strong><br>
-      • Pro Tools / Melodyne / Auto-Tune 기반 정밀 파형 튜닝<br>
-      • iZotope RX 11 & Acon Digital 수작업 립노이즈 및 미세 잡음 완벽 제어<br>
-      • 1:1 디테일 피드백 반영 및 레퍼런스 맞춤형 톤매칭/믹싱
+       <strong>핵심 작업 가치</strong><br>
+       Pro Tools / Melodyne / Auto-Tune 기반 정밀 파형 튜닝<br>
+       iZotope RX 11 & Acon Digital 수작업 립노이즈 및 미세 잡음 완벽 제어<br>
+       1:1 디테일 피드백 반영 및 레퍼런스 맞춤형 톤매칭/믹싱
     </div>
   </div>
 
@@ -555,7 +573,7 @@
     <!-- 좌측 메뉴 -->
     <div class="menu-wrapper">
       <div class="scroll-hint">
-        <span>👈 옆으로 스크롤하여 메뉴 이동</span>
+        <span> 옆으로 스크롤하여 메뉴 이동</span>
       </div>
       
       <div class="menu">
@@ -571,7 +589,7 @@
           <button class="tab-btn active" onclick="openTab('form', this)">문의 양식</button>
           <button class="tab-btn" onclick="openTab('price', this)">Price & Type</button>
           <button class="tab-btn" onclick="openTab('notice', this)">Notice</button>
-          <button class="tab-btn scroll-link-btn" onclick="scrollToElement('portfolio-section')">👇 Portfolio</button>
+          <button class="tab-btn scroll-link-btn" onclick="scrollToElement('portfolio-section')"> Portfolio</button>
         </div>
       </div>
     </div>
@@ -581,8 +599,8 @@
       
       <!-- FORM -->
       <div id="form" class="tab-panel active">
-        <h2>📝 문의 양식</h2>
-        <p style="color:#ea580c; font-weight:bold; margin-bottom:12px;">⚠️ 아래 안내사항을 읽으신 뒤 내용 작성 및 녹음 파일과 함께 문의 바랍니다.</p>
+        <h2> 문의 양식</h2>
+        <p style="color:#ea580c; font-weight:bold; margin-bottom:12px;"> 아래 안내사항을 읽으신 뒤 내용 작성 및 녹음 파일과 함께 문의 바랍니다.</p>
         
         <div class="form-box">
           <strong>1. 곡 제목 / 원곡 링크</strong><br>
@@ -607,16 +625,16 @@
 
       <!-- PRICE & TYPE -->
       <div id="price" class="tab-panel">
-        <h2>🎚️ PRICE & TYPE</h2>
+        <h2> PRICE & TYPE</h2>
         <p>작업 난이도 및 보컬 에디팅 디테일에 따른 세부 Type 구분입니다.</p>
 
         <h3><span class="badge badge-premium">Premium</span> Premium Type</h3>
         <details>
           <summary>Premium Type 세부 작업 공정</summary>
           <div class="type-desc">
-            <strong>• Edit:</strong> Pro Tools 기반 정밀 파형튠(박자) → Melodyne Studio → Auto Tune Graph Mode & Repitch → Pro Tools Pencil Tool & iZotope RX 11 / Acon Digital (립노이즈 및 잡음 수작업 일대일 제거) → Inst & Vocal Rough Mix<br>
-            <strong>• Mix:</strong> Vocal Automation (곡의 기승전결에 따른 세밀한 보컬 수작업 제어로 타격감과 감정선 극대화) → 레퍼런스 맞춤 톤매칭 → 전체 밸런스 조정 → Mix Bus 작업<br>
-            <strong>• Master:</strong> 단순히 볼륨을 높이는 것에 그치지 않고 전체적인 입체감과 완성도를 끌어올리는 정밀 마스터링
+            <strong> Edit:</strong> Pro Tools 기반 정밀 파형튠(박자) → Melodyne Studio → Auto Tune Graph Mode & Repitch → Pro Tools Pencil Tool & iZotope RX 11 / Acon Digital (립노이즈 및 잡음 수작업 일대일 제거) → Inst & Vocal Rough Mix<br>
+            <strong> Mix:</strong> Vocal Automation (곡의 기승전결에 따른 세밀한 보컬 수작업 제어로 타격감과 감정선 극대화) → 레퍼런스 맞춤 톤매칭 → 전체 밸런스 조정 → Mix Bus 작업<br>
+            <strong> Master:</strong> 단순히 볼륨을 높이는 것에 그치지 않고 전체적인 입체감과 완성도를 끌어올리는 정밀 마스터링
           </div>
         </details>
 
@@ -624,9 +642,9 @@
         <details>
           <summary>Standard Type 세부 작업 공정</summary>
           <div class="type-desc">
-            <strong>• Edit:</strong> Melodyne Studio (음정 & 박자) → Auto Tune Graph Mode & Repitch → iZotope RX 11 / Acon Digital (잡음 일괄 제거) → Inst & Vocal Rough Mix<br>
-            <strong>• Mix:</strong> 레퍼런스 및 보컬에 맞춘 이상적인 톤매칭 → 전체 밸런스 조정 → Mix Bus 작업<br>
-            <strong>• Master:</strong> 레퍼런스 기준 완성도 높은 밸런스 마스터링
+            <strong> Edit:</strong> Melodyne Studio (음정 & 박자) → Auto Tune Graph Mode & Repitch → iZotope RX 11 / Acon Digital (잡음 일괄 제거) → Inst & Vocal Rough Mix<br>
+            <strong> Mix:</strong> 레퍼런스 및 보컬에 맞춘 이상적인 톤매칭 → 전체 밸런스 조정 → Mix Bus 작업<br>
+            <strong> Master:</strong> 레퍼런스 기준 완성도 높은 밸런스 마스터링
           </div>
         </details>
 
@@ -635,15 +653,15 @@
           <summary>Lite Type 세부 작업 공정</summary>
           <div class="type-desc">
             Lite Type은 박자 수정을 최소화하고 음정 보정 위주로 진행됩니다. HR Sound 독자 프리셋을 적용하여 가볍게 작업하시거나 연출감을 테스트하기에 적합합니다.<br>
-            <strong>• Edit:</strong> Melodyne Studio → iZotope RX 11 / Acon Digital (잡음 일괄 제거) → Inst & Vocal Rough Mix<br>
-            <strong>• Mix/Master:</strong> 독자 프리셋 적용 → 밸런스 조정 → 러프 마스터링
+            <strong> Edit:</strong> Melodyne Studio → iZotope RX 11 / Acon Digital (잡음 일괄 제거) → Inst & Vocal Rough Mix<br>
+            <strong> Mix/Master:</strong> 독자 프리셋 적용 → 밸런스 조정 → 러프 마스터링
           </div>
         </details>
       </div>
 
       <!-- NOTICE -->
       <div id="notice" class="tab-panel">
-        <h2>📌 NOTICE</h2>
+        <h2> NOTICE</h2>
         <ul>
           <li><strong>수정 횟수:</strong> 기본 3회 무료 제공 (이후 추가금 발생). 피드백 전달 시 한 번에 정리해서 전달 부탁드립니다. (작업자 과실 수정은 횟수 차감 제외)</li>
           <li><strong>작업 기한:</strong> 솔로 및 듀엣 기준 1차 결과물 전달까지 <strong>5일 ~ 최대 2주</strong> 소요됩니다.</li>
@@ -655,95 +673,60 @@
     </div>
   </div>
 
-  <!-- 🎧 4. 하단 독립 포트폴리오 섹션 -->
+  <!-- 4. 하단 독립 포트폴리오 섹션 -->
   <div id="portfolio-section" class="portfolio-section">
-    <h2>🎧 PORTFOLIO ARCHIVE</h2>
+    <h2> PORTFOLIO ARCHIVE</h2>
     
     <!-- 모바일 스크롤 안내 문구 -->
     <div class="scroll-hint">
-      <span>👈 옆으로 스크롤하여 메뉴 이동</span>
+      <span> 옆으로 스크롤하여 메뉴 이동</span>
     </div>
 
     <!-- 서브 탭 순서: MR -> Short -> Multi -> Live -->
     <div class="sub-tab-nav">
-      <button class="sub-tab-btn active" onclick="openSubTab('tab-mr-track', this)">🎤 MR Track Work</button>
-      <button class="sub-tab-btn" onclick="openSubTab('tab-shorts', this)">📱 Shorts & Clip</button>
-      <button class="sub-tab-btn" onclick="openSubTab('tab-multitrack', this)">🎛️ Multi-Track Work</button>
-      <button class="sub-tab-btn" onclick="openSubTab('tab-livetrack', this)">🎙️ Live Track Work</button>
+      <button class="sub-tab-btn active" onclick="openSubTab('tab-mr-track', this)"> MR Track Work</button>
+      <button class="sub-tab-btn" onclick="openSubTab('tab-shorts', this)"> Shorts & Clip</button>
+      <button class="sub-tab-btn" onclick="openSubTab('tab-multitrack', this)"> Multi-Track Work</button>
+      <button class="sub-tab-btn" onclick="openSubTab('tab-livetrack', this)"> Live Track Work</button>
     </div>
 
     <!-- 1. MR Track Work (Solo, Duet, Group) -->
     <div id="tab-mr-track" class="sub-tab-content active">
-      
-      <!-- 🎤 Solo 섹션 (11개 적용 / 총 30개 슬롯) -->
-      <div class="section-divider">🎤 Solo</div>
+      <div class="section-divider"> Solo</div>
       <div class="video-grid">
-        <!-- 01 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/NRhVSaM5lZc" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 02 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/6UgBpSv9QqM" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Mix + Master</span></div></div>
-        <!-- 03 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 04 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/-nvnm6U6HBE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 05 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/OlxrTardYqo" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 06 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/cTVuBsYovRA" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 07 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/gxQaAxLDk3c" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 08 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/OosZeIGF4_w" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Mix + Master</span></div></div>
-        <!-- 09 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/vSGyQp6uNcg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 10 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/q6M8A4yR6ag" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 11 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/nIDKgfIl7uE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-
-        <!-- 12 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/gW4jPTIlaDI" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 13 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/zmNH_eywN2w" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 14 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/tn2oqAkFpjU" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 15 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/a15ODH6sSaw" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 16 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/YtO2m8W0iLE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 17 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 18 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/19WPBI_X-uk" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 19 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/F_YdazVYTlk" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 20 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 21 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/v4_QV87j478" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-
-        <!-- 22 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg?si=DDs99K7i-BTnDo-s" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 23 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/tn2oqAkFpjU" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 24 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/a15ODH6sSaw" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 25 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/YtO2m8W0iLE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 26 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 27 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/19WPBI_X-uk" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 28 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/F_YdazVYTlk" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 29 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
-        <!-- 30 -->
         <div class="video-item"><iframe src="https://www.youtube.com/embed/v4_QV87j478" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
       </div>
 
-      <!-- 👥 Duet 섹션 (6개 슬롯) -->
-      <div class="section-divider">👥 Duet</div>
+      <div class="section-divider"> Duet</div>
       <div class="video-grid">
         <div class="video-item"><iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Mix + Master</span></div></div>
         <div class="video-item"><iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
@@ -753,8 +736,7 @@
         <div class="video-item"><iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
       </div>
 
-      <!-- 🎶 Group 섹션 (6개 슬롯) -->
-      <div class="section-divider">🎶 Group</div>
+      <div class="section-divider"> Group</div>
       <div class="video-grid">
         <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Mix + Master</span></div></div>
         <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
@@ -763,26 +745,79 @@
         <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
         <div class="video-item"><iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
       </div>
-
     </div>
 
     <!-- 2. Shorts & Clip -->
     <div id="tab-shorts" class="sub-tab-content">
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
-        <div style="width: 100%; max-width: 560px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; padding: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+      
+      <!-- YouTube Shorts 섹션 -->
+      <div class="section-divider"> YouTube Shorts</div>
+      <div class="shorts-grid">
+
+        <!-- [쇼츠 01] -->
+        <div class="shorts-item">
+          <iframe src="https://www.youtube.com/embed/TXeiDRy6t9U" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
+        </div>
+
+        <!-- [쇼츠 02] -->
+        <div class="shorts-item">
+          <iframe src="https://www.youtube.com/embed/여기에_쇼츠_ID_입력" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info"><span class="work-tag">Vocal Edit + Mix</span></div>
+        </div>
+
+        <!-- [쇼츠 03] -->
+        <div class="shorts-item">
+          <iframe src="https://www.youtube.com/embed/여기에_쇼츠_ID_입력" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info"><span class="work-tag">Mixing Only</span></div>
+        </div>
+
+        <!-- ==============================================================
+             [복사용 쇼츠 템플릿] 쇼츠를 더 추가하실 때 아래 4줄을 복사해서 붙여넣으세요!
+             youtube.com/shorts/ABC123xyz 라면 "여기에_쇼츠_ID_입력" 자리에 ABC123xyz만 넣으시면 됩니다.
+             ==============================================================
+        <div class="shorts-item">
+          <iframe src="https://www.youtube.com/embed/여기에_쇼츠_ID_입력" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
+        </div>
+        ============================================================== -->
+
+      </div>
+
+      <!-- X / Twitter Clip 섹션 -->
+      <div class="section-divider"> Twitter / X Clips</div>
+      <div class="sns-grid">
+
+        <!-- [트위터 01] -->
+        <div class="sns-card">
           <blockquote class="twitter-tweet" data-media-max-width="560" style="margin: 0; background: transparent;">
-            <p lang="ja" dir="ltr">Hello, Worker - KEI feat.巡音ルカ / 歌ってみた<a href="https://x.com/hashtag/%E3%82%A8%E3%82%A4%E3%83%97%E3%83%AA%E3%83%AB%E3%83%95%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#エイプリルフール</a> <a href="https://x.com/hashtag/cover?src=hash&amp;ref_src=twsrc%5Etfw">#cover</a> <a href="https://t.co/iaL9OmJEva">pic.twitter.com/iaL9OmJEva</a>
+            <p lang="ja" dir="ltr">Hello, Worker - KEI feat.巡音ルカ / 歌ってみた<a href="https://x.com/hashtag/%E3%82%A8%E3%82%A4%E3%83%97%E3%83%AA%E3%83%AB%E3%83%95%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#エイプリルフル</a> <a href="https://x.com/hashtag/cover?src=hash&amp;ref_src=twsrc%5Etfw">#cover</a> <a href="https://t.co/iaL9OmJEva">pic.twitter.com/iaL9OmJEva</a>
             </p>&mdash; 우엉 Wooung (@Wooung_twt) 
             <a href="https://x.com/Wooung_twt/status/2039308311632429486?ref_src=twsrc%5Etfw">April 1, 2026</a>
           </blockquote>
-          <div class="video-info" style="margin-top: 8px; border-radius: 8px; border: 1px solid #f1f5f9;">
+          <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
             <span class="work-tag">Vocal Edit + Mix</span>
           </div>
         </div>
+
+        <!-- ==============================================================
+             [복사용 트위터 템플릿] X(트위터) 퍼가기 코드 추가용
+             ==============================================================
+        <div class="sns-card">
+          <blockquote class="twitter-tweet" data-media-max-width="560">
+            <a href="여기에_트위터_게시글_링크"></a>
+          </blockquote>
+          <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
+            <span class="work-tag">Vocal Edit + Mix</span>
+          </div>
+        </div>
+        ============================================================== -->
+
       </div>
+
     </div>
 
-    <!-- 3. Multi-Track Work (6개 슬롯) -->
+    <!-- 3. Multi-Track Work -->
     <div id="tab-multitrack" class="sub-tab-content">
       <div class="video-grid">
         <div class="video-item"><iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen loading="lazy"></iframe><div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div></div>
@@ -794,10 +829,9 @@
       </div>
     </div>
 
-    <!-- 4. Live Track Work (유튜브 1개 + 트위터 3개) -->
+    <!-- 4. Live Track Work -->
     <div id="tab-livetrack" class="sub-tab-content">
-      <!-- 유튜브 대표 영상 1개 -->
-      <div class="section-divider">🎥 Live Performance (YouTube)</div>
+      <div class="section-divider"> Live Performance (YouTube)</div>
       <div class="video-grid" style="grid-template-columns: 1fr !important; max-width: 600px; margin: 0 auto 24px auto;">
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe>
@@ -805,10 +839,8 @@
         </div>
       </div>
 
-      <!-- 트위터 영상 3개 -->
-      <div class="section-divider">📱 Live Clips (Twitter / X)</div>
+      <div class="section-divider"> Live Clips (Twitter / X)</div>
       <div class="sns-grid">
-        <!-- 트위터 Clip 1 -->
         <div class="sns-card">
           <blockquote class="twitter-tweet" data-media-max-width="560">
             <a href="https://x.com/herahera_uta/status/2070763811276214709">https://x.com/herahera_uta/status/2070763811276214709</a>
@@ -818,7 +850,6 @@
           </div>
         </div>
 
-        <!-- 트위터 Clip 2 -->
         <div class="sns-card">
           <blockquote class="twitter-tweet" data-media-max-width="560">
             <a href="https://x.com/herahera_uta/status/2070763811276214709">https://x.com/herahera_uta/status/2070763811276214709</a>
@@ -828,7 +859,6 @@
           </div>
         </div>
 
-        <!-- 트위터 Clip 3 -->
         <div class="sns-card">
           <blockquote class="twitter-tweet" data-media-max-width="560">
             <a href="https://x.com/herahera_uta/status/2070763811276214709">https://x.com/herahera_uta/status/2070763811276214709</a>
@@ -844,11 +874,10 @@
 
 </div>
 
-<!-- Twitter Widgets 스크립트 (페이지 내 1회 로드) -->
+<!-- Twitter Widgets 스크립트 -->
 <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 
 <script>
-  // 메인 콘솔 탭 전환 함수
   function openTab(tabId, btnElement) {
     var panels = document.querySelectorAll('.tab-panel');
     panels.forEach(function(panel) {
@@ -871,7 +900,6 @@
     }
   }
 
-  // 하단 포트폴리오 서브 탭 전환 함수
   function openSubTab(subTabId, btnElement) {
     var subPanels = document.querySelectorAll('.sub-tab-content');
     subPanels.forEach(function(panel) {
@@ -890,9 +918,13 @@
     if (btnElement) {
       btnElement.classList.add('active');
     }
+    
+    // 트위터 위젯 재렌더링 (탭 전환 시 트위터 임베드가 안 깨지도록 처리)
+    if (window.twttr && window.twttr.widgets) {
+      window.twttr.widgets.load();
+    }
   }
 
-  // 부드러운 스크롤 이동 함수
   function scrollToElement(elementId) {
     var targetElement = document.getElementById(elementId);
     if (targetElement) {
