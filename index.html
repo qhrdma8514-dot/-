@@ -269,6 +269,37 @@
       color: #9a3412; 
       word-break: keep-all;
     }
+
+    /* 장비 리스트 전용 스타일 추가 */
+    .equipment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .equipment-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 20px;
+      transition: all 0.2s ease;
+    }
+    .equipment-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      transform: translateY(-2px);
+    }
+    .equipment-card-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #4f46e5;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
     
     details { 
       background: #f8fafc; 
@@ -683,6 +714,7 @@
           <button class="tab-btn active" onclick="openTab('form', this)">문의 양식</button>
           <button class="tab-btn" onclick="openTab('price', this)">Price & Type</button>
           <button class="tab-btn" onclick="openTab('notice', this)">Notice</button>
+          <button class="tab-btn" onclick="openTab('equipment', this)">장비 List</button>
           <button class="tab-btn scroll-link-btn" onclick="scrollToElement('portfolio-section')"> Portfolio</button>
         </div>
       </div>
@@ -762,6 +794,54 @@
           <li><strong>기본 트랙 수:</strong> MR 제외 메인 보컬 포함 <strong>최대 5트랙</strong> 기준입니다. (LR 분할, 숨소리 분할 트랙은 1트랙으로 산정)</li>
           <li><strong>기본 적용 Type:</strong> 별도 지정이 없으실 경우 <u>Standard 타입</u>으로 진행됩니다.</li>
         </ul>
+      </div>
+
+      <!-- EQUIPMENT LIST -->
+      <div id="equipment" class="tab-panel">
+        <h2> 장비 List</h2>
+        <p>HR SOUND에서 최상의 사운드 품질을 구현하기 위해 사용하는 핵심 프로페셔널 하드웨어 및 소프트웨어 환경입니다.</p>
+        
+        <div class="equipment-grid">
+          <div class="equipment-card">
+            <div class="equipment-card-title">🎙️ Microphones & Preamps</div>
+            <ul>
+              <li>Neumann U87 Ai (Black)</li>
+              <li>AKG C414 XL2</li>
+              <li>Neve 1073 SPX</li>
+              <li>SSL Pure Drive Quad</li>
+            </ul>
+          </div>
+
+          <div class="equipment-card">
+            <div class="equipment-card-title">🎛️ Hardware Processors</div>
+            <ul>
+              <li>dbx 160SL</li>
+              <li>Warm Audio WA76</li>
+              <li>UREI 7110</li>
+            </ul>
+          </div>
+
+          <div class="equipment-card">
+            <div class="equipment-card-title">🔊 Audio Interface & Monitoring</div>
+            <ul>
+              <li>Focusrite Red 16Line</li>
+              <li>RME ADI-2 Pro FS (Master Converter)</li>
+              <li>Antelope Discrete 4 (Master Clock)</li>
+              <li>Genelec 8341 (GLM Calibrated)</li>
+              <li>Sennheiser HD600</li>
+            </ul>
+          </div>
+
+          <div class="equipment-card">
+            <div class="equipment-card-title">💻 Workstation & Software</div>
+            <ul>
+              <li>Apple Mac Studio (M1 Max)</li>
+              <li>Pro Tools Studio (Perpetual)</li>
+              <li>Melodyne Studio / Auto-Tune Pro 10 / RePitch</li>
+              <li>Acustica Audio & iZotope RX / Acon Digital Suites</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -1081,7 +1161,7 @@
           <div class="video-info"><span class="work-tag">Master</span></div>
         </div>
 
-        <!-- [Master 02] 여은 メビウス / 柊キライ-->
+        <!-- [Master 02] 여은 メビウス / キライ-->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/UvWKn9bG1_A" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Master</span></div>
