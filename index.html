@@ -450,6 +450,19 @@
       justify-content: space-between;
       box-shadow: 0 4px 12px rgba(0,0,0,0.02);
     }
+    
+    /* 트위터 잘림 방지 스타일 추가 */
+  .sns-card .twitter-tweet-rendered {
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .sns-card iframe {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: unset !important;
+    border-radius: 12px;
+  }
 
     .sns-card blockquote {
       margin: 0 !important;
