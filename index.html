@@ -431,47 +431,47 @@
       display: block;
     }
 
-/* 트위터/SNS 전용 컨테이너 그리드 */
+    /* 트위터/SNS 전용 컨테이너 그리드 (높이 완벽 강제 일치) */
     .sns-grid {
       display: grid !important;
       grid-template-columns: repeat(3, 1fr) !important;
       gap: 20px !important;
       width: 100% !important;
-      align-items: stretch !important; /* 카드들의 높이를 강제로 동일하게 매칭 */
+      align-items: stretch !important;
     }
     
     .sns-card {
       width: 100% !important;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* 카드 내부 콘텐츠 수평 균등 배치 */
-      height: 100% !important;
-      overflow: hidden;
-      border-radius: 12px;
-      background: #ffffff;
+      justify-content: space-between;
+      height: 520px !important; /* 고정 높이 부여 */
       border: 1px solid #e2e8f0;
+      border-radius: 16px;
       padding: 12px;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .tweet-container {
+      width: 100%;
+      height: 440px; /* 내부 트윗 영역 세로 고정 */
+      overflow-y: auto; /* 내용이 길 경우 내부 스크롤 처리 */
+      border-radius: 12px;
+    }
+
+    /* 웹킷 스크롤바 감추기 (디자인 깔끔하게 유지) */
+    .tweet-container::-webkit-scrollbar {
+      width: 4px;
+    }
+    .tweet-container::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
     }
     
     .sns-card blockquote {
       margin: 0 !important;
       width: 100% !important;
-      flex-grow: 1;
-    }
-    
-    .sns-card .twitter-tweet,
-    .sns-card .twitter-tweet-rendered,
-    .sns-card iframe {
-      width: 100% !important;
-      max-width: 100% !important;
-      min-width: 100% !important;
-      margin: 0 auto !important;
-    }
-
-    /* 트윗 내 미디어 영역 높이 균일화 처리 */
-    .sns-card iframe {
-      max-height: 480px !important; /* 미디어가 포함된 트윗의 최대 세로 길이 제한 */
-      aspect-ratio: 4 / 5;          /* 비율 고정 */
     }
 
     .video-info {
@@ -552,6 +552,13 @@
       .video-grid, .shorts-grid, .sns-grid { 
         grid-template-columns: 1fr !important; 
         gap: 14px !important;
+      }
+
+      .sns-card {
+        height: auto !important;
+      }
+      .tweet-container {
+        height: auto;
       }
     }
   </style>
@@ -1061,22 +1068,26 @@
 
         <!-- [Twitter 01] 우엉(@Wooung_twt) - Hello, Worker | Vocal Edit + Mix -->
         <div class="sns-card">
-          <blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
-            <p lang="ja" dir="ltr">Hello, Worker - KEI feat.巡音ルカ / 歌ってみた<a href="https://x.com/hashtag/%E3%82%A8%E3%82%A4%E3%83%97%E3%83%AA%E3%83%AB%E3%83%95%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#エイプリルフル</a> <a href="https://x.com/hashtag/cover?src=hash&amp;ref_src=twsrc%5Etfw">#cover</a> <a href="https://t.co/iaL9OmJEva">pic.twitter.com/iaL9OmJEva</a>
-            </p>&mdash; 우엉 Wooung (@Wooung_twt) 
-            <a href="https://x.com/Wooung_twt/status/2039308311632429486?ref_src=twsrc%5Etfw">April 1, 2026</a>
-          </blockquote>
-          <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
+          <div class="tweet-container">
+            <blockquote class="twitter-tweet" data-width="100%" data-cards="hidden">
+              <p lang="ja" dir="ltr">Hello, Worker - KEI feat.巡音ルカ / 歌ってみた<a href="https://x.com/hashtag/%E3%82%A8%E3%82%A4%E3%83%97%E3%83%AA%E3%83%AB%E3%83%95%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#エイプリルフル</a> <a href="https://x.com/hashtag/cover?src=hash&amp;ref_src=twsrc%5Etfw">#cover</a> <a href="https://t.co/iaL9OmJEva">pic.twitter.com/iaL9OmJEva</a>
+              </p>&mdash; 우엉 Wooung (@Wooung_twt) 
+              <a href="https://x.com/Wooung_twt/status/2039308311632429486?ref_src=twsrc%5Etfw">April 1, 2026</a>
+            </blockquote>
+          </div>
+          <div class="video-info">
             <span class="work-tag">Vocal Edit + Mix</span>
           </div>
         </div>
         
         <!-- [Twitter 02] 콰(@kwad_ays) - マジか！ | Edit + Mix + Master -->
         <div class="sns-card">
-          <blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
-            <p lang="ja" dir="ltr">マジか！- Azusagawa <br><br>죄송합니다 재업합ㄴ디다<br>다시 관심을 주세요 ..... <a href="https://t.co/jv6xg9JNQR">pic.twitter.com/jv6xg9JNQR</a></p>&mdash; 콰 (@kwad_ays) <a href="https://x.com/kwad_ays/status/1972657278642716694?ref_src=twsrc%5Etfw">September 29, 2025</a>
-          </blockquote>
-          <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
+          <div class="tweet-container">
+            <blockquote class="twitter-tweet" data-width="100%" data-cards="hidden">
+              <p lang="ja" dir="ltr">マジか！- Azusagawa <br><br>죄송합니다 재업합ㄴ디다<br>다시 관심을 주세요 ..... <a href="https://t.co/jv6xg9JNQR">pic.twitter.com/jv6xg9JNQR</a></p>&mdash; 콰 (@kwad_ays) <a href="https://x.com/kwad_ays/status/1972657278642716694?ref_src=twsrc%5Etfw">September 29, 2025</a>
+            </blockquote>
+          </div>
+          <div class="video-info">
             <span class="work-tag">Edit + Mix + Master</span>
           </div>
         </div>
@@ -1155,30 +1166,36 @@
 
         <!-- [Live Twitter 01] 이상(@PAPER_B0XxXxX) - 악천후 LIVE 3 (フクロウ) | Live Audio Editing -->
         <div class="sns-card">
-          <blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
-            <p lang="ja" dir="ltr">악천후 LIVE 3<br>2026. 02. 14~15<br>フクロウ～フクロウが知らせる客がたと～ <a href="https://t.co/qrkGenGDOV">pic.twitter.com/qrkGenGDOV</a></p>&mdash; 이상 (@PAPER_B0XxXxX) <a href="https://x.com/PAPER_B0XxXxX/status/2036382726828568747?ref_src=twsrc%5Etfw">March 24, 2026</a>
-          </blockquote>
-          <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
+          <div class="tweet-container">
+            <blockquote class="twitter-tweet" data-width="100%" data-cards="hidden">
+              <p lang="ja" dir="ltr">악천후 LIVE 3<br>2026. 02. 14~15<br>フクロウ～フクロウが知らせる客がたと～ <a href="https://t.co/qrkGenGDOV">pic.twitter.com/qrkGenGDOV</a></p>&mdash; 이상 (@PAPER_B0XxXxX) <a href="https://x.com/PAPER_B0XxXxX/status/2036382726828568747?ref_src=twsrc%5Etfw">March 24, 2026</a>
+            </blockquote>
+          </div>
+          <div class="video-info">
             <span class="work-tag">Live Audio Editing</span>
           </div>
         </div>
         
         <!-- [Live Twitter 02] ofStar(@ofStar_Sing) - 히로인 (악천후 3 Live ver.) | Live Audio Editing -->
         <div class="sns-card">
-          <blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
-            <p lang="ja" dir="ltr">ヒロイン(히로인) - 악천후 3 Live ver. <a href="https://t.co/l8PSUJEX4K">pic.twitter.com/l8PSUJEX4K</a></p>&mdash; ofStar / off LIVE 8.23 (@ofStar_Sing) <a href="https://x.com/ofStar_Sing/status/2040015477150552235?ref_src=twsrc%5Etfw">April 3, 2026</a>
-          </blockquote>
-          <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
+          <div class="tweet-container">
+            <blockquote class="twitter-tweet" data-width="100%" data-cards="hidden">
+              <p lang="ja" dir="ltr">ヒロイン(히로인) - 악천후 3 Live ver. <a href="https://t.co/l8PSUJEX4K">pic.twitter.com/l8PSUJEX4K</a></p>&mdash; ofStar / off LIVE 8.23 (@ofStar_Sing) <a href="https://x.com/ofStar_Sing/status/2040015477150552235?ref_src=twsrc%5Etfw">April 3, 2026</a>
+            </blockquote>
+          </div>
+          <div class="video-info">
             <span class="work-tag">Live Audio Editing</span>
           </div>
         </div>
         
         <!-- [Live Twitter 03] ofStar(@ofStar_Sing) - Fairytale, (악천후 3 Live ver.) | Live Audio Editing -->
         <div class="sns-card">
-          <blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
-            <p lang="ko" dir="ltr">Fairytale, - 악천후 3 Live ver. <a href="https://t.co/qdK3nCKTdg">pic.twitter.com/qdK3nCKTdg</a></p>&mdash; ofStar / off LIVE 8.23 (@ofStar_Sing) <a href="https://x.com/ofStar_Sing/status/2058517191369388088?ref_src=twsrc%5Etfw">May 24, 2026</a>
-          </blockquote>
-          <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
+          <div class="tweet-container">
+            <blockquote class="twitter-tweet" data-width="100%" data-cards="hidden">
+              <p lang="ko" dir="ltr">Fairytale, - 악천후 3 Live ver. <a href="https://t.co/qdK3nCKTdg">pic.twitter.com/qdK3nCKTdg</a></p>&mdash; ofStar / off LIVE 8.23 (@ofStar_Sing) <a href="https://x.com/ofStar_Sing/status/2058517191369388088?ref_src=twsrc%5Etfw">May 24, 2026</a>
+            </blockquote>
+          </div>
+          <div class="video-info">
             <span class="work-tag">Live Audio Editing</span>
           </div>
         </div>
@@ -1236,7 +1253,6 @@
       btnElement.classList.add('active');
     }
     
-    // 탭 전환 직후 트위터 위젯 높이 재계산 렌더링
     setTimeout(function() {
       if (window.twttr && window.twttr.widgets) {
         window.twttr.widgets.load(targetSubPanel);
