@@ -431,32 +431,25 @@
       display: block;
     }
 
-/* 트위터/SNS 전용 컨테이너 그리드 */
+    /* 트위터/SNS 전용 컨테이너 그리드 (수정 완료) */
     .sns-grid {
       display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
+      grid-template-columns: repeat(3, 1fr) !important; /* 3열 배치로 변경 */
       gap: 20px !important;
       width: 100% !important;
-      align-items: stretch !important; /* 카드들의 높이를 강제로 동일하게 매칭 */
+      align-items: start; /* 위젯 높이가 달라져도 상단 기준으로 깔끔하게 정렬 */
     }
     
     .sns-card {
       width: 100% !important;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* 카드 내부 콘텐츠 수평 균등 배치 */
-      height: 100% !important;
-      overflow: hidden;
-      border-radius: 12px;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      padding: 12px;
+      overflow: visible !important;
     }
     
     .sns-card blockquote {
       margin: 0 !important;
       width: 100% !important;
-      flex-grow: 1;
     }
     
     .sns-card .twitter-tweet,
@@ -465,13 +458,9 @@
       width: 100% !important;
       max-width: 100% !important;
       min-width: 100% !important;
+      /* 트위터 위젯의 자동 높이 계산을 가로막던 강제 height / min-height 제한 완전 제거 */
+      border-radius: 12px;
       margin: 0 auto !important;
-    }
-
-    /* 트윗 내 미디어 영역 높이 균일화 처리 */
-    .sns-card iframe {
-      max-height: 480px !important; /* 미디어가 포함된 트윗의 최대 세로 길이 제한 */
-      aspect-ratio: 4 / 5;          /* 비율 고정 */
     }
 
     .video-info {
