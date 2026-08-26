@@ -431,19 +431,19 @@
       display: block;
     }
 
-    /* 트위터/SNS 전용 컨테이너 그리드 */
+    /* 트위터/SNS 전용 컨테이너 그리드 (수정 완료) */
     .sns-grid {
       display: grid !important;
-      grid-template-columns: repeat(2, 1fr) !important;
+      grid-template-columns: repeat(3, 1fr) !important; /* 3열 배치로 변경 */
       gap: 20px !important;
       width: 100% !important;
+      align-items: start; /* 위젯 높이가 달라져도 상단 기준으로 깔끔하게 정렬 */
     }
     
     .sns-card {
       width: 100% !important;
-      height: auto !important;
-      max-height: none !important;
-      min-height: initial !important;
+      display: flex;
+      flex-direction: column;
       overflow: visible !important;
     }
     
@@ -458,10 +458,7 @@
       width: 100% !important;
       max-width: 100% !important;
       min-width: 100% !important;
-      height: auto !important;
-      min-height: 580px !important;
-      max-height: none !important;
-      aspect-ratio: unset !important;
+      /* 트위터 위젯의 자동 높이 계산을 가로막던 강제 height / min-height 제한 완전 제거 */
       border-radius: 12px;
       margin: 0 auto !important;
     }
