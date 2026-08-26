@@ -431,7 +431,7 @@
       display: block;
     }
 
-    /* 트위터/SNS 전용 컨테이너 그리드 */
+    /* 트위터/SNS 전용 컨테이너 그리드 (수정됨) */
     .sns-grid {
       display: grid !important;
       grid-template-columns: repeat(3, 1fr) !important;
@@ -445,7 +445,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: auto !important; /* 내부 트윗 길이에 맞게 카드 높이 자동 조절 */
+      height: 680px !important; /* 미디어 카드가 원활히 표시되도록 고정 높이 확장 */
       border: 1px solid #e2e8f0;
       border-radius: 16px;
       padding: 12px;
@@ -455,11 +455,12 @@
 
     .tweet-container {
       width: 100%;
-      min-height: 440px; /* 고정 height 대신 최소 높이 적용하여 잘림 방지 */
+      height: 600px; /* 내부 영역 높이 확장 */
+      overflow-y: auto; /* 내용이 길어질 경우 내부 스크롤 처리 */
       border-radius: 12px;
     }
 
-    /* 웹킷 스크롤바 감추기 (디자인 깔끔하게 유지) */
+    /* 웹킷 스크롤바 감추기 (디자인 유지) */
     .tweet-container::-webkit-scrollbar {
       width: 4px;
     }
@@ -480,7 +481,6 @@
       display: flex;
       align-items: center;
       width: 100%;
-      margin-top: 12px;
     }
 
     .work-tag {
@@ -559,7 +559,6 @@
       }
       .tweet-container {
         height: auto;
-        min-height: 0;
       }
     }
   </style>
@@ -725,181 +724,151 @@
       <div class="section-divider"> Solo</div>
       <div class="video-grid">
 
-        <!-- [Solo 01] NRhVSaM5lZc | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/NRhVSaM5lZc" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 02] 6UgBpSv9QqM | Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/6UgBpSv9QqM" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 03] RBfeEXZKX68 | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 04] -nvnm6U6HBE | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/-nvnm6U6HBE" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 05] OlxrTardYqo | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/OlxrTardYqo" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 06] cTVuBsYovRA | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/cTVuBsYovRA" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 07] gxQaAxLDk3c | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/gxQaAxLDk3c" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 08] OosZeIGF4_w | Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/OosZeIGF4_w" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 09] vSGyQp6uNcg | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/vSGyQp6uNcg" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 10] q6M8A4yR6ag | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/q6M8A4yR6ag" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 11] nIDKgfIl7uE | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/nIDKgfIl7uE" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 12] gW4jPTIlaDI | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/gW4jPTIlaDI" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 13] zmNH_eywN2w | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/zmNH_eywN2w" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 14] tn2oqAkFpjU | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/tn2oqAkFpjU" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 15] a15ODH6sSaw | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/a15ODH6sSaw" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 16] YtO2m8W0iLE | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/YtO2m8W0iLE" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 17] AMGWruSQcrE | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 18] 19WPBI_X-uk | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/19WPBI_X-uk" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 19] F_YdazVYTlk | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/F_YdazVYTlk" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 20] aqKW-8gRr-k | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 21] v4_QV87j478 | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/v4_QV87j478" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 22] S9TzDlTUfkg | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 23] tn2oqAkFpjU | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/tn2oqAkFpjU" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 24] a15ODH6sSaw | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/a15ODH6sSaw" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 25] YtO2m8W0iLE | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/YtO2m8W0iLE" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 26] AMGWruSQcrE | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 27] 19WPBI_X-uk | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/19WPBI_X-uk" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 28] F_YdazVYTlk | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/F_YdazVYTlk" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 29] aqKW-8gRr-k | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Solo 30] v4_QV87j478 | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/v4_QV87j478" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
@@ -911,37 +880,31 @@
       <div class="section-divider"> Duet</div>
       <div class="video-grid">
 
-        <!-- [Duet 01] aqKW-8gRr-k | Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Mix + Master</span></div>
         </div>
 
-        <!-- [Duet 02] S9TzDlTUfkg | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Duet 03] aqKW-8gRr-k | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Duet 04] AMGWruSQcrE | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Duet 05] aqKW-8gRr-k | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Duet 06] AMGWruSQcrE | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
@@ -953,37 +916,31 @@
       <div class="section-divider"> Group</div>
       <div class="video-grid">
 
-        <!-- [Group 01] JyLTO4AYlNg | Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Mix + Master</span></div>
         </div>
 
-        <!-- [Group 02] JyLTO4AYlNg | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Group 03] JyLTO4AYlNg | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Group 04] JyLTO4AYlNg | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Group 05] JyLTO4AYlNg | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Group 06] JyLTO4AYlNg | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/JyLTO4AYlNg" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
@@ -1001,61 +958,51 @@
       <div class="section-divider"> YouTube Shorts</div>
       <div class="shorts-grid">
 
-        <!-- [Shorts 01] TXeiDRy6t9U | Mix + Master -->
         <div class="shorts-item">
           <iframe src="https://www.youtube.com/embed/TXeiDRy6t9U" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Mix + Master</span></div>
         </div>
 
-        <!-- [Shorts 02] lcD7SHuOu0I | Edit + Mix + Master -->
         <div class="shorts-item">
           <iframe src="https://www.youtube.com/embed/lcD7SHuOu0I" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Shorts 03] LMmJuwxYa3g | Edit + Mix + Master -->
         <div class="shorts-item">
           <iframe src="https://www.youtube.com/embed/LMmJuwxYa3g" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Shorts 04] KiFbtRu9FRg | Mix + Master -->
         <div class="shorts-item">
           <iframe src="https://www.youtube.com/embed/KiFbtRu9FRg" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Mix + Master</span></div>
         </div>
 
-        <!-- [Shorts 05] 4147JRp6l8U | Edit + Mix + Master -->
         <div class="shorts-item">
           <iframe src="https://www.youtube.com/embed/4147JRp6l8U" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Shorts 06] M12S1PWQ_PM | Edit + Mix + Master -->
         <div class="shorts-item">
           <iframe src="https://www.youtube.com/embed/M12S1PWQ_PM" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Shorts 07] qbunv1WmeUo | Mix + Master -->
         <div class="shorts-item">
           <iframe src="https://www.youtube.com/embed/qbunv1WmeUo" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Mix + Master</span></div>
         </div>
 
-        <!-- [Shorts 08] lV-_DCEqGG4 | Edit + Mix + Master -->
         <div class="shorts-item">
           <iframe src="https://www.youtube.com/embed/lV-_DCEqGG4" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Shorts 09] wqs1j-ZjsPI | Mix + Master -->
         <div class="shorts-item">
           <iframe src="https://www.youtube.com/embed/wqs1j-ZjsPI" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Mix + Master</span></div>
         </div>
 
-        <!-- [Shorts 10] CEF8zuEwTT4 | Edit + Mix + Master -->
         <div class="shorts-item">
           <iframe src="https://www.youtube.com/embed/CEF8zuEwTT4" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
@@ -1063,14 +1010,14 @@
 
       </div>
 
-      <!-- [2-2] Twitter / X Clips Section -->
+      <!-- [2-2] Twitter / X Clips Section (data-cards="hidden" 제거 수정) -->
       <div class="section-divider"> Twitter / X Clips</div>
       <div class="sns-grid">
 
         <!-- [Twitter 01] 우엉(@Wooung_twt) - Hello, Worker | Vocal Edit + Mix -->
         <div class="sns-card">
           <div class="tweet-container">
-            <blockquote class="twitter-tweet" data-width="100%" data-cards="hidden">
+            <blockquote class="twitter-tweet" data-width="100%">
               <p lang="ja" dir="ltr">Hello, Worker - KEI feat.巡音ルカ / 歌ってみた<a href="https://x.com/hashtag/%E3%82%A8%E3%82%A4%E3%83%97%E3%83%AA%E3%83%AB%E3%83%95%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#エイプリルフル</a> <a href="https://x.com/hashtag/cover?src=hash&amp;ref_src=twsrc%5Etfw">#cover</a> <a href="https://t.co/iaL9OmJEva">pic.twitter.com/iaL9OmJEva</a>
               </p>&mdash; 우엉 Wooung (@Wooung_twt) 
               <a href="https://x.com/Wooung_twt/status/2039308311632429486?ref_src=twsrc%5Etfw">April 1, 2026</a>
@@ -1084,7 +1031,7 @@
         <!-- [Twitter 02] 콰(@kwad_ays) - マジか！ | Edit + Mix + Master -->
         <div class="sns-card">
           <div class="tweet-container">
-            <blockquote class="twitter-tweet" data-width="100%" data-cards="hidden">
+            <blockquote class="twitter-tweet" data-width="100%">
               <p lang="ja" dir="ltr">マジか！- Azusagawa <br><br>죄송합니다 재업합ㄴ디다<br>다시 관심을 주세요 ..... <a href="https://t.co/jv6xg9JNQR">pic.twitter.com/jv6xg9JNQR</a></p>&mdash; 콰 (@kwad_ays) <a href="https://x.com/kwad_ays/status/1972657278642716694?ref_src=twsrc%5Etfw">September 29, 2025</a>
             </blockquote>
           </div>
@@ -1103,37 +1050,31 @@
     <div id="tab-multitrack" class="sub-tab-content">
       <div class="video-grid">
 
-        <!-- [Multi-Track 01] we5CPYq7oHU | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Multi-Track 02] RBfeEXZKX68 | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Multi-Track 03] OlxrTardYqo | Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/OlxrTardYqo" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Mix + Master</span></div>
         </div>
 
-        <!-- [Multi-Track 04] we5CPYq7oHU | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Multi-Track 05] RBfeEXZKX68 | Edit + Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
         </div>
 
-        <!-- [Multi-Track 06] OlxrTardYqo | Mix + Master -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/OlxrTardYqo" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info"><span class="work-tag">Mix + Master</span></div>
@@ -1151,7 +1092,6 @@
       <div class="section-divider">Live Performance (YouTube)</div>
       <div class="video-grid" style="grid-template-columns: 1fr !important; max-width: 600px; margin: 0 auto 24px auto;">
         
-        <!-- [Live YT 01] S9TzDlTUfkg | Live Mix + Vocal Tuning -->
         <div class="video-item">
           <iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe>
           <div class="video-info">
@@ -1161,14 +1101,14 @@
     
       </div>
     
-      <!-- [4-2] Live Clips (Twitter / X) Section -->
+      <!-- [4-2] Live Clips (Twitter / X) Section (data-cards="hidden" 제거 수정) -->
       <div class="section-divider">Live Clips (Twitter / X)</div>
       <div class="sns-grid">
 
         <!-- [Live Twitter 01] 이상(@PAPER_B0XxXxX) - 악천후 LIVE 3 (フクロウ) | Live Audio Editing -->
         <div class="sns-card">
           <div class="tweet-container">
-            <blockquote class="twitter-tweet" data-width="100%" data-cards="hidden">
+            <blockquote class="twitter-tweet" data-width="100%">
               <p lang="ja" dir="ltr">악천후 LIVE 3<br>2026. 02. 14~15<br>フクロウ～フクロウが知らせる客がたと～ <a href="https://t.co/qrkGenGDOV">pic.twitter.com/qrkGenGDOV</a></p>&mdash; 이상 (@PAPER_B0XxXxX) <a href="https://x.com/PAPER_B0XxXxX/status/2036382726828568747?ref_src=twsrc%5Etfw">March 24, 2026</a>
             </blockquote>
           </div>
@@ -1180,7 +1120,7 @@
         <!-- [Live Twitter 02] ofStar(@ofStar_Sing) - 히로인 (악천후 3 Live ver.) | Live Audio Editing -->
         <div class="sns-card">
           <div class="tweet-container">
-            <blockquote class="twitter-tweet" data-width="100%" data-cards="hidden">
+            <blockquote class="twitter-tweet" data-width="100%">
               <p lang="ja" dir="ltr">ヒロイン(히로인) - 악천후 3 Live ver. <a href="https://t.co/l8PSUJEX4K">pic.twitter.com/l8PSUJEX4K</a></p>&mdash; ofStar / off LIVE 8.23 (@ofStar_Sing) <a href="https://x.com/ofStar_Sing/status/2040015477150552235?ref_src=twsrc%5Etfw">April 3, 2026</a>
             </blockquote>
           </div>
@@ -1192,7 +1132,7 @@
         <!-- [Live Twitter 03] ofStar(@ofStar_Sing) - Fairytale, (악천후 3 Live ver.) | Live Audio Editing -->
         <div class="sns-card">
           <div class="tweet-container">
-            <blockquote class="twitter-tweet" data-width="100%" data-cards="hidden">
+            <blockquote class="twitter-tweet" data-width="100%">
               <p lang="ko" dir="ltr">Fairytale, - 악천후 3 Live ver. <a href="https://t.co/qdK3nCKTdg">pic.twitter.com/qdK3nCKTdg</a></p>&mdash; ofStar / off LIVE 8.23 (@ofStar_Sing) <a href="https://x.com/ofStar_Sing/status/2058517191369388088?ref_src=twsrc%5Etfw">May 24, 2026</a>
             </blockquote>
           </div>
