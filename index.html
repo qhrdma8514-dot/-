@@ -431,26 +431,63 @@
       display: block;
     }
 
-/* 트위터/SNS 전용 컨테이너 그리드 */
+    /* 트위터/SNS 전용 컨테이너 그리드 */
     .sns-grid {
       display: grid !important;
       grid-template-columns: repeat(3, 1fr) !important;
       gap: 20px !important;
       width: 100% !important;
-      align-items: stretch !important; /* 카드들의 높이를 강제로 동일하게 매칭 */
+      align-items: stretch !important;
     }
     
     .sns-card {
       width: 100% !important;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* 카드 내부 콘텐츠 수평 균등 배치 */
+      justify-content: space-between;
       height: 100% !important;
       overflow: hidden;
       border-radius: 12px;
       background: #ffffff;
       border: 1px solid #e2e8f0;
       padding: 12px;
+    }
+
+    /* 빈 카드(준비 중) 스타일 */
+    .sns-card.placeholder {
+      background: #f8fafc;
+      border: 2px dashed #cbd5e1;
+      min-height: 400px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .placeholder-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #94a3b8;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .placeholder-icon {
+      font-size: 32px;
+      opacity: 0.6;
+    }
+
+    .placeholder-text {
+      font-size: 15px;
+      font-weight: 800;
+      color: #64748b;
+      letter-spacing: -0.3px;
+    }
+
+    .placeholder-subtext {
+      font-size: 12.5px;
+      color: #94a3b8;
     }
     
     .sns-card blockquote {
@@ -468,10 +505,10 @@
       margin: 0 auto !important;
     }
 
-    /* 트윗 내 미디어 영역 높이 균일화 처리 */
+    /* 트윗 내 미디어 영역 높이 확장 및 안 짤리게 수정 */
     .sns-card iframe {
-      max-height: 480px !important; /* 미디어가 포함된 트윗의 최대 세로 길이 제한 */
-      aspect-ratio: 4 / 5;          /* 비율 고정 */
+      max-height: 680px !important; /* 높이 상한을 늘려 긴 트윗도 안 짤리도록 설정 */
+      aspect-ratio: auto !important; 
     }
 
     .video-info {
@@ -1078,6 +1115,15 @@
           </blockquote>
           <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
             <span class="work-tag">Edit + Mix + Master</span>
+          </div>
+        </div>
+
+        <!-- [Twitter 03] 준비 중 빈 카드 -->
+        <div class="sns-card placeholder">
+          <div class="placeholder-content">
+            <div class="placeholder-icon">🎵</div>
+            <div class="placeholder-text">COMING SOON</div>
+            <div class="placeholder-subtext">새로운 클립 작업물이 업데이트될 예정입니다.</div>
           </div>
         </div>
 
