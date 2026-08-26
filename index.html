@@ -353,6 +353,44 @@
       animation: fadeIn 0.3s ease-out;
     }
 
+    /* MR Track Work 빠른 점프 네비게이션 버튼 */
+    .quick-jump-nav {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+      background: #f8fafc;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .quick-jump-label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #475569;
+      margin-right: 4px;
+    }
+
+    .quick-jump-btn {
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #334155;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .quick-jump-btn:hover {
+      background: #4f46e5;
+      color: #ffffff;
+      border-color: #4f46e5;
+    }
+
     /* 포트폴리오 구분 헤더 */
     .section-divider {
       font-size: 15px;
@@ -366,6 +404,7 @@
       align-items: center;
       gap: 8px;
       border-left: 4px solid #4f46e5;
+      scroll-margin-top: 16px;
     }
     .section-divider:first-child {
       margin-top: 0;
@@ -740,6 +779,7 @@
     <!-- 서브 탭 Navigation -->
     <div class="sub-tab-nav">
       <button class="sub-tab-btn active" onclick="openSubTab('tab-mr-track', this)"> MR Track Work</button>
+      <button class="sub-tab-btn" onclick="openSubTab('tab-master', this)"> Master Work</button>
       <button class="sub-tab-btn" onclick="openSubTab('tab-shorts', this)"> Shorts & Clip</button>
       <button class="sub-tab-btn" onclick="openSubTab('tab-multitrack', this)"> Multi-Track Work</button>
       <button class="sub-tab-btn" onclick="openSubTab('tab-livetrack', this)"> Live Track Work</button>
@@ -750,8 +790,16 @@
     <!-- ================================================================= -->
     <div id="tab-mr-track" class="sub-tab-content active">
       
+      <!-- 빠른 이동 하이퍼링크 버튼 -->
+      <div class="quick-jump-nav">
+        <span class="quick-jump-label">빠른 이동:</span>
+        <button class="quick-jump-btn" onclick="scrollToElement('section-solo')">Solo</button>
+        <button class="quick-jump-btn" onclick="scrollToElement('section-duet')">Duet</button>
+        <button class="quick-jump-btn" onclick="scrollToElement('section-group')">Group</button>
+      </div>
+
       <!-- [1-1] Solo Section -->
-      <div class="section-divider"> Solo</div>
+      <div id="section-solo" class="section-divider"> Solo</div>
       <div class="video-grid">
 
         <!-- [Solo 01] 헤라헤라 - 데몬로드 -->
@@ -937,7 +985,7 @@
       </div>
 
       <!-- [1-2] Duet Section -->
-      <div class="section-divider"> Duet</div>
+      <div id="section-duet" class="section-divider"> Duet</div>
       <div class="video-grid">
 
         <!-- [Duet 01] ofStar & 우엉 - 이치난 -->
@@ -979,7 +1027,7 @@
       </div>
 
       <!-- [1-3] Group Section -->
-      <div class="section-divider"> Group</div>
+      <div id="section-group" class="section-divider"> Group</div>
       <div class="video-grid">
 
         <!-- [Group 01] 디피에스 - 앨인뉴 -->
@@ -1022,11 +1070,56 @@
     </div>
 
     <!-- ================================================================= -->
-    <!-- 2. Shorts & Clip -->
+    <!-- 2. Master Work -->
+    <!-- ================================================================= -->
+    <div id="tab-master" class="sub-tab-content">
+      <div class="video-grid">
+
+        <!-- [Master 01] -->
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info"><span class="work-tag">Mastering</span></div>
+        </div>
+
+        <!-- [Master 02] -->
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info"><span class="work-tag">Mastering</span></div>
+        </div>
+
+        <!-- [Master 03] -->
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info"><span class="work-tag">Mastering</span></div>
+        </div>
+
+        <!-- [Master 04] -->
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info"><span class="work-tag">Mastering</span></div>
+        </div>
+
+        <!-- [Master 05] -->
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_5" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info"><span class="work-tag">Mastering</span></div>
+        </div>
+
+        <!-- [Master 06] -->
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_6" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info"><span class="work-tag">Mastering</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- 3. Shorts & Clip -->
     <!-- ================================================================= -->
     <div id="tab-shorts" class="sub-tab-content">
       
-      <!-- [2-1] YouTube Shorts Section -->
+      <!-- [3-1] YouTube Shorts Section -->
       <div class="section-divider"> YouTube Shorts</div>
       <div class="shorts-grid">
 
@@ -1092,7 +1185,7 @@
 
       </div>
 
-      <!-- [2-2] Twitter / X Clips Section -->
+      <!-- [3-2] Twitter / X Clips Section -->
       <div class="section-divider"> Twitter / X Clips(음질 열화시 X에서 시청하기로 들어주세요!)</div>
       <div class="sns-grid">
 
@@ -1121,7 +1214,7 @@
         <!-- [Twitter 03] 준비 중 빈 카드 -->
         <div class="sns-card placeholder">
           <div class="placeholder-content">
-            <div class="placeholder-icon">🎵</div>
+            <div class="placeholder-icon"></div>
             <div class="placeholder-text">COMING SOON</div>
             <div class="placeholder-subtext">새로운 클립 작업물이 업데이트될 예정입니다.</div>
           </div>
@@ -1132,7 +1225,7 @@
     </div>
 
     <!-- ================================================================= -->
-    <!-- 3. Multi-Track Work -->
+    <!-- 4. Multi-Track Work -->
     <!-- ================================================================= -->
     <div id="tab-multitrack" class="sub-tab-content">
       <div class="video-grid">
@@ -1177,11 +1270,11 @@
     </div>
 
     <!-- ================================================================= -->
-    <!-- 4. Live Track Work -->
+    <!-- 5. Live Track Work -->
     <!-- ================================================================= -->
     <div id="tab-livetrack" class="sub-tab-content">
     
-      <!-- [4-1] Live Performance (YouTube) Section -->
+      <!-- [5-1] Live Performance (YouTube) Section -->
       <div class="section-divider">Live Performance (YouTube)</div>
       <div class="video-grid" style="grid-template-columns: 1fr !important; max-width: 600px; margin: 0 auto 24px auto;">
         
@@ -1195,14 +1288,14 @@
     
       </div>
     
-      <!-- [4-2] Live Clips (Twitter / X) Section -->
+      <!-- [5-2] Live Clips (Twitter / X) Section -->
       <div class="section-divider">Live Clips (Twitter / X)(음질 열화시 X에서 시청하기로 들어주세요!)</div>
       <div class="sns-grid">
 
         <!-- [Live Twitter 01] 이상(@PAPER_B0XxXxX) - 악천후 LIVE 3 (フクロウ) | Live Audio Editing -->
         <div class="sns-card">
           <blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
-            <p lang="ja" dir="ltr">악천후 LIVE 3<br>2026. 02. 14~15<br>フクロウ～フクロウが知らせる客がたと～ <a href="https://t.co/qrkGenGDOV">pic.twitter.com/qrkGenGDOV</a></p>&mdash; 이상 (@PAPER_B0XxXxX) <a href="https://x.com/PAPER_B0XxXxX/status/2036382726828568747?ref_src=twsrc%5Etfw">March 24, 2026</a>
+            <p lang="ja" dir="ltr">악천후 LIVE 3<br>2026. 02. 14~15<br>フクロウ～フクロウが知らせる客가たと～ <a href="https://t.co/qrkGenGDOV">pic.twitter.com/qrkGenGDOV</a></p>&mdash; 이상 (@PAPER_B0XxXxX) <a href="https://x.com/PAPER_B0XxXxX/status/2036382726828568747?ref_src=twsrc%5Etfw">March 24, 2026</a>
           </blockquote>
           <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
             <span class="work-tag">AR Live Edit + Mix + Mastering</span>
