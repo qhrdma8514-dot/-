@@ -231,6 +231,19 @@ h2{font-size:clamp(20px,3vw,26px);color:#254a54;letter-spacing:.015em}h2:after{w
 .calendar-day.off{background:#e6e9ed;color:#52606d}.dot.off{background:#8593a2}
 .calendar-day{min-width:0;min-height:88px;align-items:stretch;justify-content:flex-start;text-align:left;padding:7px;gap:4px;overflow:hidden}
 .calendar-day>span{font-weight:800}.calendar-day small{white-space:normal;overflow-wrap:anywhere;line-height:1.45;text-align:left}.calendar-day .event-title{display:block;background:#ffffffa6;border-radius:4px;padding:3px 4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.calendar-day .event-more{font-weight:700}.calendar-day .empty-day{color:inherit;opacity:.7}.calendar-detail-list{padding-left:20px;margin:6px 0 12px;overflow-wrap:anywhere}.calendar-detail-list li{margin:4px 0}#calendar-detail{overflow-wrap:anywhere}@media(max-width:600px){.calendar-day{min-height:76px;padding:4px 3px;gap:3px}.calendar-day small{font-size:10px}.calendar-day .event-title{padding:2px;-webkit-line-clamp:2}}
+
+/* Floating navigation — responsive, inside the embedded page */
+#schedule-status{color:#267750;font-weight:800;display:flex;align-items:center;gap:7px}
+#schedule-status::before{content:"";width:8px;height:8px;border-radius:50%;background:#4ba47a;box-shadow:0 0 0 3px #4ba47a20;flex:none}
+body{padding-bottom:calc(104px + env(safe-area-inset-bottom, 0px))}
+.float-nav{position:fixed;z-index:1000;bottom:calc(12px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:4px;padding:6px;background:rgba(255,254,250,.96);border:1px solid #cbdedc;border-radius:18px;box-shadow:0 8px 30px #254a5426;backdrop-filter:blur(16px);width:max-content;max-width:calc(100% - 20px);color:#254a54}
+.float-nav button{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;min-width:58px;padding:7px 10px;border:0;background:transparent;color:#42636b;border-radius:12px;font-size:11px;font-weight:700;white-space:nowrap;line-height:1.35;transition:background .18s,color .18s}
+.float-nav button svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.float-nav button:hover,.float-nav button[aria-current="location"]{background:#e1efeb;color:#17666c}
+.float-nav button[data-nav="top"]{border-left:1px solid #dce8e6;border-radius:5px 12px 12px 5px}
+@media(max-width:480px){.float-nav{gap:1px;padding:5px;width:calc(100% - 16px);justify-content:space-between;bottom:calc(8px + env(safe-area-inset-bottom,0px))}.float-nav button{min-width:0;flex:1;padding:7px 3px;font-size:10px}.float-nav button svg{width:17px;height:17px}body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}}
+@media(prefers-reduced-motion:reduce){.float-nav button{transition:none}}
+
 </style>
 </head>
 <body>
@@ -258,7 +271,7 @@ h2{font-size:clamp(20px,3vw,26px);color:#254a54;letter-spacing:.015em}h2:after{w
        iZotope RX 11 &amp; Acon Digital &amp; Protools 수작업 립노이즈 및 미세 잡음 완벽 제어<br/>
        1:1 디테일 피드백 반영 및 레퍼런스 or 엔지니어링 맞춤형 톤매칭/믹싱 제공
     </div>
-</div><section class="schedule-card" id="schedule-section"><div class="section-kicker">COMMISSION / SCHEDULE</div><h2>작업 일정 <span class="schedule-jp" lang="ja">制作スケジュール</span></h2><div class="schedule-summary"><div><small>현재 접수 상태</small><strong id="schedule-status">확인 중</strong></div><div><small>가장 빠른 작업 가능일</small><strong id="schedule-next">문의 후 안내</strong></div></div><div class="calendar-head"><button aria-label="이전 달" id="cal-prev" type="button">‹</button><strong aria-live="polite" id="cal-month"></strong><button aria-label="다음 달" id="cal-next" type="button">›</button><button id="cal-today" type="button">이번 달</button></div><div class="calendar-grid" id="calendar-grid"></div><div class="calendar-legend"><span><i class="dot open"></i>접수 가능</span><span><i class="dot busy"></i>작업 중</span><span><i class="dot full"></i>예약 마감</span><span><i class="dot off"></i>휴무</span><span><i class="dot unknown"></i>미정</span></div><div aria-live="polite" id="calendar-detail">날짜를 선택하면 전체 작업 일정 제목을 확인할 수 있습니다.</div><p id="sync-note" aria-live="polite" class="schedule-foot"></p><p class="schedule-foot">일정은 예약 확정 상황에 따라 변경될 수 있습니다. 정확한 작업 가능일은 아트머그 문의로 확인해 주세요.</p></section>
+</div><section class="schedule-card" id="schedule-section"><div class="section-kicker">COMMISSION / SCHEDULE</div><h2>작업 일정 <span class="schedule-jp" lang="ja">制作スケジュール</span></h2><div class="schedule-summary"><div><small>현재 접수 상태</small><strong id="schedule-status">접수 가능</strong></div><div><small>가장 빠른 작업 가능일</small><strong id="schedule-next">문의 후 안내</strong></div></div><div class="calendar-head"><button aria-label="이전 달" id="cal-prev" type="button">‹</button><strong aria-live="polite" id="cal-month"></strong><button aria-label="다음 달" id="cal-next" type="button">›</button><button id="cal-today" type="button">이번 달</button></div><div class="calendar-grid" id="calendar-grid"></div><div class="calendar-legend"><span><i class="dot open"></i>접수 가능</span><span><i class="dot busy"></i>작업 중</span><span><i class="dot full"></i>예약 마감</span><span><i class="dot off"></i>휴무</span><span><i class="dot unknown"></i>미정</span></div><div aria-live="polite" id="calendar-detail">날짜를 선택하면 전체 작업 일정 제목을 확인할 수 있습니다.</div><p id="sync-note" aria-live="polite" class="schedule-foot"></p><p class="schedule-foot">일정은 예약 확정 상황에 따라 변경될 수 있습니다. 정확한 작업 가능일은 아트머그 문의로 확인해 주세요.</p></section>
 <!-- 3. 메인 CONSOLE 레이아웃 -->
 <div class="container">
 <!-- 좌측 메뉴 -->
@@ -281,7 +294,7 @@ h2{font-size:clamp(20px,3vw,26px);color:#254a54;letter-spacing:.015em}h2:after{w
 <button class="tab-btn" onclick="openTab('notice', this)">Notice</button>
 <button class="tab-btn" onclick="openTab('equipment', this)">장비 List</button>
 <button class="tab-btn scroll-link-btn" onclick="scrollToElement('portfolio-section')"> Portfolio</button>
-<button class="tab-btn scroll-link-btn" onclick="scrollToElement('schedule-section')">작업 일정</button></div>
+</div>
 </div>
 </div>
 <!-- 우측 메인 콘텐츠 패널 -->
@@ -979,6 +992,7 @@ h2{font-size:clamp(20px,3vw,26px);color:#254a54;letter-spacing:.015em}h2:after{w
 </div>
 </div>
 <footer class="footer">HR SOUND · VOCAL EDITING / MIXING / MASTERING</footer></div>
+<nav class="float-nav" aria-label="빠른 페이지 이동"><button type="button" data-nav="schedule-section" onclick="navigateFloating('schedule-section')"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 10h18"/></svg><span>일정</span></button><button type="button" data-nav="form" onclick="navigateFloating('form')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v12H9l-5 4zM8 8h8m-8 4h5"/></svg><span>문의</span></button><button type="button" data-nav="price" onclick="navigateFloating('price')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l9-9h8v8l-9 9z"/><circle cx="16" cy="7" r="1"/></svg><span>가격</span></button><button type="button" data-nav="portfolio-section" onclick="navigateFloating('portfolio-section')"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 8 6 4-6 4z"/></svg><span>작업물</span></button><button type="button" data-nav="top" onclick="navigateFloating('top')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14m-7 15V8m-5 5 5-5 5 5"/></svg><span>TOP</span></button></nav>
 <!-- Twitter Widgets 스크립트 -->
 <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
 <script>
@@ -1040,14 +1054,28 @@ async function loadSchedule(){
     if(seq!==requestSeq)return;
     scheduleConfig.dates=dates;scheduleConfig.events=events;scheduleLoaded=true;
     const next=Object.keys(dates).sort().find(k=>k>=todayKey&&dates[k]==='open');
-    document.getElementById('schedule-status').textContent=next?'예약 일정 확인 가능':'문의 후 안내';
+    
     document.getElementById('schedule-next').textContent=next||'문의 후 안내';
     syncNote.textContent='Google Calendar 연동 · '+new Date().toLocaleTimeString('ko-KR',{timeZone:'Asia/Seoul'})+' 업데이트';
     drawCalendar();
-  }catch(err){if(seq!==requestSeq)return;scheduleConfig.dates={};scheduleConfig.events={};scheduleLoaded=false;document.getElementById('schedule-status').textContent='일정 확인 불가';document.getElementById('schedule-next').textContent='문의 후 안내';syncNote.textContent='일정을 불러오지 못했습니다. 캘린더 공개 설정 및 API 키 웹사이트 제한을 확인해 주세요.';drawCalendar();}
+  }catch(err){if(seq!==requestSeq)return;scheduleConfig.dates={};scheduleConfig.events={};scheduleLoaded=false;document.getElementById('schedule-next').textContent='문의 후 안내';syncNote.textContent='일정을 불러오지 못했습니다. 캘린더 공개 설정 및 API 키 웹사이트 제한을 확인해 주세요.';drawCalendar();}
 }
 document.getElementById('cal-prev').onclick=()=>shiftCalendar(-1);document.getElementById('cal-next').onclick=()=>shiftCalendar(1);document.getElementById('cal-today').onclick=()=>{calYear=Number(kt.year);calMonth=Number(kt.month)-1;selectedDate='';drawCalendar();loadSchedule();};
 drawCalendar();loadSchedule();setInterval(loadSchedule,300000);if(location.protocol==='file:')document.getElementById('local-video-note').hidden=false;
+
+function navigateFloating(id){
+  if(id==='top'){document.querySelector('.brand-header-card')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});return;}
+  if(id==='form'||id==='price'){openTab(id,document.querySelector('.tab-btn[onclick*="'+id+'"]'));}
+  scrollToElement(id); updateFloating();
+}
+function updateFloating(){
+  const targets=[['top',document.querySelector('.brand-header-card')],['schedule-section',document.getElementById('schedule-section')],[document.querySelector('.tab-panel.active')?.id==='price'?'price':'form',document.querySelector('.container')],['portfolio-section',document.getElementById('portfolio-section')]];
+  let current='top';const line=Math.min(innerHeight*.35,180);
+  for(const [id,el] of targets){if(el&&el.getBoundingClientRect().top<=line)current=id;}
+  document.querySelectorAll('.float-nav button').forEach(b=>{if(b.dataset.nav===current)b.setAttribute('aria-current','location');else b.removeAttribute('aria-current');});
+}
+window.addEventListener('scroll',updateFloating,{passive:true});window.addEventListener('resize',updateFloating);document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',updateFloating));updateFloating();
+
 </script>
 </body>
 </html>
