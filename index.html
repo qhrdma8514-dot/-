@@ -235,19 +235,19 @@ h2{font-size:clamp(20px,3vw,26px);color:#254a54;letter-spacing:.015em}h2:after{w
 /* Floating navigation — responsive, inside the embedded page */
 #schedule-status{color:#267750;font-weight:800;display:flex;align-items:center;gap:7px}
 #schedule-status::before{content:"";width:8px;height:8px;border-radius:50%;background:#4ba47a;box-shadow:0 0 0 3px #4ba47a20;flex:none}
-body{padding-bottom:calc(104px + env(safe-area-inset-bottom, 0px))}
-.float-nav{position:fixed;z-index:1000;bottom:calc(12px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:4px;padding:6px;background:rgba(255,254,250,.96);border:1px solid #cbdedc;border-radius:18px;box-shadow:0 8px 30px #254a5426;backdrop-filter:blur(16px);width:max-content;max-width:calc(100% - 20px);color:#254a54}
-.float-nav button{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;min-width:58px;padding:7px 10px;border:0;background:transparent;color:#42636b;border-radius:12px;font-size:11px;font-weight:700;white-space:nowrap;line-height:1.35;transition:background .18s,color .18s}
-.float-nav button svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.float-nav button:hover,.float-nav button[aria-current="location"]{background:#e1efeb;color:#17666c}
-.float-nav button[data-nav="top"]{border-left:1px solid #dce8e6;border-radius:5px 12px 12px 5px}
-@media(max-width:480px){.float-nav{gap:1px;padding:5px;width:calc(100% - 16px);justify-content:space-between;bottom:calc(8px + env(safe-area-inset-bottom,0px))}.float-nav button{min-width:0;flex:1;padding:7px 3px;font-size:10px}.float-nav button svg{width:17px;height:17px}body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}}
-@media(prefers-reduced-motion:reduce){.float-nav button{transition:none}}
 
+.page-shell{max-width:1350px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 154px;gap:18px;align-items:start}
+.page-shell>.wrapper{width:100%;min-width:0;margin:0;max-width:none}
+.side-nav{position:sticky;top:clamp(12px,8vh,80px);align-self:start;z-index:20;display:flex;flex-direction:column;gap:5px;padding:12px;background:#fffefa;border:1px solid #9bbdbd;border-radius:18px;box-shadow:4px 5px 0 #d0e4df;color:#254a54;max-height:calc(92vh - 12px);overflow:auto}
+.side-heading{padding:5px 4px 10px;border-bottom:1px solid #dce8e6;margin-bottom:4px;line-height:1.35}.side-heading span{font-size:16px;font-weight:900;letter-spacing:-.04em}.side-heading small{display:block;font-size:9px;letter-spacing:2px;color:#648084;margin-top:4px}
+.side-nav button{display:flex;align-items:center;gap:8px;text-align:left;padding:9px 7px;font-size:12px;font-weight:800;color:#42636b;border:1px solid transparent;border-radius:8px;background:transparent;white-space:nowrap;line-height:1.3;cursor:pointer}.side-nav button svg{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.side-nav button:hover,.side-nav button[aria-current="location"]{background:#e1efeb;color:#17666c;border-color:#c4ded7}.side-nav button[data-nav="top"]{border-top:1px solid #dce8e6;border-radius:8px}.side-progress{padding:8px 5px;margin-top:5px;border-top:1px solid #dce8e6}.side-progress>div:first-child{display:flex;justify-content:space-between;gap:5px;font-size:10px;color:#648084;font-weight:700}.side-track{height:5px;background:#e4eeeb;border-radius:999px;overflow:hidden;margin-top:7px}#page-progress-fill{height:100%;width:0;background:#287b80;border-radius:999px}
+@media(max-width:900px){.page-shell{grid-template-columns:minmax(0,1fr) 118px;gap:10px}.side-nav{padding:8px}.side-heading span{font-size:13px}.side-nav button{font-size:11px;gap:4px;padding:8px 4px}}
+@media(max-width:620px){.page-shell{grid-template-columns:minmax(0,1fr) 40px;gap:6px}.side-nav{top:8px;padding:4px;gap:4px;border-radius:12px;box-shadow:none}.side-heading{display:none}.side-nav button{padding:7px 3px;justify-content:center;min-height:32px}.side-nav button span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.side-progress{padding:4px 0}.side-progress>div:first-child{justify-content:center}.side-progress>div:first-child span:first-child{display:none}.calendar-grid{gap:2px}.calendar-day{padding:3px 2px}.calendar-day small{font-size:9px}.schedule-jp{display:none}}
+@media(prefers-reduced-motion:reduce){.side-nav button{transition:none}}
 </style>
 </head>
 <body>
-<div class="wrapper">
+<div class="page-shell"><div class="wrapper">
 <!-- 1. 상단 스튜디오 브랜드 패널 -->
 <div class="brand-header-card">
 <img alt="HR SOUND Logo" class="brand-logo-img" onerror="this.style.display='none'" src="logo.jpg"/>
@@ -271,7 +271,7 @@ body{padding-bottom:calc(104px + env(safe-area-inset-bottom, 0px))}
        iZotope RX 11 &amp; Acon Digital &amp; Protools 수작업 립노이즈 및 미세 잡음 완벽 제어<br/>
        1:1 디테일 피드백 반영 및 레퍼런스 or 엔지니어링 맞춤형 톤매칭/믹싱 제공
     </div>
-</div><section class="schedule-card" id="schedule-section"><div class="section-kicker">COMMISSION / SCHEDULE</div><h2>작업 일정 <span class="schedule-jp" lang="ja">制作スケジュール</span></h2><div class="schedule-summary"><div><small>현재 접수 상태</small><strong id="schedule-status">접수 가능</strong></div><div><small>가장 빠른 작업 가능일</small><strong id="schedule-next">문의 후 안내</strong></div></div><div class="calendar-head"><button aria-label="이전 달" id="cal-prev" type="button">‹</button><strong aria-live="polite" id="cal-month"></strong><button aria-label="다음 달" id="cal-next" type="button">›</button><button id="cal-today" type="button">이번 달</button></div><div class="calendar-grid" id="calendar-grid"></div><div class="calendar-legend"><span><i class="dot open"></i>접수 가능</span><span><i class="dot busy"></i>작업 중</span><span><i class="dot full"></i>예약 마감</span><span><i class="dot off"></i>휴무</span><span><i class="dot unknown"></i>미정</span></div><div aria-live="polite" id="calendar-detail">날짜를 선택하면 전체 작업 일정 제목을 확인할 수 있습니다.</div><p id="sync-note" aria-live="polite" class="schedule-foot"></p><p class="schedule-foot">일정은 예약 확정 상황에 따라 변경될 수 있습니다. 정확한 작업 가능일은 아트머그 문의로 확인해 주세요.</p></section>
+</div><section class="schedule-card" id="schedule-section"><div class="section-kicker">COMMISSION / SCHEDULE</div><h2>작업 일정 <span class="schedule-jp" lang="ja">制作スケジュール</span></h2><div class="schedule-summary"><div><small>현재 접수 상태</small><strong id="schedule-status">접수 가능</strong></div><div><small>가장 빠른 작업 가능일</small><strong id="schedule-next">문의 후 안내</strong></div></div><div class="calendar-head"><button aria-label="이전 달" id="cal-prev" type="button">‹</button><strong aria-live="polite" id="cal-month"></strong><button aria-label="다음 달" id="cal-next" type="button">›</button><button id="cal-today" type="button">이번 달</button></div><div class="calendar-grid" id="calendar-grid"></div><div class="calendar-legend"><span><i class="dot open"></i>접수 가능</span><span><i class="dot busy"></i>작업 중</span><span><i class="dot full"></i>예약 마감</span><span><i class="dot off"></i>휴무</span><span><i class="dot unknown"></i>미정</span></div><div aria-live="polite" id="calendar-detail">날짜를 선택하면 전체 작업 일정 제목을 확인할 수 있습니다.</div><p aria-live="polite" class="schedule-foot" id="sync-note"></p><p class="schedule-foot">일정은 예약 확정 상황에 따라 변경될 수 있습니다. 정확한 작업 가능일은 아트머그 문의로 확인해 주세요.</p></section>
 <!-- 3. 메인 CONSOLE 레이아웃 -->
 <div class="container">
 <!-- 좌측 메뉴 -->
@@ -991,8 +991,8 @@ body{padding-bottom:calc(104px + env(safe-area-inset-bottom, 0px))}
 </div>
 </div>
 </div>
-<footer class="footer">HR SOUND · VOCAL EDITING / MIXING / MASTERING</footer></div>
-<nav class="float-nav" aria-label="빠른 페이지 이동"><button type="button" data-nav="schedule-section" onclick="navigateFloating('schedule-section')"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 10h18"/></svg><span>일정</span></button><button type="button" data-nav="form" onclick="navigateFloating('form')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v12H9l-5 4zM8 8h8m-8 4h5"/></svg><span>문의</span></button><button type="button" data-nav="price" onclick="navigateFloating('price')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l9-9h8v8l-9 9z"/><circle cx="16" cy="7" r="1"/></svg><span>가격</span></button><button type="button" data-nav="portfolio-section" onclick="navigateFloating('portfolio-section')"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 8 6 4-6 4z"/></svg><span>작업물</span></button><button type="button" data-nav="top" onclick="navigateFloating('top')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14m-7 15V8m-5 5 5-5 5 5"/></svg><span>TOP</span></button></nav>
+<footer class="footer">HR SOUND · VOCAL EDITING / MIXING / MASTERING</footer></div><nav aria-label="빠른 페이지 이동" class="side-nav"><div class="side-heading"><span>HR SOUND</span><small>PAGE GUIDE</small></div><button aria-label="메인" data-nav="home" onclick="navigateFloating('home')" title="메인" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m3 10 9-7 9 7v10H3z"></path></svg><span>메인</span></button><button aria-label="일정" data-nav="schedule-section" onclick="navigateFloating('schedule-section')" title="일정" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="3" width="18" x="3" y="5"></rect><path d="M7 3v4m10-4v4M3 10h18"></path></svg><span>일정</span></button><button aria-label="문의" data-nav="form" onclick="navigateFloating('form')" title="문의" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 4h16v12H9l-5 4zM8 8h8m-8 4h5"></path></svg><span>문의</span></button><button aria-label="가격" data-nav="price" onclick="navigateFloating('price')" title="가격" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M3 12l9-9h8v8l-9 9z"></path><circle cx="16" cy="7" r="1"></circle></svg><span>가격</span></button><button aria-label="공지사항" data-nav="notice" onclick="navigateFloating('notice')" title="공지사항" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 4h14v16H5z M8 8h8m-8 4h8"></path></svg><span>공지사항</span></button><button aria-label="장비 목록" data-nav="equipment" onclick="navigateFloating('equipment')" title="장비 목록" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 5h16v14H4z M8 9v6m4-6v6m4-6v6"></path></svg><span>장비 목록</span></button><button aria-label="작업물" data-nav="portfolio-section" onclick="navigateFloating('portfolio-section')" title="작업물" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="3" width="18" x="3" y="4"></rect><path d="m10 8 6 4-6 4z"></path></svg><span>작업물</span></button><div class="side-progress"><div><span>페이지 위치</span><span id="page-progress-text">0%</span></div><div aria-label="페이지 위치" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="side-track" role="progressbar"><div id="page-progress-fill"></div></div></div><button aria-label="TOP" data-nav="top" onclick="navigateFloating('top')" title="TOP" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 5h14m-7 15V8m-5 5 5-5 5 5"></path></svg><span>TOP</span></button></nav></div>
+
 <!-- Twitter Widgets 스크립트 -->
 <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
 <script>
@@ -1063,19 +1063,21 @@ async function loadSchedule(){
 document.getElementById('cal-prev').onclick=()=>shiftCalendar(-1);document.getElementById('cal-next').onclick=()=>shiftCalendar(1);document.getElementById('cal-today').onclick=()=>{calYear=Number(kt.year);calMonth=Number(kt.month)-1;selectedDate='';drawCalendar();loadSchedule();};
 drawCalendar();loadSchedule();setInterval(loadSchedule,300000);if(location.protocol==='file:')document.getElementById('local-video-note').hidden=false;
 
+
 function navigateFloating(id){
-  if(id==='top'){document.querySelector('.brand-header-card')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});return;}
-  if(id==='form'||id==='price'){openTab(id,document.querySelector('.tab-btn[onclick*="'+id+'"]'));}
-  scrollToElement(id); updateFloating();
+ if(id==='top'||id==='home'){document.querySelector('.brand-header-card').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});return;}
+ if(['form','price','notice','equipment'].includes(id))openTab(id,document.querySelector('.tab-btn[onclick*="'+id+'"]'));
+ scrollToElement(id);updateFloating();
 }
 function updateFloating(){
-  const targets=[['top',document.querySelector('.brand-header-card')],['schedule-section',document.getElementById('schedule-section')],[document.querySelector('.tab-panel.active')?.id==='price'?'price':'form',document.querySelector('.container')],['portfolio-section',document.getElementById('portfolio-section')]];
-  let current='top';const line=Math.min(innerHeight*.35,180);
-  for(const [id,el] of targets){if(el&&el.getBoundingClientRect().top<=line)current=id;}
-  document.querySelectorAll('.float-nav button').forEach(b=>{if(b.dataset.nav===current)b.setAttribute('aria-current','location');else b.removeAttribute('aria-current');});
+ const targets=[['home',document.querySelector('.brand-header-card')],['schedule-section',document.getElementById('schedule-section')],[document.querySelector('.tab-panel.active')?.id||'form',document.querySelector('.container')],['portfolio-section',document.getElementById('portfolio-section')]];
+ let current='home';const line=Math.min(innerHeight*.35,180);
+ for(const [id,el] of targets){if(el&&el.getBoundingClientRect().top<=line)current=id;}
+ document.querySelectorAll('.side-nav button').forEach(b=>{if(b.dataset.nav===current)b.setAttribute('aria-current','location');else b.removeAttribute('aria-current');});
+ const root=document.scrollingElement||document.documentElement;const max=root.scrollHeight-root.clientHeight;const percent=max>0?Math.max(0,Math.min(100,Math.round(root.scrollTop/max*100))):0;
+ document.getElementById('page-progress-text').textContent=percent+'%';document.getElementById('page-progress-fill').style.width=percent+'%';document.querySelector('.side-track').setAttribute('aria-valuenow',percent);
 }
-window.addEventListener('scroll',updateFloating,{passive:true});window.addEventListener('resize',updateFloating);document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',updateFloating));updateFloating();
-
+window.addEventListener('scroll',updateFloating,{passive:true});window.addEventListener('resize',updateFloating);window.addEventListener('load',updateFloating);document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',updateFloating));if(window.ResizeObserver)new ResizeObserver(updateFloating).observe(document.querySelector('.wrapper'));updateFloating();
 </script>
 </body>
 </html>
