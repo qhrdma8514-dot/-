@@ -247,6 +247,23 @@ h2{font-size:clamp(20px,3vw,26px);color:#254a54;letter-spacing:.015em}h2:after{w
 
 /* External Artmug navigation: keep full content width. */
 .page-shell{display:block;max-width:1280px}.page-shell>.wrapper{width:100%;max-width:none}.calendar-grid{min-width:0}
+
+/* Equipment list — scoped to this panel only */
+#equipment .hr-eq-heading{margin:30px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--line)}
+#equipment .hr-eq-heading span,#equipment .hr-eq-kicker{font-size:10px;letter-spacing:1.4px;font-weight:800;color:var(--accent);text-transform:uppercase}
+#equipment .hr-eq-heading h3{margin:4px 0 0;font-size:20px}
+#equipment .hr-eq-grid,#equipment .hr-plugin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#equipment .hr-eq-card{margin:0;min-width:0;padding:17px;overflow-wrap:anywhere}
+#equipment .hr-eq-card .equipment-card-title{margin:5px 0 10px;font-size:16px}
+#equipment .hr-eq-card ul{margin:0;padding-left:18px;font-size:14px}
+#equipment .hr-plugin-group{margin:14px 0;padding:15px;min-width:0}
+#equipment .hr-plugin-group summary{cursor:pointer;font-weight:800;overflow-wrap:anywhere}
+#equipment .hr-plugin-group summary small{display:block;font-size:11px;font-weight:500;color:var(--muted);margin-top:3px}
+#equipment .hr-plugin-grid{margin-top:15px}
+#equipment .hr-plugin-card{display:flex;flex-direction:column;gap:5px;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:12px;min-width:0;overflow-wrap:anywhere}
+#equipment .hr-plugin-card strong{font-size:14px;color:var(--accent)}
+#equipment .hr-plugin-card span{font-size:13px;color:var(--muted);line-height:1.65}
+@media(max-width:560px){#equipment .hr-eq-grid,#equipment .hr-plugin-grid{grid-template-columns:1fr}#equipment .hr-plugin-group{padding:10px}#equipment .hr-eq-card{padding:14px}}
 </style>
 </head>
 <body>
@@ -429,47 +446,70 @@ h2{font-size:clamp(20px,3vw,26px);color:#254a54;letter-spacing:.015em}h2:after{w
 <!-- EQUIPMENT LIST -->
 <div class="tab-panel" id="equipment">
 <h2> 장비 List</h2>
-<p>HR SOUND에서 최상의 사운드 품질을 구현하기 위해 사용하는 핵심 프로페셔널 하드웨어 및 소프트웨어 환경입니다.</p>
-<p>Software는 전부 구매한 제품 만 작업에 사용하고 있습니다.</p>
-<div class="equipment-grid">
-<div class="equipment-card">
-<div class="equipment-card-title"> Microphones &amp; Preamps</div>
-<ul>
-<li>Neumann U87 Ai (Black)</li>
-<li>AKG C414 XL2</li>
-<li>Neve 1073 SPX</li>
-<li>SSL Pure Drive Quad</li>
-</ul>
+<p>HR SOUND의 보컬 에디팅, 믹싱 및 마스터링에 사용하는 하드웨어와 소프트웨어 환경입니다.</p>
+<div class="hr-eq-heading"><span>01 / HARDWARE</span><h3>스튜디오 장비</h3></div>
+<div class="equipment-grid hr-eq-grid">
+<div class="equipment-card hr-eq-card"><div class="hr-eq-kicker">01 / Speakers</div><div class="equipment-card-title">스피커</div><ul><li>Genelec 8341</li></ul></div>
+<div class="equipment-card hr-eq-card"><div class="hr-eq-kicker">02 / Headphones</div><div class="equipment-card-title">헤드폰</div><ul><li>Sennheiser HD 600</li><li>Aune AR5000</li></ul></div>
+<div class="equipment-card hr-eq-card"><div class="hr-eq-kicker">03 / Digital Audio Workstation</div><div class="equipment-card-title">DAW</div><ul><li>Main · Pro Tools Ultimate</li><li>Sub · Studio One 7</li></ul></div>
+<div class="equipment-card hr-eq-card"><div class="hr-eq-kicker">04 / Interfaces &amp; Converters</div><div class="equipment-card-title">오디오 인터페이스 및 컨버터</div><ul><li>Focusrite Red 16Line (DigiLink 사용)</li><li>Digidesign 192 I/O</li><li>Avid HD Native Card (Magma 3T)</li></ul></div>
+<div class="equipment-card hr-eq-card"><div class="hr-eq-kicker">05 / Word Clock</div><div class="equipment-card-title">워드 클럭</div><ul><li>Black Lion Audio Micro Clock MKIII XB</li><li>Avid Sync HD</li></ul></div>
+<div class="equipment-card hr-eq-card"><div class="hr-eq-kicker">06 / Microphones &amp; Preamps</div><div class="equipment-card-title">마이크 &amp; 프리앰프</div><ul><li>Neumann U 87 Ai</li><li>AKG C414 XLII</li><li>SSL Pure Drive Quad</li></ul></div>
+<div class="equipment-card hr-eq-card"><div class="hr-eq-kicker">07 / Outboard</div><div class="equipment-card-title">아웃보드</div><ul><li>JBL / UREI 7110</li><li>Warm Audio WA76</li><li>dbx 160SL</li></ul></div>
+<div class="equipment-card hr-eq-card"><div class="hr-eq-kicker">08 / Monitoring &amp; Control</div><div class="equipment-card-title">모니터링 및 컨트롤</div><ul><li>P16 &amp; P16-I</li><li>Avid Command|8</li></ul></div>
 </div>
-<div class="equipment-card">
-<div class="equipment-card-title"> Hardware Processors</div>
-<ul>
-<li>dbx 160SL</li>
-<li>Warm Audio WA76</li>
-<li>UREI 7110</li>
-</ul>
-</div>
-<div class="equipment-card">
-<div class="equipment-card-title"> Audio Interface &amp; Monitoring</div>
-<ul>
-<li>Focusrite Red 16Line</li>
-<li>RME ADI-2 Pro FS (Master Converter)</li>
-<li>Antelope Discrete 4 (Master Clock)</li>
-<li>Genelec 8341 (GLM Calibrated)</li>
-<li>Sennheiser HD600, Aune AR5000 </li>
-</ul>
-</div>
-<div class="equipment-card">
-<div class="equipment-card-title"> Workstation &amp; Software</div>
-<ul>
-<li>Apple Mac Studio (M1 Max)</li>
-<li>Pro Tools Studio (Perpetual)</li>
-<li>Melodyne Studio / Auto-Tune Pro 10 / RePitch</li>
-<li>Acustica Audio &amp; iZotope RX / Acon Digital Suites</li>
-<li>Waves &amp; Plugin Alliance &amp; Slate Digital &amp; SSL &amp; UAD &amp; ETC </li>
-</ul>
-</div>
-</div>
+<div class="hr-eq-heading"><span>02 / SOFTWARE</span><h3>사용 플러그인 목록</h3></div>
+<p>구매 및 구독 라이선스로 사용하는 플러그인입니다.</p>
+<details class="hr-plugin-group" open><summary><span>Tune Plugins <small>보컬 튜닝</small></span></summary><div class="hr-plugin-grid">
+<div class="hr-plugin-card"><strong>Antares</strong><span>Auto-Tune Pro 10, Auto-Tune eft 10</span></div>
+<div class="hr-plugin-card"><strong>Celemony</strong><span>Melodyne Studio</span></div>
+<div class="hr-plugin-card"><strong>Synchro Arts</strong><span>RePitch 1</span></div>
+</div></details>
+<details class="hr-plugin-group"><summary><span>Main Mix Plugins <small>주사용 믹싱 · 마스터링</small></span></summary><div class="hr-plugin-grid">
+<div class="hr-plugin-card"><strong>AIR Music Technology / Avid</strong><span>AIR Plug-ins</span></div>
+<div class="hr-plugin-card"><strong>Acustica Audio</strong><span>Coffee, Wine, Gold 5, Purple 4, Lace, Ash, Magenta, Titanium 3, El Rey 2, Salt 2</span></div>
+<div class="hr-plugin-card"><strong>Slate Digital</strong><span>구독</span></div>
+<div class="hr-plugin-card"><strong>Softube</strong><span>Tube-Tech Collection, Weiss DS1 패키지, Tape, Transient Shaper</span></div>
+<div class="hr-plugin-card"><strong>FabFilter</strong><span>Total Bundle (Pro-Q 3, Pro-R 1)</span></div>
+<div class="hr-plugin-card"><strong>Sonnox</strong><span>Oxford Inflator, Oxford SuprEsser</span></div>
+<div class="hr-plugin-card"><strong>SSL</strong><span>구독</span></div>
+<div class="hr-plugin-card"><strong>Plugin Alliance</strong><span>구독</span></div>
+<div class="hr-plugin-card"><strong>Soundtoys</strong><span>Full Bundle</span></div>
+<div class="hr-plugin-card"><strong>iZotope</strong><span>Music Production Suite (MPS)</span></div>
+<div class="hr-plugin-card"><strong>Waves</strong><span>구독</span></div>
+<div class="hr-plugin-card"><strong>UAD</strong><span>Pultec EQ, LA-2A Collection, 1176 Collection, SSL E Channel, SSL G Bus Compressor, Capitol Mastering Compressor, Sound City, Avalon VT-737, ATR-102 Tape, Lexicon 224</span></div>
+<div class="hr-plugin-card"><strong>Native Instruments</strong><span>RAUM</span></div>
+<div class="hr-plugin-card"><strong>Valhalla DSP</strong><span>VintageVerb</span></div>
+<div class="hr-plugin-card"><strong>oeksound</strong><span>Soothe2, Bloom</span></div>
+<div class="hr-plugin-card"><strong>LiquidSonics</strong><span>Seventh Heaven</span></div>
+<div class="hr-plugin-card"><strong>IK Multimedia</strong><span>T-RackS 6 MAX, Lurssen Mastering Console</span></div>
+<div class="hr-plugin-card"><strong>Wavesfactory</strong><span>Trackspacer</span></div>
+<div class="hr-plugin-card"><strong>Synchro Arts</strong><span>RePitch, VocAlign 6 Pro</span></div>
+</div></details>
+<details class="hr-plugin-group"><summary><span>Additional Plugins <small>기타 플러그인</small></span></summary><div class="hr-plugin-grid">
+<div class="hr-plugin-card"><strong>Baby Audio</strong></div>
+<div class="hr-plugin-card"><strong>Eventide</strong></div>
+<div class="hr-plugin-card"><strong>FLUX</strong></div>
+<div class="hr-plugin-card"><strong>Initial Audio</strong></div>
+<div class="hr-plugin-card"><strong>Lander</strong></div>
+<div class="hr-plugin-card"><strong>Leapwing Audio</strong><span>StageOne 2</span></div>
+<div class="hr-plugin-card"><strong>PHIL SPEISER</strong></div>
+<div class="hr-plugin-card"><strong>PSP Audioware</strong></div>
+<div class="hr-plugin-card"><strong>Relab</strong></div>
+<div class="hr-plugin-card"><strong>Rhodes</strong><span>V-Pan</span></div>
+<div class="hr-plugin-card"><strong>Sonarworks</strong></div>
+<div class="hr-plugin-card"><strong>sonible</strong></div>
+<div class="hr-plugin-card"><strong>Soundtheory</strong><span>Gullfoss</span></div>
+<div class="hr-plugin-card"><strong>Steven Slate</strong></div>
+<div class="hr-plugin-card"><strong>TAL – Togu Audio Line</strong></div>
+<div class="hr-plugin-card"><strong>VoosteQ</strong></div>
+<div class="hr-plugin-card"><strong>Wavesfactory</strong></div>
+<div class="hr-plugin-card"><strong>W.A. Production</strong><span>Puncher</span></div>
+<div class="hr-plugin-card"><strong>Xfer Records</strong><span>OTT</span></div>
+<div class="hr-plugin-card"><strong>TDR</strong></div>
+<div class="hr-plugin-card"><strong>Excite Audio</strong><span>Lifeline Console</span></div>
+<div class="hr-plugin-card"><strong>Audified</strong><span>U78</span></div>
+</div></details>
 </div>
 </div>
 </div>
