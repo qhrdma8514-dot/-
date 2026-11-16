@@ -1,1616 +1,1046 @@
 <!DOCTYPE html>
+
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HR SOUND</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif; }
-    
-    body { 
-      background: #f8fafc; 
-      background-image: 
-        radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 90% 90%, rgba(168, 85, 247, 0.04) 0%, transparent 40%);
-      color: #1e293b; 
-      padding: 12px; 
-      line-height: 1.6; 
-      min-height: 100vh;
-    }
-    
-    .wrapper {
-      width: 100%;
-      max-width: 100%;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+<head><meta content="strict-origin-when-cross-origin" name="referrer"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HR SOUND / Vocal Mixing Studio</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#120f1d;
+  --bg2:#1b1430;
+  --panel:rgba(28,22,46,.78);
+  --panel-strong:rgba(38,30,64,.92);
+  --panel-soft:rgba(255,255,255,.04);
+  --line:rgba(214,194,255,.18);
+  --line-strong:rgba(255,189,235,.32);
+  --txt:#f8f6ff;
+  --muted:#c9c0e5;
+  --accent:#f0a8ff;
+  --accent2:#99f6ff;
+  --accent3:#d3b4ff;
+  --soft:#2c2346;
+  --soft2:#201933;
+  --shadow:0 16px 44px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(255,163,231,.20) 0, transparent 28%),
+    radial-gradient(circle at 88% 10%, rgba(153,246,255,.14) 0, transparent 24%),
+    radial-gradient(circle at 70% 85%, rgba(211,180,255,.13) 0, transparent 24%),
+    linear-gradient(180deg,#100d19 0%,#161225 55%,#0e0c17 100%);
+  color:var(--txt);
+  font:15px/1.75 Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  padding:clamp(10px,2vw,28px);
+}
+body:before,body:after{
+  content:"";position:fixed;inset:auto;pointer-events:none;z-index:0;border-radius:999px;filter:blur(50px);opacity:.4;
+}
+body:before{width:220px;height:220px;left:-40px;top:40px;background:rgba(247,154,255,.18)}
+body:after{width:260px;height:260px;right:-70px;top:20vh;background:rgba(135,236,255,.12)}
+button,a,summary{-webkit-tap-highlight-color:transparent}
+button{font:inherit;cursor:pointer}
+a{color:var(--accent2)}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
+.wrapper{position:relative;z-index:1;max-width:1280px;margin:auto;display:grid;gap:22px}
+.brand-header-card,.about-standalone-card,.tab-panel,.portfolio-section,.menu{
+  background:var(--panel);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:clamp(18px,3vw,36px);
+  min-width:0;
+  box-shadow:var(--shadow);
+}
+.brand-header-card{
+  position:relative;overflow:hidden;display:flex;align-items:center;gap:28px;min-height:270px;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02)),
+    linear-gradient(135deg,#241838 0%,#171324 48%,#291b3d 100%);
+  border:1px solid var(--line-strong);
+}
+.brand-header-card:before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(255,165,228,.18) 0, transparent 24%),
+    radial-gradient(circle at 84% 22%, rgba(139,245,255,.16) 0, transparent 24%),
+    repeating-linear-gradient(90deg, transparent 0 30px, rgba(255,255,255,.045) 30px 31px);
+  pointer-events:none;
+}
+.brand-header-card:after{
+  content:"";position:absolute;right:-40px;bottom:-40px;width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,173,244,.22) 0%, rgba(255,173,244,.03) 55%, transparent 65%);
+  pointer-events:none;
+}
+.brand-info,.brand-logo-img{position:relative;z-index:1}
+.brand-logo-img{
+  width:106px;height:106px;object-fit:contain;border-radius:22px;padding:10px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);box-shadow:0 12px 34px rgba(0,0,0,.24)
+}
+.eyebrow{font-size:11px;font-weight:900;letter-spacing:3px;color:var(--accent2);text-transform:uppercase}
+.brand-title{font-size:clamp(38px,7vw,76px);font-weight:900;line-height:1.02;letter-spacing:-.07em;margin:8px 0;text-shadow:0 0 24px rgba(255,178,242,.16)}
+.brand-subtitle{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:800;font-size:clamp(13px,2vw,18px);padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.brand-desc{color:var(--muted);margin-top:16px;word-break:keep-all;max-width:760px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero-actions button,.copy-btn,.estimate button{
+  border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--txt);border-radius:999px;padding:11px 18px;font-weight:800;
+  box-shadow:0 8px 24px rgba(0,0,0,.14);transition:.2s ease;
+}
+.hero-actions button:hover,.copy-btn:hover,.estimate button:hover,.tab-btn:hover,.sub-tab-btn:hover,.quick-jump-btn:hover{transform:translateY(-1px)}
+.hero-actions button:first-child,.copy-btn{
+  background:linear-gradient(90deg, var(--accent) 0%, #f6c8ff 45%, var(--accent2) 100%);
+  color:#251b36;border-color:transparent;
+}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat{
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
+  border:1px solid var(--line);border-radius:20px;padding:16px 18px;backdrop-filter:blur(14px)
+}
+.stat strong{display:block;font-size:28px;line-height:1.2;color:var(--txt)}
+.stat small{color:var(--muted)}
+h2{font-size:clamp(20px,3vw,28px);letter-spacing:-.03em;margin:0 0 22px;padding-bottom:14px;border-bottom:1px solid var(--line);position:relative}
+h2:after{content:"";position:absolute;left:0;bottom:-1px;width:88px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px}
+h3{margin:26px 0 8px;font-size:18px}
+p{margin:8px 0;color:var(--muted);word-break:keep-all}
+ul{padding-left:21px;color:var(--muted)}
+li{margin:7px 0}
+strong{color:var(--txt)}
+.info-box,.form-box,.equipment-card,details,.estimate{
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+  border:1px solid var(--line);border-radius:18px;padding:18px;margin-top:16px;overflow-wrap:anywhere
+}
+.form-box{border-left:3px solid var(--accent)}
+.container{display:grid;grid-template-columns:210px minmax(0,1fr);gap:18px;align-items:start}
+.menu-wrapper{position:sticky;top:12px;min-width:0}
+.menu{padding:12px;background:rgba(23,18,37,.82)}
+.menu-header{font-weight:900;letter-spacing:2px;font-size:11px;color:var(--muted);padding:10px}
+.menu-inner{display:grid;gap:7px}
+.tab-btn,.sub-tab-btn,.quick-jump-btn{
+  background:rgba(255,255,255,.03);border:1px solid transparent;color:var(--muted);padding:11px 13px;border-radius:14px;
+  font-weight:800;text-align:left;white-space:nowrap;transition:.2s ease
+}
+.tab-btn:hover,.sub-tab-btn:hover,.quick-jump-btn:hover{background:rgba(255,255,255,.08);color:var(--txt)}
+.tab-btn.active,.sub-tab-btn.active{
+  background:linear-gradient(90deg, rgba(255,176,244,.18), rgba(153,246,255,.12));
+  border-color:var(--line-strong);color:#fff;box-shadow:0 10px 30px rgba(255,178,242,.08)
+}
+.scroll-link-btn{color:var(--accent2);border-color:var(--line)}
+.tab-panel,.sub-tab-content{display:none}
+.tab-panel.active,.sub-tab-content.active{display:block}
+.scroll-hint{display:none}
+.equipment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px}
+.equipment-card-title{font-weight:900;color:var(--accent2)}
+details{margin-bottom:16px}
+summary{cursor:pointer;font-weight:800}
+summary::marker{color:var(--accent)}
+.type-desc{margin-top:13px;color:var(--muted)}
+.badge{display:inline-block;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:var(--soft);color:var(--accent);margin-right:5px}
+.badge-premium{background:#4e3148;color:#ffd3e8}
+.badge-standard{background:#27404f;color:#b9f4ff}
+.badge-lite{background:#3b3050;color:#e2c7ff}
+.sub-tab-nav,.quick-jump-nav{display:flex;gap:8px;overflow-x:auto;padding:0 0 10px;scrollbar-width:thin}
+.sub-tab-nav{border-bottom:1px solid var(--line);margin-bottom:20px}
+.quick-jump-nav{background:rgba(255,255,255,.04);padding:10px 12px;border-radius:16px;border:1px solid var(--line)}
+.quick-jump-label{align-self:center;color:var(--muted);white-space:nowrap;font-size:13px;font-weight:800}
+.quick-jump-btn{border-color:var(--line);padding:7px 13px;background:rgba(255,255,255,.04)}
+.section-divider{font-weight:900;color:var(--accent);margin:28px 0 14px;padding-left:12px;border-left:3px solid var(--accent);scroll-margin-top:20px}
+.video-grid,.sns-grid,.shorts-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.shorts-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+.video-item,.shorts-item,.sns-card{
+  min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));display:flex;flex-direction:column;
+  box-shadow:0 10px 26px rgba(0,0,0,.18);transition:.22s ease;
+}
+.video-item:hover,.shorts-item:hover,.sns-card:hover{border-color:var(--line-strong);transform:translateY(-2px)}
+.media{position:relative;aspect-ratio:16/9;background:#100f18;overflow:hidden}
+.shorts-item .media{aspect-ratio:9/16}
+.media:after{content:"";position:absolute;inset:auto 0 0 0;height:42%;background:linear-gradient(180deg,transparent,rgba(0,0,0,.38));pointer-events:none}
+.media button{display:block;width:100%;height:100%;border:0;background:#11121a;padding:0;position:relative;color:white}
+.media img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.02)}
+.play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;width:50px;height:50px;display:grid;place-items:center;background:rgba(25,16,40,.85);border:1px solid rgba(255,255,255,.38);font-size:18px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.media iframe{width:100%;height:100%;border:0;display:block}
+.video-info{padding:12px 13px 14px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-top:auto;min-height:58px}
+.work-name{display:none!important}
+.work-tag{font-size:11px;color:#fff;background:linear-gradient(90deg,rgba(241,171,255,.26),rgba(153,246,255,.18));padding:5px 9px;border-radius:999px;overflow-wrap:anywhere;border:1px solid rgba(255,255,255,.1);font-weight:800;letter-spacing:.2px}
+.source-link{display:none!important}
+.sns-card{padding:12px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.03))}
+.sns-card blockquote{margin:0!important;overflow-wrap:anywhere}
+.sns-card iframe,.sns-card .twitter-tweet-rendered{max-width:100%!important;min-width:0!important}
+.placeholder{min-height:130px;display:grid;place-items:center;border-style:dashed;color:var(--muted)}
+.placeholder-content{text-align:center;padding:12px}.placeholder-text{font-size:12px;letter-spacing:2px;font-weight:900}.placeholder-subtext{font-size:12px}
+.tools-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.tools-row input,.estimate input,.estimate select{
+  min-width:0;background:rgba(8,8,12,.45);color:var(--txt);border:1px solid var(--line);border-radius:12px;padding:11px 12px;font:inherit
+}
+.tools-row input{flex:1;min-width:150px}
+.result-count{color:var(--muted);font-size:12px}
+.estimate-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.estimate label{display:grid;gap:5px;color:var(--muted);font-size:13px}.estimate output{display:block;font-size:24px;color:var(--accent2);font-weight:900;margin-top:12px}
+.footer{padding:18px 0;text-align:center;color:var(--muted);font-size:12px;letter-spacing:1px}
+[hidden]{display:none!important}
+.tab-panel p[style],.form-box+ p{color:var(--accent)!important}
+.eq-bars{display:none}
+@media(max-width:850px){
+  .container{grid-template-columns:1fr}
+  .menu-wrapper{position:static}
+  .menu-inner{display:flex;overflow-x:auto}
+  .menu-header{display:none}
+  .video-grid,.sns-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .shorts-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:480px){
+  .brand-header-card{align-items:flex-start;flex-direction:column;gap:14px;min-height:auto}
+  .brand-logo-img{width:72px;height:72px}
+  .stats{gap:8px}
+  .stat{padding:12px}
+  .stat strong{font-size:21px}
+  .stat small{font-size:10px}
+  .video-grid,.sns-grid{grid-template-columns:1fr}
+  .shorts-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .estimate-grid{grid-template-columns:1fr}
+  .wrapper{gap:14px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-    /* 상단 독립 스튜디오 브랜드 패널 */
-    .brand-header-card {
-      background: #ffffff;
-      background-image: 
-        repeating-linear-gradient(90deg, rgba(79, 70, 229, 0.03) 0px, rgba(79, 70, 229, 0.03) 2px, transparent 2px, transparent 8px),
-        radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.06) 0%, transparent 50%);
-      border: 1px solid #e2e8f0;
-      border-left: 5px solid #4f46e5;
-      border-radius: 18px;
-      padding: 26px 32px;
-      box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.06);
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      position: relative;
-      overflow: hidden;
-    }
+/* Utaite / doujin music editorial theme */
+:root{color-scheme:light;--bg:#f5f7f6;--panel:#fffefa;--txt:#233d42;--muted:#57696c;--accent:#287b80;--accent2:#366b75;--line:#dce7e6;--line-strong:#a7cccb;--soft:#e8f4f1;--shadow:0 8px 30px #345c650d}
+body{background:radial-gradient(ellipse at 0 0,#f9e5d8 0,transparent 40%),radial-gradient(ellipse at 100% 10%,#dceff1 0,transparent 38%),#f7f9f7;padding:clamp(8px,2vw,24px)}
+body:before,body:after{display:none}.wrapper{max-width:1160px;gap:20px}
+.brand-header-card,.about-standalone-card,.tab-panel,.portfolio-section,.menu{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);backdrop-filter:none}
+.brand-header-card{min-height:310px;display:flex;isolation:isolate;align-items:center;padding:clamp(24px,5vw,58px);background:linear-gradient(120deg,#fffdf9 0%,#fff2e6 56%,#dbeef0 100%);border:1px solid #d6e5e4}
+.brand-header-card:before{background:radial-gradient(#438d922e 1px,transparent 1px);background-size:15px 15px;mask-image:linear-gradient(90deg,transparent 45%,black);z-index:-1}
+.brand-header-card:after{display:none}.brand-info{flex:1;min-width:0}.brand-logo-img{width:84px;height:84px;border-radius:50%;background:white;box-shadow:0 4px 20px #345c651a;border:1px solid #dce7e6;padding:6px}
+.brand-title{font-family:Georgia,'Times New Roman',serif;font-size:clamp(40px,7vw,74px);font-weight:400;letter-spacing:-.055em;color:#254a54;text-shadow:none;line-height:1.15}
+.eyebrow{font-size:10px;letter-spacing:2.5px;color:#5a8288}.brand-subtitle{display:block;padding:0;border:0;background:none;font-size:14px;color:#376b72;letter-spacing:.03em}.brand-desc{font-size:14px;max-width:590px}
+.hero-art{width:clamp(130px,24vw,255px);flex:none;align-self:center;color:#a98ac6}.hero-art svg{display:block;width:100%;height:auto}.hero-jp{font-size:12px;letter-spacing:.18em;color:#52777e;margin:6px 0 14px}.hero-actions button,.copy-btn,.estimate button{background:white;color:#385c64;border:1px solid #cbdedd;box-shadow:none;border-radius:8px;padding:10px 17px}.hero-actions button:first-child,.copy-btn{background:#287b80;color:white;border-color:#287b80}
+.stats{gap:10px}.stat{background:#fffefa;border:1px solid #dce7e6;border-radius:12px;padding:14px 18px;backdrop-filter:none}.stat strong{font-family:Georgia,serif;color:#287b80;font-weight:400;font-size:29px}
+h2{font-size:clamp(20px,3vw,26px);color:#254a54;letter-spacing:.015em}h2:after{width:54px;background:#78b6bb}.section-kicker{display:block;font-size:10px;letter-spacing:2px;color:#5a8288;margin-bottom:6px}
+.info-box,.form-box,.equipment-card,details,.estimate{background:#f3f8f6;border:1px solid #dce8e5;border-radius:12px}.form-box{border-left:3px solid #80b7b6}.menu{background:#fffefa;padding:12px}.menu-header{color:#5b8588}.tab-btn,.sub-tab-btn,.quick-jump-btn{background:#f3f8f6;color:#536b70;border-radius:8px;font-weight:700}.tab-btn:hover,.sub-tab-btn:hover,.quick-jump-btn:hover{background:#e1f0ed;color:#285b63}.tab-btn.active,.sub-tab-btn.active{background:#287b80;color:#fff;border-color:#287b80;box-shadow:none}.scroll-link-btn{color:#287b80;border-color:#cbdedd}.quick-jump-nav{background:#f2f8f6;border-radius:10px}.quick-jump-btn{background:white}.section-divider{color:#36767d;border-left:0;padding:0;display:flex;align-items:center;gap:12px;letter-spacing:.05em}.section-divider:after{content:'';height:1px;background:#dce7e6;flex:1}
+.video-item,.shorts-item,.sns-card{border-radius:10px;background:#fff;border:1px solid #dce7e6;box-shadow:0 4px 14px #5d45740c}.video-item:hover,.shorts-item:hover,.sns-card:hover{border-color:#a7cccb;box-shadow:0 8px 24px #5d45741a}.media:after{display:none}.media img{filter:none}.play{width:44px;height:44px;background:#fffef2e8;color:#287b80;border:1px solid #fff;box-shadow:0 4px 18px #30204044}.video-info{min-height:0;padding:10px 11px;gap:4px}.work-tag{background:#e8f4f1;color:#286d75;border:1px solid #d5e9e4;border-radius:4px;font-size:11px;font-weight:700}.sns-card{background:#fff}.placeholder{background:#f5f8f6}.tools-row input,.estimate input,.estimate select{background:white;color:#233d42;border:1px solid #d1e2df;border-radius:8px}.badge-premium{background:#f7e1ec;color:#9b476d}.badge-standard{background:#e3edf9;color:#45658d}.badge-lite{background:#eee4fa;color:#77549d}.footer{color:#648084}.tab-panel p[style],.form-box+ p{color:#287b80!important}
+@media(max-width:850px){.hero-art{width:145px}.brand-header-card{min-height:230px;gap:18px}.brand-logo-img{width:64px;height:64px}}
+@media(max-width:600px){.hero-art{position:absolute;right:10px;top:14px;width:100px;opacity:.45;z-index:-1}.brand-header-card{align-items:flex-start;flex-direction:column;min-height:0;gap:12px}.brand-info{width:100%}.brand-title{font-size:45px}.brand-subtitle{font-size:12px}.hero-jp{font-size:10px}.stats .stat{padding:10px}.stat strong{font-size:23px}.sub-tab-nav{gap:5px}.sub-tab-btn{font-size:12px}.video-info{padding:8px}.work-tag{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
-    .brand-logo-img {
-      width: 110px;
-      height: 110px;
-      object-fit: contain;
-      flex-shrink: 0;
-    }
-
-    .brand-info {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      z-index: 1;
-    }
-
-    .brand-title {
-      font-size: 26px;
-      font-weight: 900;
-      color: #0f172a;
-      letter-spacing: -0.5px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-subtitle {
-      font-size: 15px;
-      font-weight: 700;
-      color: #4f46e5;
-    }
-
-    .brand-desc {
-      font-size: 14.5px;
-      color: #475569;
-      line-height: 1.6;
-      word-break: keep-all;
-    }
-
-    /* 독립형 ABOUT STUDIO 섹션 */
-    .about-standalone-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 18px;
-      padding: 28px 32px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-      width: 100%;
-    }
-
-    /* 메인 콘솔 레이아웃 */
-    .container { 
-      display: flex; 
-      gap: 20px; 
-      width: 100%; 
-      margin: 0; 
-    }
-    
-    /* 좌측 메뉴 */
-    .menu-wrapper {
-      width: 220px;
-      flex-shrink: 0;
-      position: sticky;
-      top: 12px;
-      height: fit-content;
-      z-index: 10;
-    }
-
-    .scroll-hint {
-      display: none;
-      font-size: 12px;
-      font-weight: 700;
-      color: #4f46e5;
-      text-align: right;
-      margin-bottom: 8px;
-    }
-
-    .scroll-hint span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #ffffff;
-      padding: 6px 12px;
-      border-radius: 20px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      animation: bouncePulse 1.8s infinite alternate;
-    }
-
-    @keyframes bouncePulse {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-4px); }
-    }
-
-    .menu { 
-      width: 100%; 
-      background: #ffffff; 
-      border: 1px solid #e2e8f0; 
-      border-radius: 18px; 
-      padding: 18px; 
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-    }
-
-    .menu-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 17px;
-      font-weight: 900;
-      color: #0f172a;
-      padding-bottom: 14px;
-      margin-bottom: 14px;
-      border-bottom: 2px solid #f1f5f9;
-      letter-spacing: 1.5px;
-    }
-
-    .eq-bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
-    .eq-bar { width: 3px; background: #4f46e5; border-radius: 1px; animation: eqBounce 1s ease-in-out infinite alternate; }
-    .eq-bar:nth-child(1) { height: 60%; animation-delay: 0.1s; }
-    .eq-bar:nth-child(2) { height: 100%; animation-delay: 0.3s; }
-    .eq-bar:nth-child(3) { height: 40%; animation-delay: 0.2s; }
-
-    @keyframes eqBounce {
-      0% { height: 20%; }
-      100% { height: 100%; }
-    }
-
-    .menu-inner { display: flex; flex-direction: column; gap: 8px; }
-    
-    .tab-btn { 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%; 
-      padding: 12px 16px; 
-      border: 1px solid transparent; 
-      background: #f8fafc; 
-      font-size: 14px; 
-      font-weight: 700; 
-      color: #64748b; 
-      cursor: pointer; 
-      border-radius: 12px; 
-      transition: all 0.2s ease; 
-      white-space: nowrap;
-    }
-    
-    .tab-btn:hover { background: #f1f5f9; color: #0f172a; }
-    
-    .tab-btn.active { 
-      color: #ffffff; 
-      background: #0f172a; 
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25); 
-      border-color: #0f172a;
-    }
-
-    .scroll-link-btn {
-      background: #e0e7ff;
-      color: #4338ca;
-      border: 1px dashed #6366f1;
-    }
-    .scroll-link-btn:hover {
-      background: #c7d2fe;
-      color: #3730a3;
-    }
-
-    /* 메인 콘텐츠 패널 */
-    .content { flex-grow: 1; min-width: 0; }
-    .tab-panel { 
-      display: none; 
-      background: #ffffff; 
-      border: 1px solid #e2e8f0; 
-      border-radius: 18px; 
-      padding: 32px; 
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-    }
-    .tab-panel.active { display: block; animation: fadeIn 0.3s ease-out; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    h2 { 
-      font-size: 22px; 
-      font-weight: 900; 
-      color: #0f172a; 
-      margin-bottom: 22px; 
-      border-bottom: 2px solid #f1f5f9; 
-      padding-bottom: 14px; 
-      letter-spacing: -0.5px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin-top: 26px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-    p { font-size: 15px; line-height: 1.85; color: #334155; word-break: keep-all; }
-    ul, ol { margin-left: 20px; font-size: 15px; color: #334155; line-height: 1.9; word-break: keep-all; }
-    li { margin-bottom: 8px; }
-
-    .info-box { 
-      background: #f8fafc; 
-      border: 1px solid #e2e8f0; 
-      border-left: 4px solid #4f46e5; 
-      padding: 20px; 
-      border-radius: 14px; 
-      margin: 18px 0 0 0; 
-      font-size: 15px; 
-      color: #1e293b; 
-      line-height: 1.85; 
-      word-break: keep-all;
-    }
-    
-    .form-box { 
-      background: #fff7ed; 
-      border: 1px solid #ffedd5; 
-      border-left: 4px solid #f97316; 
-      border-radius: 14px; 
-      padding: 20px; 
-      margin: 20px 0; 
-      font-size: 15px; 
-      line-height: 1.9; 
-      color: #9a3412; 
-      word-break: keep-all;
-    }
-
-    /* 장비 리스트 전용 스타일 추가 */
-    .equipment-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
-    }
-    .equipment-card {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 20px;
-      transition: all 0.2s ease;
-    }
-    .equipment-card:hover {
-      border-color: #cbd5e1;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-      transform: translateY(-2px);
-    }
-    .equipment-card-title {
-      font-size: 16px;
-      font-weight: 800;
-      color: #4f46e5;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #e2e8f0;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    
-    details { 
-      background: #f8fafc; 
-      border: 1px solid #e2e8f0; 
-      border-radius: 14px; 
-      padding: 16px; 
-      margin: 14px 0 20px 0; 
-      transition: all 0.2s ease; 
-    }
-    details[open] { 
-      border-color: #cbd5e1; 
-      background: #ffffff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    }
-    summary { font-size: 15px; font-weight: 700; cursor: pointer; color: #0f172a; outline: none; list-style: none; display: flex; align-items: center; justify-content: space-between; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: '＋ OPEN'; font-size: 11px; padding: 4px 8px; border-radius: 6px; background: #e0e7ff; color: #3730a3; font-weight: 800; }
-    details[open] summary::after { content: '－ CLOSE'; background: #fef2f2; color: #991b1b; }
-    
-    .type-desc { margin-top: 14px; font-size: 14.5px; line-height: 1.85; color: #475569; border-top: 1px solid #f1f5f9; padding-top: 12px; word-break: keep-all; }
-
-    .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 11.5px; font-weight: 900; color: white; margin-right: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .badge-premium { background: #dc2626; }
-    .badge-standard { background: #2563eb; }
-    .badge-lite { background: #9333ea; }
-
-    /* 하단 독립 포트폴리오 섹션 스타일 */
-    .portfolio-section {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 18px;
-      padding: 32px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-      width: 100%;
-    }
-
-    /* 서브 탭 서식 */
-    .sub-tab-nav {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 24px;
-      border-bottom: 2px solid #f1f5f9;
-      padding-bottom: 12px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .sub-tab-nav::-webkit-scrollbar { height: 4px; }
-    .sub-tab-nav::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-
-    .sub-tab-btn {
-      padding: 10px 18px;
-      border-radius: 30px;
-      border: 1px solid #e2e8f0;
-      background: #f8fafc;
-      color: #64748b;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .sub-tab-btn:hover {
-      background: #f1f5f9;
-      color: #0f172a;
-    }
-
-    .sub-tab-btn.active {
-      background: #4f46e5;
-      color: #ffffff;
-      border-color: #4f46e5;
-      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
-    }
-
-    .sub-tab-content {
-      display: none;
-    }
-
-    .sub-tab-content.active {
-      display: block;
-      animation: fadeIn 0.3s ease-out;
-    }
-
-    /* MR Track Work 빠른 점프 네비게이션 버튼 */
-    .quick-jump-nav {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 18px;
-      background: #f8fafc;
-      padding: 8px 12px;
-      border-radius: 12px;
-      border: 1px solid #e2e8f0;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .quick-jump-label {
-      font-size: 13px;
-      font-weight: 800;
-      color: #475569;
-      margin-right: 4px;
-    }
-
-    .quick-jump-btn {
-      padding: 6px 14px;
-      border-radius: 20px;
-      border: 1px solid #cbd5e1;
-      background: #ffffff;
-      color: #334155;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .quick-jump-btn:hover {
-      background: #4f46e5;
-      color: #ffffff;
-      border-color: #4f46e5;
-    }
-
-    /* 포트폴리오 구분 헤더 */
-    .section-divider {
-      font-size: 15px;
-      font-weight: 800;
-      color: #4f46e5;
-      background: #f1f5f9;
-      padding: 8px 14px;
-      border-radius: 8px;
-      margin: 24px 0 14px 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-left: 4px solid #4f46e5;
-      scroll-margin-top: 16px;
-    }
-    .section-divider:first-child {
-      margin-top: 0;
-    }
-
-    /* 가로형 비디오 그리드 & 임베드 카드 (16:9) */
-    .video-grid { 
-      display: grid !important; 
-      grid-template-columns: repeat(3, 1fr) !important; 
-      gap: 14px !important; 
-      width: 100% !important;
-    }
-    
-    .video-item { 
-      display: flex; 
-      flex-direction: column; 
-      width: 100% !important; 
-      border-radius: 12px; 
-      overflow: hidden; 
-      border: 1px solid #e2e8f0; 
-      background: #ffffff;
-      transition: all 0.25s ease; 
-      content-visibility: auto;
-      contain-intrinsic-size: 200px;
-    }
-    .video-item:hover { transform: translateY(-4px); border-color: #cbd5e1; box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
-    
-    .video-item iframe { 
-      width: 100% !important; 
-      aspect-ratio: 16 / 9 !important; 
-      height: auto !important; 
-      border: none; 
-      display: block;
-    }
-
-    /* 쇼츠 전용 세로형 비디오 그리드 (9:16) */
-    .shorts-grid {
-      display: grid !important;
-      grid-template-columns: repeat(5, 1fr) !important;
-      gap: 16px !important;
-      width: 100% !important;
-      margin-bottom: 24px;
-    }
-
-    .shorts-item {
-      display: flex;
-      flex-direction: column;
-      width: 100% !important;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid #e2e8f0;
-      background: #ffffff;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    }
-    .shorts-item:hover { transform: translateY(-4px); border-color: #4f46e5; box-shadow: 0 8px 20px rgba(79,70,229,0.12); }
-
-    .shorts-item iframe {
-      width: 100% !important;
-      aspect-ratio: 4 / 5 !important;
-      height: auto !important;
-      border: none;
-      display: block;
-    }
-
-    /* 트위터/SNS 전용 컨테이너 그리드 */
-    .sns-grid {
-      display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      gap: 20px !important;
-      width: 100% !important;
-      align-items: stretch !important;
-    }
-    
-    .sns-card {
-      width: 100% !important;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100% !important;
-      overflow: hidden;
-      border-radius: 12px;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      padding: 12px;
-    }
-
-    /* 빈 카드(준비 중) 스타일 */
-    .sns-card.placeholder {
-      background: #f8fafc;
-      border: 2px dashed #cbd5e1;
-      min-height: 200px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .placeholder-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      color: #94a3b8;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .placeholder-icon {
-      font-size: 32px;
-      opacity: 0.6;
-    }
-
-    .placeholder-text {
-      font-size: 15px;
-      font-weight: 800;
-      color: #64748b;
-      letter-spacing: -0.3px;
-    }
-
-    .placeholder-subtext {
-      font-size: 12.5px;
-      color: #94a3b8;
-    }
-    
-    .sns-card blockquote {
-      margin: 0 !important;
-      width: 100% !important;
-      flex-grow: 1;
-    }
-    
-    .sns-card .twitter-tweet,
-    .sns-card .twitter-tweet-rendered,
-    .sns-card iframe {
-      width: 100% !important;
-      max-width: 100% !important;
-      min-width: 100% !important;
-      margin: 0 auto !important;
-    }
-
-    /* 트윗 내 미디어 영역 높이 확장 및 안 짤리게 수정 */
-    .sns-card iframe {
-      max-height: 800px !important; /* 높이 상한을 늘려 긴 트윗도 안 짤리도록 설정 */
-      aspect-ratio: auto !important; 
-    }
-
-    .video-info {
-      padding: 10px 12px;
-      background: #f8fafc;
-      border-top: 1px solid #f1f5f9;
-      display: flex;
-      align-items: center;
-      width: 100%;
-    }
-
-    .work-tag {
-      font-size: 11px;
-      font-weight: 800;
-      color: #4f46e5;
-      background: #e0e7ff;
-      padding: 3px 8px;
-      border-radius: 4px;
-      width: fit-content;
-      letter-spacing: 0.3px;
-    }
-
-    /* 모바일 디스플레이 대응 */
-    @media (max-width: 500px) {
-      body { padding: 8px; }
-      
-      .brand-header-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px 16px;
-        gap: 14px;
-        border-left: 1px solid #e2e8f0;
-        border-top: 5px solid #4f46e5;
-      }
-
-      .brand-logo-img { width: 80px; height: 80px; }
-
-      .container { flex-direction: column; gap: 12px; }
-      .menu-wrapper { width: 100%; position: relative; top: 0; }
-      .scroll-hint { display: block; }
-
-      .menu { 
-        padding: 8px; 
-        border-radius: 14px; 
-        overflow-x: auto; 
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .menu::-webkit-scrollbar { height: 4px; }
-      .menu::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-
-      .menu-header { display: none; }
-      .menu-inner { 
-        display: flex !important; 
-        flex-direction: row !important; 
-        gap: 8px; 
-        width: max-content; 
-      }
-      
-      .tab-btn { 
-        flex: 0 0 auto; 
-        width: auto;
-        padding: 10px 16px; 
-        font-size: 14px; 
-        border-radius: 10px;
-      }
-
-      .tab-panel, .about-standalone-card, .portfolio-section { padding: 20px 14px; border-radius: 14px; }
-      
-      .portfolio-section .scroll-hint {
-        display: block;
-        margin-top: -10px;
-        margin-bottom: 12px;
-      }
-
-      h2 { font-size: 19px; }
-      
-      .video-grid, .shorts-grid, .sns-grid { 
-        grid-template-columns: 1fr !important; 
-        gap: 14px !important;
-      }
-    }
-  </style>
+.video-info{flex-direction:row;align-items:center;justify-content:space-between}.external-icon{font-size:16px;text-decoration:none;color:#287b80;padding:0 4px;flex:none}.external-icon:hover{color:#233d42}
+.schedule-card{background:#fffefa;border:1px solid var(--line);border-radius:16px;padding:clamp(16px,3vw,32px);box-shadow:var(--shadow);min-width:0}.schedule-jp{font-size:.55em;color:var(--muted);font-weight:400;margin-left:8px}.schedule-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}.schedule-summary>div{padding:14px;background:#edf6f3;border:1px solid #dce8e5;border-radius:10px}.schedule-summary small,.schedule-summary strong{display:block}.schedule-summary small{color:var(--muted)}.schedule-summary strong{color:var(--accent);font-size:15px}.calendar-head{display:flex;align-items:center;gap:8px;margin-bottom:12px}.calendar-head strong{flex:1;text-align:center;font-size:18px}.calendar-head button{border:1px solid var(--line);border-radius:7px;background:white;color:var(--accent);padding:6px 12px;font-weight:700}.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}.calendar-grid .weekday{text-align:center;font-size:12px;color:var(--muted);padding:4px}.calendar-day{min-height:54px;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--txt);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px 0;font-size:13px;gap:2px}.calendar-day small{font-size:10px;white-space:nowrap;color:inherit}.calendar-day.today{border:2px solid var(--accent)}.calendar-day.selected{outline:2px solid var(--accent);outline-offset:1px}.calendar-day.open{background:#e4f4ed;color:#28654b}.calendar-day.busy{background:#fff0d7;color:#865815}.calendar-day.full{background:#fce7e5;color:#a14a45}.calendar-day.unknown{background:#f5f6f5;color:#677472}.calendar-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--muted)}.calendar-legend span{display:flex;align-items:center;gap:5px}.dot{width:9px;height:9px;border-radius:50%;display:inline-block;background:#aab6b4}.dot.open{background:#50a881}.dot.busy{background:#d8aa53}.dot.full{background:#d17a74}.schedule-foot{font-size:12px}.media iframe{width:100%;height:100%;display:block;border:0}.local-video-note{font-size:12px;color:#8a5a25;background:#fff2df;border-radius:8px;padding:12px;margin-bottom:12px}@media(max-width:480px){.calendar-day{min-height:45px}.calendar-day small{font-size:9px}.calendar-grid{gap:3px}.schedule-summary>div{padding:9px}.schedule-summary strong{font-size:13px}.calendar-head button{padding:5px 8px}}
+.calendar-day.off{background:#e6e9ed;color:#52606d}.dot.off{background:#8593a2}</style>
 </head>
 <body>
-
 <div class="wrapper">
-  
-  <!-- 1. 상단 스튜디오 브랜드 패널 -->
-  <div class="brand-header-card">
-    <img src="logo.jpg" alt="HR SOUND Logo" class="brand-logo-img" onerror="this.style.display='none'">
-    <div class="brand-info">
-      <div class="brand-title">HR SOUND</div>
-      <div class="brand-subtitle">High-Quality Vocal Editing & Mixing Studio</div>
-      <div class="brand-desc">
-        안녕하세요. 다양한 Sound 관련 작업을 제공해드리는 스튜디오 <strong>HR SOUND</strong>입니다.<br>
+<!-- 1. 상단 스튜디오 브랜드 패널 -->
+<div class="brand-header-card">
+<img alt="HR SOUND Logo" class="brand-logo-img" onerror="this.style.display='none'" src="logo.jpg"/>
+<div class="brand-info"><div class="eyebrow">HR SOUND  /  INDEPENDENT MUSIC STUDIO</div>
+<div class="brand-title">HR SOUND</div>
+<div class="brand-subtitle">Vocal Editing / Mixing / Mastering</div>
+<div class="hero-jp" lang="ja">歌声を、ひとつの作品へ。</div><div class="brand-desc">
+        안녕하세요. 다양한 Sound 관련 작업을 제공해드리는 스튜디오 <strong>HR SOUND</strong>입니다.<br/>
         다양한 작업물을 최대한 만족도 높게 제공해드리기 위해 최선을 다하고 있습니다.
       </div>
-    </div>
-  </div>
-
-  <!-- 2. 독립형 ABOUT STUDIO 카드 -->
-  <div id="about-section" class="about-standalone-card">
-    <h2> ABOUT HR SOUND</h2>
-    <p>대구에서 녹음실을 운영하고 있으며 라이브 엔지니어링 및 Recording, Editing, Mix , Mastering 을 제공해 드리고 있습니다.</p>
-
-    <div class="info-box">
-       <strong>특징</strong><br>
-       Pro Tools / Melodyne / Auto-Tune 기반 정밀 파형 튜닝<br>
-       iZotope RX 11 & Acon Digital & Protools 수작업 립노이즈 및 미세 잡음 완벽 제어<br>
+<div class="hero-actions"><button onclick="scrollToElement('portfolio-section')">작업물 듣기 ↗</button><button onclick="goPrice()">가격 및 견적</button><button onclick="scrollToElement('schedule-section')">작업 일정</button></div></div>
+<div aria-hidden="true" class="hero-art"><svg viewbox="0 0 240 240" xmlns="http://www.w3.org/2000/svg"><defs><lineargradient id="disc" x2="1" y2="1"><stop stop-color="#bcdfe0"></stop><stop offset=".5" stop-color="#ffe2ce"></stop><stop offset="1" stop-color="#a9d4e1"></stop></lineargradient></defs><circle cx="120" cy="120" fill="none" r="104" stroke="#a0c6ca" stroke-dasharray="2 7"></circle><circle cx="120" cy="120" fill="url(#disc)" r="89" stroke="#83b2bb"></circle>
+<g fill="none" opacity=".65" stroke="#83b2bb"><circle cx="120" cy="120" r="81"></circle><circle cx="120" cy="120" r="75"></circle><circle cx="120" cy="120" r="67"></circle><circle cx="120" cy="120" r="58"></circle><circle cx="120" cy="120" r="49"></circle></g><circle cx="120" cy="120" fill="#fffdfb" r="34" stroke="#a0c6ca"></circle><circle cx="120" cy="120" fill="#528d99" r="5"></circle><g stroke="#528d99" stroke-linecap="round" stroke-width="2"><path d="M101 119v7m7-12v17m7-23v28m10-24v20m7-15v10m7-8v6"></path></g><g fill="#78a9b3"><path d="M205 20l3 10 10 3-10 3-3 10-3-10-10-3 10-3zM25 173l3 10 10 3-10 3-3 10-3-10-10-3 10-3z"></path><circle cx="218" cy="165" r="3"></circle><circle cx="31" cy="55" r="3"></circle></g></svg></div></div><div class="stats"><div class="stat"><strong>87</strong><small>보유 포트폴리오</small></div><div class="stat"><strong>3</strong><small>서비스 타입</small></div><div class="stat"><strong>5</strong><small>작업 카테고리</small></div></div>
+<!-- 2. 독립형 ABOUT STUDIO 카드 -->
+<div class="about-standalone-card" id="about-section">
+<h2> ABOUT HR SOUND </h2>
+<p>대구에서 녹음실을 운영하고 있으며 라이브 엔지니어링 및 Recording, Editing, Mix , Mastering 을 제공해 드리고 있습니다.</p>
+<div class="info-box">
+<strong>특징</strong><br/>
+       Pro Tools / Melodyne / Auto-Tune 기반 정밀 파형 튜닝<br/>
+       iZotope RX 11 &amp; Acon Digital &amp; Protools 수작업 립노이즈 및 미세 잡음 완벽 제어<br/>
        1:1 디테일 피드백 반영 및 레퍼런스 or 엔지니어링 맞춤형 톤매칭/믹싱 제공
     </div>
-  </div>
-
-  <!-- 3. 메인 CONSOLE 레이아웃 -->
-  <div class="container">
-    <!-- 좌측 메뉴 -->
-    <div class="menu-wrapper">
-      <div class="scroll-hint">
-        <span> 옆으로 스크롤하여 메뉴 이동</span>
-      </div>
-      
-      <div class="menu">
-        <div class="menu-header">
-          <div class="eq-bars">
-            <div class="eq-bar"></div>
-            <div class="eq-bar"></div>
-            <div class="eq-bar"></div>
-          </div>
+</div><section class="schedule-card" id="schedule-section"><div class="section-kicker">COMMISSION / SCHEDULE</div><h2>작업 일정 <span class="schedule-jp" lang="ja">制作スケジュール</span></h2><div class="schedule-summary"><div><small>현재 접수 상태</small><strong id="schedule-status">확인 중</strong></div><div><small>가장 빠른 작업 가능일</small><strong id="schedule-next">문의 후 안내</strong></div></div><div class="calendar-head"><button aria-label="이전 달" id="cal-prev" type="button">‹</button><strong aria-live="polite" id="cal-month"></strong><button aria-label="다음 달" id="cal-next" type="button">›</button><button id="cal-today" type="button">이번 달</button></div><div class="calendar-grid" id="calendar-grid"></div><div class="calendar-legend"><span><i class="dot open"></i>접수 가능</span><span><i class="dot busy"></i>작업 중</span><span><i class="dot full"></i>예약 마감</span><span><i class="dot off"></i>휴무</span><span><i class="dot unknown"></i>미정</span></div><p aria-live="polite" id="calendar-detail">날짜를 선택하면 공개된 일정 상태를 확인할 수 있습니다.</p><p id="sync-note" aria-live="polite" class="schedule-foot"></p><p class="schedule-foot">일정은 예약 확정 상황에 따라 변경될 수 있습니다. 정확한 작업 가능일은 아트머그 문의로 확인해 주세요.</p></section>
+<!-- 3. 메인 CONSOLE 레이아웃 -->
+<div class="container">
+<!-- 좌측 메뉴 -->
+<div class="menu-wrapper">
+<div class="scroll-hint">
+<span> 옆으로 스크롤하여 메뉴 이동</span>
+</div>
+<div class="menu">
+<div class="menu-header">
+<div class="eq-bars">
+<div class="eq-bar"></div>
+<div class="eq-bar"></div>
+<div class="eq-bar"></div>
+</div>
           CONSOLE
         </div>
-        <div class="menu-inner">
-          <button class="tab-btn active" onclick="openTab('form', this)">문의 양식</button>
-          <button class="tab-btn" onclick="openTab('price', this)">Price & Type</button>
-          <button class="tab-btn" onclick="openTab('notice', this)">Notice</button>
-          <button class="tab-btn" onclick="openTab('equipment', this)">장비 List</button>
-          <button class="tab-btn scroll-link-btn" onclick="scrollToElement('portfolio-section')"> Portfolio</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 우측 메인 콘텐츠 패널 -->
-    <div class="content">
-      
-      <!-- FORM -->
-      <div id="form" class="tab-panel active">
-        <h2> 문의 양식</h2>
-        <p style="color:#ea580c; font-weight:bold; margin-bottom:12px;"> 아래 안내사항을 읽으신 뒤 내용 작성 및 녹음 파일과 함께 문의 바랍니다.</p>
-        
-        <div class="form-box">
-          <strong>1. 곡 제목 / 원곡 링크</strong><br>
-          (작업 곡 제목 및 원곡 유튜브/링크 기입)<br><br>
-          
-          <strong>2. 업로드 예정 플랫폼 주소</strong><br>
-          (YouTube, SoundCloud 등 게시 플랫폼 주소)<br><br>
-          
-          <strong>3. 보컬 에디팅 및 인공화음 여부</strong><br>
-          - 기본적으로 원곡 기반 기계음이 느껴지지 않는 선에서 타이트하게 보정합니다.<br>
-          - 부른 느낌을 살린 자연스러운 연출 희망 시 별도 세부사항 기재 (미필요시 'X').<br>
-          - 인공화음 추가 필요 여부 기입.<br><br>
-          
-          <strong>4. 작업 방향 및 요청 사항 (선택 Type 기재)</strong><br>
-          원하시는 사운드 톤앤매너, 레퍼런스, 분위기('묵직하게', '시원하게' 등) 작성.<br>
-          (별도 요청이 없을 시 엔지니어의 해석과 스타일에 따라 진행됩니다)<br><br>
-          
-          <strong>5. 빠른마감 여부</strong><br>
+<div class="menu-inner">
+<button class="tab-btn active" onclick="openTab('form', this)">문의 양식</button>
+<button class="tab-btn" onclick="openTab('price', this)">Price &amp; Type</button>
+<button class="tab-btn" onclick="openTab('notice', this)">Notice</button>
+<button class="tab-btn" onclick="openTab('equipment', this)">장비 List</button>
+<button class="tab-btn scroll-link-btn" onclick="scrollToElement('portfolio-section')"> Portfolio</button>
+<button class="tab-btn scroll-link-btn" onclick="scrollToElement('schedule-section')">작업 일정</button></div>
+</div>
+</div>
+<!-- 우측 메인 콘텐츠 패널 -->
+<div class="content">
+<!-- FORM -->
+<div class="tab-panel active" id="form">
+<h2> 문의 양식</h2>
+<p style="color:#ea580c; font-weight:bold; margin-bottom:12px;"> 아래 안내사항을 읽으신 뒤 내용 작성 및 녹음 파일과 함께 문의 바랍니다.</p>
+<div class="form-box">
+<strong>1. 곡 제목 / 원곡 링크</strong><br/>
+          (작업 곡 제목 및 원곡 유튜브/링크 기입)<br/><br/>
+<strong>2. 업로드 예정 플랫폼 주소</strong><br/>
+          (YouTube, SoundCloud 등 게시 플랫폼 주소)<br/><br/>
+<strong>3. 보컬 에디팅 및 인공화음 여부</strong><br/>
+          - 기본적으로 원곡 기반 기계음이 느껴지지 않는 선에서 타이트하게 보정합니다.<br/>
+          - 부른 느낌을 살린 자연스러운 연출 희망 시 별도 세부사항 기재 (미필요시 'X').<br/>
+          - 인공화음 추가 필요 여부 기입.<br/><br/>
+<strong>4. 작업 방향 및 요청 사항 (선택 Type 기재)</strong><br/>
+          원하시는 사운드 톤앤매너, 레퍼런스, 분위기('묵직하게', '시원하게' 등) 작성.<br/>
+          (별도 요청이 없을 시 엔지니어의 해석과 스타일에 따라 진행됩니다)<br/><br/>
+<strong>5. 빠른마감 여부</strong><br/>
           (빠른마감 필요 시 기입)
-        </div>
-      </div>
-
-      <!-- PRICE & TYPE -->
-      <div id="price" class="tab-panel">
-        <h2> PRICE & TYPE</h2>
-        <p>작업 난이도 및 보컬 에디팅 디테일에 따른 세부 Type 구분 및 가격 안내입니다.</p>
-
-        <!-- Premium Type -->
-        <h3><span class="badge badge-premium">Premium</span> Premium Type</h3>
-        <p style="font-weight:700; color:#4f46e5; margin-bottom:8px;">
+        </div><button class="copy-btn" onclick="copyForm(this)" style="margin-top:14px" type="button">문의 양식 복사</button>
+</div>
+<!-- PRICE & TYPE -->
+<div class="tab-panel" id="price">
+<h2> PRICE &amp; TYPE</h2>
+<p>작업 난이도 및 보컬 에디팅 디테일에 따른 세부 Type 구분 및 가격 안내입니다.</p><div class="estimate"><div class="eyebrow">ESTIMATE / 예상 견적</div><div class="estimate-grid"><label>작업 타입<select id="est-type"><option>Standard</option><option>Premium</option><option>Lite</option></select></label><label>작업 범위<select id="est-service"><option value="both">Edit + Mix + Master</option><option value="edit">Edit</option><option value="mix">Mix + Master</option></select></label><label>참여 인원<input id="est-people" max="100" min="1" type="number" value="1"/></label></div><output aria-live="polite" id="est-result"></output><p>기본 요금 및 추가 인원 비용 기준의 예상 금액입니다. 별도 요청 사항은 문의 시 확정됩니다.</p></div>
+<!-- Premium Type -->
+<h3><span class="badge badge-premium">Premium</span> Premium Type</h3>
+<p style="font-weight:700; color:#4f46e5; margin-bottom:8px;">
            Edit: 65,000원 (인당 추가 40,000원) | Mix + Master: 85,000원 (인당 추가 50,000원)
         </p>
-        <details>
-          <summary>Premium Type 세부 작업 공정</summary>
-          <div class="type-desc">
-            <strong> Edit:</strong> Pro Tools 기반 정밀 파형튠(박자) → Melodyne Studio → Auto Tune Graph Mode & Repitch → Pro Tools Pencil Tool & iZotope RX 11 / Acon Digital (립노이즈 및 잡음 수작업 일대일 제거) → Inst & Vocal Rough Mix<br>
-            <strong> Mix:</strong> Vocal Automation (곡의 기승전결에 따른 세밀한 보컬 수작업 제어로 타격감과 감정선 극대화) → 레퍼런스 맞춤 톤매칭 → 전체 밸런스 조정 → Mix Bus 작업<br>
-            <strong> Master:</strong> 단순히 볼륨을 높이는 것에 그치지 않고 전체적인 입체감과 완성도를 끌어올리는 정밀 마스터링
+<details>
+<summary>Premium Type 세부 작업 공정</summary>
+<div class="type-desc">
+<strong> Edit:</strong> Pro Tools 기반 정밀 파형튠(박자) → Melodyne Studio → Auto Tune Graph Mode &amp; Repitch → Pro Tools Pencil Tool &amp; iZotope RX 11 / Acon Digital (립노이즈 및 잡음 수작업 일대일 제거) → Inst &amp; Vocal Rough Mix<br/>
+<strong> Mix:</strong> Vocal Automation (곡의 기승전결에 따른 세밀한 보컬 수작업 제어로 타격감과 감정선 극대화) → 레퍼런스 맞춤 톤매칭 → 전체 밸런스 조정 → Mix Bus 작업<br/>
+<strong> Master:</strong> 단순히 볼륨을 높이는 것에 그치지 않고 전체적인 입체감과 완성도를 끌어올리는 정밀 마스터링
           </div>
-        </details>
-
-        <!-- Premium 예시 영상 3개 -->
-        <div class="video-grid" style="margin-top: 14px; margin-bottom: 28px;">
-          <div class="video-item">
-            <iframe src="https://www.youtube.com/embed/blEmA-0HnC4" frameborder="0" allowfullscreen loading="lazy"></iframe>
-            <div class="video-info"><span class="work-tag">Premium Sample 01</span></div>
-          </div>
-          <div class="video-item">
-            <iframe src="https://www.youtube.com/embed/vqYD50L4fXo" frameborder="0" allowfullscreen loading="lazy"></iframe>
-            <div class="video-info"><span class="work-tag">Premium Sample 02</span></div>
-          </div>
-          <div class="video-item">
-            <iframe src="https://www.youtube.com/embed/VSWv_l3lMY8" frameborder="0" allowfullscreen loading="lazy"></iframe>
-            <div class="video-info"><span class="work-tag">Premium Sample 03</span></div>
-          </div>
-        </div>
-
-        <!-- Standard Type -->
-        <h3><span class="badge badge-standard">Standard</span> Standard Type (기본 단독)</h3>
-        <p style="font-weight:700; color:#4f46e5; margin-bottom:8px;">
+</details>
+<!-- Premium 예시 영상 3개 -->
+<div class="video-grid" style="margin-top: 14px; margin-bottom: 28px;">
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/blEmA-0HnC4" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Premium Sample 01</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=blEmA-0HnC4" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/vqYD50L4fXo" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Premium Sample 02</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=vqYD50L4fXo" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/VSWv_l3lMY8" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Premium Sample 03</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=VSWv_l3lMY8" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+</div>
+<!-- Standard Type -->
+<h3><span class="badge badge-standard">Standard</span> Standard Type (기본 단독)</h3>
+<p style="font-weight:700; color:#4f46e5; margin-bottom:8px;">
            Edit: 35,000원 (인당 추가 25,000원) | Mix + Master: 40,000원 (인당 추가 25,000원)
         </p>
-        <details>
-          <summary>Standard Type 세부 작업 공정</summary>
-          <div class="type-desc">
-            <strong> Edit:</strong> Melodyne Studio (음정 & 박자) → Auto Tune Graph Mode & Repitch → iZotope RX 11 / Acon Digital (잡음 일괄 제거) → Inst & Vocal Rough Mix<br>
-            <strong> Mix:</strong> 레퍼런스 및 보컬에 맞춘 이상적인 톤매칭 → 전체 밸런스 조정 → Mix Bus 작업<br>
-            <strong> Master:</strong> 레퍼런스 기준 완성도 높은 밸런스 마스터링
+<details>
+<summary>Standard Type 세부 작업 공정</summary>
+<div class="type-desc">
+<strong> Edit:</strong> Melodyne Studio (음정 &amp; 박자) → Auto Tune Graph Mode &amp; Repitch → iZotope RX 11 / Acon Digital (잡음 일괄 제거) → Inst &amp; Vocal Rough Mix<br/>
+<strong> Mix:</strong> 레퍼런스 및 보컬에 맞춘 이상적인 톤매칭 → 전체 밸런스 조정 → Mix Bus 작업<br/>
+<strong> Master:</strong> 레퍼런스 기준 완성도 높은 밸런스 마스터링
           </div>
-        </details>
-
-        <!-- Standard 예시 영상 3개 -->
-        <div class="video-grid" style="margin-top: 14px; margin-bottom: 28px;">
-          <div class="video-item">
-            <iframe src="https://www.youtube.com/embed/gxQaAxLDk3c" frameborder="0" allowfullscreen loading="lazy"></iframe>
-            <div class="video-info"><span class="work-tag">Standard Sample 01</span></div>
-          </div>
-          <div class="video-item">
-            <iframe src="https://www.youtube.com/embed/Cebmc2rVvBo" frameborder="0" allowfullscreen loading="lazy"></iframe>
-            <div class="video-info"><span class="work-tag">Standard Sample 02</span></div>
-          </div>
-          <div class="video-item">
-            <iframe src="https://www.youtube.com/embed/yLfPaoGvKns" frameborder="0" allowfullscreen loading="lazy"></iframe>
-            <div class="video-info"><span class="work-tag">Standard Sample 03</span></div>
-          </div>
-        </div>
-
-        <!-- Lite Type -->
-        <h3><span class="badge badge-lite">Lite</span> Lite Type</h3>
-        <p style="font-weight:700; color:#4f46e5; margin-bottom:8px;">
+</details>
+<!-- Standard 예시 영상 3개 -->
+<div class="video-grid" style="margin-top: 14px; margin-bottom: 28px;">
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/gxQaAxLDk3c" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Standard Sample 01</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=gxQaAxLDk3c" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Cebmc2rVvBo" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Standard Sample 02</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=Cebmc2rVvBo" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/yLfPaoGvKns" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Standard Sample 03</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=yLfPaoGvKns" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+</div>
+<!-- Lite Type -->
+<h3><span class="badge badge-lite">Lite</span> Lite Type</h3>
+<p style="font-weight:700; color:#4f46e5; margin-bottom:8px;">
            Edit: 25,000원 (인당 추가 20,000원) | Mix + Master: 15,000원 (인당 추가 10,000원)
         </p>
-        <details>
-          <summary>Lite Type 세부 작업 공정</summary>
-          <div class="type-desc">
-            Lite Type은 박자 수정을 최소화하고 음정 보정 위주로 진행됩니다. HR Sound 독자 프리셋을 적용하여 가볍게 작업하시거나 연출감을 테스트하기에 적합합니다.<br>
-            <strong> Edit:</strong> Melodyne Studio → iZotope RX 11 / Acon Digital (잡음 일괄 제거) → Inst & Vocal Rough Mix<br>
-            <strong> Mix/Master:</strong> 독자 프리셋 적용 → 밸런스 조정 → 러프 마스터링
+<details>
+<summary>Lite Type 세부 작업 공정</summary>
+<div class="type-desc">
+            Lite Type은 박자 수정을 최소화하고 음정 보정 위주로 진행됩니다. HR Sound 독자 프리셋을 적용하여 가볍게 작업하시거나 연출감을 테스트하기에 적합합니다.<br/>
+<strong> Edit:</strong> Melodyne Studio → iZotope RX 11 / Acon Digital (잡음 일괄 제거) → Inst &amp; Vocal Rough Mix<br/>
+<strong> Mix/Master:</strong> 독자 프리셋 적용 → 밸런스 조정 → 러프 마스터링
           </div>
-        </details>
-
-        <!-- Lite 예시 영상 1개 + 준비중 2개 -->
-        <div class="video-grid" style="margin-top: 14px;">
-          <div class="video-item">
-            <iframe src="https://www.youtube.com/embed/-VPYWgE49tw" frameborder="0" allowfullscreen loading="lazy"></iframe>
-            <div class="video-info"><span class="work-tag">Lite Sample 01</span></div>
-          </div>
-          
-          <div class="sns-card placeholder" style="min-height: auto; height: 100%;">
-            <div class="placeholder-content">
-              <div class="placeholder-text">COMING SOON</div>
-              <div class="placeholder-subtext">샘플 영상 준비 중입니다.</div>
-            </div>
-          </div>
-
-          <div class="sns-card placeholder" style="min-height: auto; height: 100%;">
-            <div class="placeholder-content">
-              <div class="placeholder-text">COMING SOON</div>
-              <div class="placeholder-subtext">샘플 영상 준비 중입니다.</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- NOTICE -->
-      <div id="notice" class="tab-panel">
-        <h2> NOTICE</h2>
-        <ul>
-          <li><strong>수정 횟수:</strong> 기본 3회 무료 제공 (이후 추가금 발생). 피드백 전달 시 한 번에 정리해서 전달 부탁드립니다. (작업자 과실 수정은 횟수 차감 제외)</li>
-          <li><strong>작업 기한:</strong> 솔로 및 듀엣 기준 1차 결과물 전달까지 <strong>5일 ~ 최대 2주</strong> 소요됩니다.</li>
-          <li><strong>기본 트랙 수:</strong> MR 제외 메인 보컬 포함 <strong>최대 5트랙</strong> 기준입니다. (LR 분할, 숨소리 분할 트랙은 1트랙으로 산정)</li>
-          <li><strong>기본 적용 Type:</strong> 별도 지정이 없으실 경우 <u>Standard 타입</u>으로 진행됩니다.</li>
-          <li><strong>작업물은 포트폴리오로 사용될 수 있음을 미리 말씀드립니다.</li>
-        </ul>
-      </div>
-
-      <!-- EQUIPMENT LIST -->
-      <div id="equipment" class="tab-panel">
-        <h2> 장비 List</h2>
-        <p>HR SOUND에서 최상의 사운드 품질을 구현하기 위해 사용하는 핵심 프로페셔널 하드웨어 및 소프트웨어 환경입니다.</p>
-        <p>Software는 전부 구매한 제품 만 작업에 사용하고 있습니다.</p>
-        
-        <div class="equipment-grid">
-          <div class="equipment-card">
-            <div class="equipment-card-title"> Microphones & Preamps</div>
-            <ul>
-              <li>Neumann U87 Ai (Black)</li>
-              <li>AKG C414 XL2</li>
-              <li>Neve 1073 SPX</li>
-              <li>SSL Pure Drive Quad</li>
-            </ul>
-          </div>
-
-          <div class="equipment-card">
-            <div class="equipment-card-title"> Hardware Processors</div>
-            <ul>
-              <li>dbx 160SL</li>
-              <li>Warm Audio WA76</li>
-              <li>UREI 7110</li>
-            </ul>
-          </div>
-
-          <div class="equipment-card">
-            <div class="equipment-card-title"> Audio Interface & Monitoring</div>
-            <ul>
-              <li>Focusrite Red 16Line</li>
-              <li>RME ADI-2 Pro FS (Master Converter)</li>
-              <li>Antelope Discrete 4 (Master Clock)</li>
-              <li>Genelec 8341 (GLM Calibrated)</li>
-              <li>Sennheiser HD600, Aune AR5000 </li>
-            </ul>
-          </div>
-
-          <div class="equipment-card">
-            <div class="equipment-card-title"> Workstation & Software</div>
-            <ul>
-              <li>Apple Mac Studio (M1 Max)</li>
-              <li>Pro Tools Studio (Perpetual)</li>
-              <li>Melodyne Studio / Auto-Tune Pro 10 / RePitch</li>
-              <li>Acustica Audio & iZotope RX / Acon Digital Suites</li>
-              <li>Waves & Plugin Alliance & Slate Digital & SSL & UAD & ETC </li>
-
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- 4. 하단 독립 포트폴리오 섹션 -->
-  <div id="portfolio-section" class="portfolio-section">
-    <h2> PORTFOLIO ARCHIVE</h2>
-    
-    <!-- 모바일 스크롤 안내 문구 -->
-    <div class="scroll-hint">
-      <span> 옆으로 스크롤하여 메뉴 이동</span>
-    </div>
-
-    <!-- 서브 탭 Navigation -->
-    <div class="sub-tab-nav">
-      <button class="sub-tab-btn active" onclick="openSubTab('tab-mr-track', this)"> MR Track Work</button>
-      <button class="sub-tab-btn" onclick="openSubTab('tab-master', this)"> Master Work</button>
-      <button class="sub-tab-btn" onclick="openSubTab('tab-shorts', this)"> Shorts & Clip</button>
-      <button class="sub-tab-btn" onclick="openSubTab('tab-multitrack', this)"> Multi-Track Work</button>
-      <button class="sub-tab-btn" onclick="openSubTab('tab-livetrack', this)"> Live Track Work</button>
-    </div>
-
-    <!-- ================================================================= -->
-    <!-- 1. MR Track Work (Solo, Duet, Group) -->
-    <!-- ================================================================= -->
-    <div id="tab-mr-track" class="sub-tab-content active">
-      
-      <!-- 빠른 이동 하이퍼링크 버튼 -->
-      <div class="quick-jump-nav">
-        <span class="quick-jump-label">빠른 이동:</span>
-        <button class="quick-jump-btn" onclick="scrollToElement('section-solo')">Solo</button>
-        <button class="quick-jump-btn" onclick="scrollToElement('section-duet')">Duet</button>
-        <button class="quick-jump-btn" onclick="scrollToElement('section-group')">Group</button>
-      </div>
-
-      <!-- [1-1] Solo Section -->
-      <div id="section-solo" class="section-divider"> Solo</div>
-      <div class="video-grid">
-
-        <!-- [Solo 01] 헤라헤라 - 데몬로드 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/NRhVSaM5lZc" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 02] ofStar _Hot Limit -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/6UgBpSv9QqM" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 03] 욤욤 - 카마도 네즈코의 노래 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/RBfeEXZKX68" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 04] 들켯어 - 또랑이 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/-nvnm6U6HBE" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 05] 도손 - 지금부터 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/OlxrTardYqo" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 06] 비비디바 - 유스  -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/cTVuBsYovRA" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + 인공화음 + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 07] sonoto - g4L  -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/SW9QnUWWQKw" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 08] 욤욤 - POP IN 2 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/OosZeIGF4_w" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 09] 반햐다 - 고양이 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/ggeZMQIl6Vo" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 10] Boro - Awake -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/NlxxsFSiGu0" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 11] 욤욤 - 유령도쿄 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/nIDKgfIl7uE" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 12] 여은 - 진흙속에 피다 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/gW4jPTIlaDI" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 13] ofStar - 아침을 마시다 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/s1Jm8b8fKgk" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 14] 한겨울 - 공주열차 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/tn2oqAkFpjU" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 15] Sonoto -침식 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/a15ODH6sSaw" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 16] 헤라헤라 - 비한앵 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/YtO2m8W0iLE" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 17] ofStar - Hide and Seek -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/AMGWruSQcrE" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 18] Boro - 그당행 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/19WPBI_X-uk" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 19] 타나베 하루 - 망심 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/F_YdazVYTlk" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 20]eulb - Love it -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/aqKW-8gRr-k" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 21] boro - 마지카 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/v4_QV87j478" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 22] 달다너구리 - Fuel -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/4M9ah0m3WQE" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 23] Enryu - 당사자 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/E1pCZOGREEI" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 24] 헤라헤라 - Iris Out -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/Vifg1ZwH_KQ" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 25] 초연 - 괴피숲 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/S9TzDlTUfkg" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 26] 달다너구리 - 조화 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/Elv8XYyvegg" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 27] 이상 - 로원호  -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/t3JReoWheTk" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 28] 달의하루-프시   -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/Gs0EHbt873k" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 29] 하토하토- 프시 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/9ffuan83EWM" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 30] 사랑의말 - 아이미 | Edit + Mix + Master -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/XPcWIDJjEMQ" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-         <!-- [Solo 31] Sonoto - 짐승의 블루스 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/IgG1bL3_Vgw" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 32] 이상 - 격창 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/JxFIIDvXSxQ" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 33] ofStar - about me -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/9JUCPnFQhnE" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 34] Sonoto - 죄와 벌 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/-jSPqhvL530" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 35] 헤라헤라 - 무지개 하늘 걸어 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/5WP9DWeZzTU" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 36] 프시 - fall in love -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/tpKpJj3zEoY" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 37] 김구름 - 히비카세  -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/rx6EsqKiLH8" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + 인공화음 + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 38] 루페 - 아이보리 |  -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/wK5F2mLZKOE" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Solo 39] 초연 - 그저 네게 맑아라 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/dfFZbD1tnJ4" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-      </div>
-
-      <!-- [1-2] Duet Section -->
-      <div id="section-duet" class="section-divider"> Duet</div>
-      <div class="video-grid">
-
-        <!-- [Duet 01] ofStar & 우엉 - 이치난 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/lWLtJiM82b8" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Duet 02] 욤욤 카리오 - 멜티랜드 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/_bZ20qW4pLI" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Duet 03] 곤오, 산호초 - 힛온샷 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/PgJLgyQeVa4" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Duet 04] 욤욤,초연 - 팁시 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/04jz08YdOIM" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Duet 05] 여은 나노하 - 무한티켓 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/mfYCXYVLSBM" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Duet 06] 이상 ofStar - 넌센스 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/rc5qgKEUxRM" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-      </div>
-
-      <!-- [1-3] Group Section -->
-      <div id="section-group" class="section-divider"> Group</div>
-      <div class="video-grid">
-
-        <!-- [Group 01] 디피에스 - 앨인뉴 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/H1rmhyh5ois" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">(4인)Mix + Master</span></div>
-        </div>
-
-        <!-- [Group 02] 원오즈 - 지금부터 오래도록 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/cdpdanFRy7g" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">(4인)Mix + Master</span></div>
-        </div>
-
-        <!-- [Group 03] 타나베하루 - 쌀숭이땅 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/RvhsYZwLjFc" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">(3인)Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Group 04] 타나베하루 - 미메크 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/8yqcarVC82I" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">(3인)Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Group 05] 케이팝조음이 야르렁 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/qq79OlfEzeI" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">(6인)Mix + Master</span></div>
-        </div>
-
-        <!-- [Group 06] 디피에스 페인터 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/NoKIkpBmDUU" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">(21인)Mix + Master</span></div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ================================================================= -->
-    <!-- 2. Master Work -->
-    <!-- ================================================================= -->
-    <div id="tab-master" class="sub-tab-content">
-      <div class="video-grid">
-
-        <!-- [Master 01] 디피에스 - 슈가송과 비터스텝-->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/HVqbJdv2n0Y" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Master</span></div>
-        </div>
-
-        <!-- [Master 02] 여은 メビウス / キライ-->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/UvWKn9bG1_A" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Master</span></div>
-        </div>
-
-        <!-- [Master 03] 피타 - 생명에게 미움 받고 있어-->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/Cf6MVbfQx6A" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Master</span></div>
-        </div>
-
-        <!-- [Master 04] 【Team DPS】シンデレラ (Giga First Night Remix) -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/vXBubBbxTiE" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Master</span></div>
-        </div>
-
-        <!-- [Master 05] GETCHA! / SWGR x KOMORI-->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/dcXo5Fe5cSc" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Master</span></div>
-        </div>
-
-        <!-- [Master 06] 피타 그당행 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/3nWK2mACD7g" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Master</span></div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ================================================================= -->
-    <!-- 3. Shorts & Clip -->
-    <!-- ================================================================= -->
-    <div id="tab-shorts" class="sub-tab-content">
-      
-      <!-- [3-1] YouTube Shorts Section -->
-      <div class="section-divider"> YouTube Shorts</div>
-      <div class="shorts-grid">
-
-        <!-- [Shorts 01] Sonoto - 어떻게든 될것 같아 -->
-        <div class="shorts-item">
-          <iframe src="https://www.youtube.com/embed/TXeiDRy6t9U" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Shorts 02] 욤욤 - 모니터링리메이크 -->
-        <div class="shorts-item">
-          <iframe src="https://www.youtube.com/embed/lcD7SHuOu0I" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Shorts 03] LMmJuwxYa3g | Edit + Mix + Master -->
-        <div class="shorts-item">
-          <iframe src="https://www.youtube.com/embed/LMmJuwxYa3g" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Shorts 04] KiFbtRu9FRg | Mix + Master -->
-        <div class="shorts-item">
-          <iframe src="https://www.youtube.com/embed/KiFbtRu9FRg" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Shorts 05] 4147JRp6l8U | Edit + Mix + Master -->
-        <div class="shorts-item">
-          <iframe src="https://www.youtube.com/embed/4147JRp6l8U" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Shorts 06] M12S1PWQ_PM | Edit + Mix + Master -->
-        <div class="shorts-item">
-          <iframe src="https://www.youtube.com/embed/M12S1PWQ_PM" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Shorts 07] qbunv1WmeUo | Mix + Master -->
-        <div class="shorts-item">
-          <iframe src="https://www.youtube.com/embed/qbunv1WmeUo" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Shorts 08] lV-_DCEqGG4 | Edit + Mix + Master -->
-        <div class="shorts-item">
-          <iframe src="https://www.youtube.com/embed/we5CPYq7oHU" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Shorts 09] 김구름 | Mix + Master -->
-        <div class="shorts-item">
-          <iframe src="https://www.youtube.com/embed/vHr3jzxzj40" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Mix + Master</span></div>
-        </div>
-
-        <!-- [Shorts 10] CEF8zuEwTT4 | Edit + Mix + Master -->
-        <div class="shorts-item">
-          <iframe src="https://www.youtube.com/embed/CEF8zuEwTT4" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">Edit + Mix + Master</span></div>
-        </div>
-
-      </div>
-
-      <!-- [3-2] Twitter / X Clips Section -->
-      <div class="section-divider"> Twitter / X Clips(음질 열화시 X에서 시청하기로 들어주세요!)</div>
-      <div class="sns-grid">
-
-        <!-- [Twitter 01] 우엉(@Wooung_twt) - Hello, Worker | Vocal Edit + Mix -->
-        <div class="sns-card">
-          <blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
-            <p lang="ja" dir="ltr">Hello, Worker - KEI feat.巡音ルカ / 歌ってみた<a href="https://x.com/hashtag/%E3%82%A8%E3%82%A4%E3%83%97%E3%83%AA%E3%83%AB%E3%83%95%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#エイプリルフル</a> <a href="https://x.com/hashtag/cover?src=hash&amp;ref_src=twsrc%5Etfw">#cover</a> <a href="https://t.co/iaL9OmJEva">pic.twitter.com/iaL9OmJEva</a>
-            </p>&mdash; 우엉 Wooung (@Wooung_twt) 
-            <a href="https://x.com/Wooung_twt/status/2039308311632429486?ref_src=twsrc%5Etfw">April 1, 2026</a>
-          </blockquote>
-          <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
-            <span class="work-tag">Mix + Master</span>
-          </div>
-        </div>
-        
-        <!-- [Twitter 02] 콰(@kwad_ays) - マジか！ | Edit + Mix + Master -->
-        <div class="sns-card">
-          <blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
-            <p lang="ja" dir="ltr">マジか！- Azusagawa <br><br>죄송합니다 재업합ㄴ디다<br>다시 관심을 주세요 ..... <a href="https://t.co/jv6xg9JNQR">pic.twitter.com/jv6xg9JNQR</a></p>&mdash; 콰 (@kwad_ays) <a href="https://x.com/kwad_ays/status/1972657278642716694?ref_src=twsrc%5Etfw">September 29, 2025</a>
-          </blockquote>
-          <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
-            <span class="work-tag">Edit + Mix + Master</span>
-          </div>
-        </div>
-
-        <!-- [Twitter 03] 준비 중 빈 카드 -->
-        <div class="sns-card placeholder">
-          <div class="placeholder-content">
-            <div class="placeholder-icon"></div>
-            <div class="placeholder-text">COMING SOON</div>
-            <div class="placeholder-subtext">새로운 클립 작업물이 업데이트될 예정입니다.</div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- ================================================================= -->
-    <!-- 4. Multi-Track Work -->
-    <!-- ================================================================= -->
-    <div id="tab-multitrack" class="sub-tab-content">
-      <div class="video-grid">
-
-        <!-- [Multi-Track 01] Snowa - 5월의 꽃 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/dipqyUvUGNo" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">(Album)Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Multi-Track 02] 바사삭 - 아훔의 비트 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/3InPXYiMz6w" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">(Cover)Edit + Mix + Master</span></div>
-        </div>
-
-        <!-- [Multi-Track 03] 스칼렛킴 - 바람에게 묻는다 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/01Ivq45ZHIw" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">(Album)Mix + Master</span></div>
-        </div>
-
-        <!-- [Multi-Track 04] 겨울에 피는 꽃 - 종이거울 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/UlVb1wk2So4" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">(Vocaro Album)Mix + Master</span></div>
-        </div>
-
-        <!-- [Multi-Track 05] 지현 - FFS -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/Q3irTvOTTiE" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">(Album)Mix</span></div>
-        </div>
-
-        <!-- [Multi-Track 06] 스칼렛 킴 - 그 봄 위에 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/p3M2fjLuMyQ" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info"><span class="work-tag">(Album)Mix + Master</span></div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ================================================================= -->
-    <!-- 5. Live Track Work -->
-    <!-- ================================================================= -->
-    <div id="tab-livetrack" class="sub-tab-content">
-    
-      <!-- [5-1] Live Performance (YouTube) Section -->
-      <div class="section-divider">Live Performance (YouTube)</div>
-      <div class="video-grid" style="margin-bottom: 24px;">
-        
-        <!-- [Live YT 01] 우엉 - 괴수의 꽃 노래 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/fKGld8q6a6k" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info">
-            <span class="work-tag">악천후 2 Live Edit + Mix + Mastering</span>
-          </div>
-        </div>
-
-        <!-- [Live YT 02] 부꼬 - 늘 -->
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/Q8inAnwtuLs" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          <div class="video-info">
-            <span class="work-tag">OffLive Live Edit + Mix + Mastering</span>
-          </div>
-        </div>
-
-        <!-- [Live YT 03] 준비 중 빈 카드 -->
-        <div class="sns-card placeholder" style="min-height: auto; height: 100%;">
-          <div class="placeholder-content">
-            <div class="placeholder-text">COMING SOON</div>
-            <div class="placeholder-subtext">샘플 영상 준비 중입니다.</div>
-          </div>
-        </div>
-    
-      </div>
-    
-      <!-- [5-2] Live Clips (Twitter / X) Section -->
-      <div class="section-divider">Live Clips (Twitter / X)(음질 열화시 X에서 시청하기로 들어주세요!)</div>
-      <div class="sns-grid">
-
-        <!-- [Live Twitter 01] 이상(@PAPER_B0XxXxX) - 악천후 LIVE 3 (フクロウ) | Live Audio Editing -->
-        <div class="sns-card">
-          <blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
-            <p lang="ja" dir="ltr">악천후 LIVE 3<br>2026. 02. 14~15<br>フクロウ～フクロウが知らせる客가たと～ <a href="https://t.co/qrkGenGDOV">pic.twitter.com/qrkGenGDOV</a></p>&mdash; 이상 (@PAPER_B0XxXxX) <a href="https://x.com/PAPER_B0XxXxX/status/2036382726828568747?ref_src=twsrc%5Etfw">March 24, 2026</a>
-          </blockquote>
-          <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
-            <span class="work-tag">악천후 3 Live Edit + Mix + Mastering</span>
-          </div>
-        </div>
-        
-        <!-- [Live Twitter 02] ofStar(@ofStar_Sing) - 히로인 (악천후 3 Live ver.) | Live Audio Editing -->
-        <div class="sns-card">
-          <blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
-            <p lang="ja" dir="ltr">ヒロイン(히로인) - 악천후 3 Live ver. <a href="https://t.co/l8PSUJEX4K">pic.twitter.com/l8PSUJEX4K</a></p>&mdash; ofStar / off LIVE 8.23 (@ofStar_Sing) <a href="https://x.com/ofStar_Sing/status/2040015477150552235?ref_src=twsrc%5Etfw">April 3, 2026</a>
-          </blockquote>
-          <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
-            <span class="work-tag">악천후 3 Live Edit + Mix + Mastering</span>
-          </div>
-        </div>
-        
-        <!-- [Live Twitter 03] ofStar(@ofStar_Sing) - Fairytale, (악천후 3 Live ver.) | Live Audio Editing -->
-        <div class="sns-card">
-          <blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
-            <p lang="ko" dir="ltr">Fairytale, - 악천후 3 Live ver. <a href="https://t.co/qdK3nCKTdg">pic.twitter.com/qdK3nCKTdg</a></p>&mdash; ofStar / off LIVE 8.23 (@ofStar_Sing) <a href="https://x.com/ofStar_Sing/status/2058517191369388088?ref_src=twsrc%5Etfw">May 24, 2026</a>
-          </blockquote>
-          <div class="video-info" style="margin-top: 8px; border-radius: 8px;">
-            <span class="work-tag">악천후 3 Live Edit + Mix + Mastering</span>
-          </div>
-        </div>
-
-      </div>
-    
-    </div>
-
-  </div>
-
+</details>
+<!-- Lite 예시 영상 1개 + 준비중 2개 -->
+<div class="video-grid" style="margin-top: 14px;">
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-VPYWgE49tw" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Lite Sample 01</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=-VPYWgE49tw" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
 </div>
-
+<div class="sns-card placeholder" style="min-height: auto; height: 100%;">
+<div class="placeholder-content">
+<div class="placeholder-text">COMING SOON</div>
+<div class="placeholder-subtext">샘플 영상 준비 중입니다.</div>
+</div>
+</div>
+<div class="sns-card placeholder" style="min-height: auto; height: 100%;">
+<div class="placeholder-content">
+<div class="placeholder-text">COMING SOON</div>
+<div class="placeholder-subtext">샘플 영상 준비 중입니다.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- NOTICE -->
+<div class="tab-panel" id="notice">
+<h2> NOTICE</h2>
+<ul>
+<li><strong>수정 횟수:</strong> 기본 3회 무료 제공 (이후 추가금 발생). 피드백 전달 시 한 번에 정리해서 전달 부탁드립니다. (작업자 과실 수정은 횟수 차감 제외)</li>
+<li><strong>작업 기한:</strong> 솔로 및 듀엣 기준 1차 결과물 전달까지 <strong>5일 ~ 최대 2주</strong> 소요됩니다.</li>
+<li><strong>기본 트랙 수:</strong> MR 제외 메인 보컬 포함 <strong>최대 5트랙</strong> 기준입니다. (LR 분할, 숨소리 분할 트랙은 1트랙으로 산정)</li>
+<li><strong>기본 적용 Type:</strong> 별도 지정이 없으실 경우 <u>Standard 타입</u>으로 진행됩니다.</li>
+<li><strong>작업물은 포트폴리오로 사용될 수 있음을 미리 말씀드립니다.</strong></li>
+</ul>
+</div>
+<!-- EQUIPMENT LIST -->
+<div class="tab-panel" id="equipment">
+<h2> 장비 List</h2>
+<p>HR SOUND에서 최상의 사운드 품질을 구현하기 위해 사용하는 핵심 프로페셔널 하드웨어 및 소프트웨어 환경입니다.</p>
+<p>Software는 전부 구매한 제품 만 작업에 사용하고 있습니다.</p>
+<div class="equipment-grid">
+<div class="equipment-card">
+<div class="equipment-card-title"> Microphones &amp; Preamps</div>
+<ul>
+<li>Neumann U87 Ai (Black)</li>
+<li>AKG C414 XL2</li>
+<li>Neve 1073 SPX</li>
+<li>SSL Pure Drive Quad</li>
+</ul>
+</div>
+<div class="equipment-card">
+<div class="equipment-card-title"> Hardware Processors</div>
+<ul>
+<li>dbx 160SL</li>
+<li>Warm Audio WA76</li>
+<li>UREI 7110</li>
+</ul>
+</div>
+<div class="equipment-card">
+<div class="equipment-card-title"> Audio Interface &amp; Monitoring</div>
+<ul>
+<li>Focusrite Red 16Line</li>
+<li>RME ADI-2 Pro FS (Master Converter)</li>
+<li>Antelope Discrete 4 (Master Clock)</li>
+<li>Genelec 8341 (GLM Calibrated)</li>
+<li>Sennheiser HD600, Aune AR5000 </li>
+</ul>
+</div>
+<div class="equipment-card">
+<div class="equipment-card-title"> Workstation &amp; Software</div>
+<ul>
+<li>Apple Mac Studio (M1 Max)</li>
+<li>Pro Tools Studio (Perpetual)</li>
+<li>Melodyne Studio / Auto-Tune Pro 10 / RePitch</li>
+<li>Acustica Audio &amp; iZotope RX / Acon Digital Suites</li>
+<li>Waves &amp; Plugin Alliance &amp; Slate Digital &amp; SSL &amp; UAD &amp; ETC </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. 하단 독립 포트폴리오 섹션 -->
+<div class="portfolio-section" id="portfolio-section">
+<h2> PORTFOLIO ARCHIVE </h2><p class="local-video-note" hidden="" id="local-video-note">로컬 HTML 파일에서는 YouTube 재생이 제한될 수 있습니다. GitHub Pages에서 확인하거나 영상 카드의 ↗ 버튼으로 원본을 열어 주세요.</p>
+<!-- 모바일 스크롤 안내 문구 -->
+<div class="scroll-hint">
+<span> 옆으로 스크롤하여 메뉴 이동</span>
+</div>
+<!-- 서브 탭 Navigation -->
+<div class="sub-tab-nav">
+<button class="sub-tab-btn active" onclick="openSubTab('tab-mr-track', this)"> MR Track Work</button>
+<button class="sub-tab-btn" onclick="openSubTab('tab-master', this)"> Master Work</button>
+<button class="sub-tab-btn" onclick="openSubTab('tab-shorts', this)"> Shorts &amp; Clip</button>
+<button class="sub-tab-btn" onclick="openSubTab('tab-multitrack', this)"> Multi-Track Work</button>
+<button class="sub-tab-btn" onclick="openSubTab('tab-livetrack', this)"> Live Track Work</button>
+</div><div class="tools-row"><input aria-label="포트폴리오 검색" id="portfolio-search" placeholder="현재 카테고리 내 작업 유형 검색" type="search"/><span aria-live="polite" class="result-count" id="result-count"></span></div>
+<!-- ================================================================= -->
+<!-- 1. MR Track Work (Solo, Duet, Group) -->
+<!-- ================================================================= -->
+<div class="sub-tab-content active" id="tab-mr-track">
+<!-- 빠른 이동 하이퍼링크 버튼 -->
+<div class="quick-jump-nav">
+<span class="quick-jump-label">빠른 이동:</span>
+<button class="quick-jump-btn" onclick="scrollToElement('section-solo')">Solo</button>
+<button class="quick-jump-btn" onclick="scrollToElement('section-duet')">Duet</button>
+<button class="quick-jump-btn" onclick="scrollToElement('section-group')">Group</button>
+</div>
+<!-- [1-1] Solo Section -->
+<div class="section-divider" id="section-solo"> Solo</div>
+<div class="video-grid">
+<!-- [Solo 01] 헤라헤라 - 데몬로드 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/NRhVSaM5lZc" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=NRhVSaM5lZc" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 02] ofStar _Hot Limit -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/6UgBpSv9QqM" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=6UgBpSv9QqM" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 03] 욤욤 - 카마도 네즈코의 노래 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/RBfeEXZKX68" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=RBfeEXZKX68" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 04] 들켯어 - 또랑이 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-nvnm6U6HBE" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=-nvnm6U6HBE" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 05] 도손 - 지금부터 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/OlxrTardYqo" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=OlxrTardYqo" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 06] 비비디바 - 유스  -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/cTVuBsYovRA" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + 인공화음 + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=cTVuBsYovRA" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 07] sonoto - g4L  -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/SW9QnUWWQKw" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=SW9QnUWWQKw" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 08] 욤욤 - POP IN 2 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/OosZeIGF4_w" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=OosZeIGF4_w" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 09] 반햐다 - 고양이 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/ggeZMQIl6Vo" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=ggeZMQIl6Vo" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 10] Boro - Awake -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/NlxxsFSiGu0" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=NlxxsFSiGu0" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 11] 욤욤 - 유령도쿄 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/nIDKgfIl7uE" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=nIDKgfIl7uE" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 12] 여은 - 진흙속에 피다 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/gW4jPTIlaDI" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=gW4jPTIlaDI" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 13] ofStar - 아침을 마시다 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/s1Jm8b8fKgk" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=s1Jm8b8fKgk" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 14] 한겨울 - 공주열차 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/tn2oqAkFpjU" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=tn2oqAkFpjU" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 15] Sonoto -침식 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/a15ODH6sSaw" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=a15ODH6sSaw" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 16] 헤라헤라 - 비한앵 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/YtO2m8W0iLE" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=YtO2m8W0iLE" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 17] ofStar - Hide and Seek -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/AMGWruSQcrE" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=AMGWruSQcrE" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 18] Boro - 그당행 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/19WPBI_X-uk" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=19WPBI_X-uk" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 19] 타나베 하루 - 망심 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/F_YdazVYTlk" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=F_YdazVYTlk" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 20]eulb - Love it -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/aqKW-8gRr-k" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=aqKW-8gRr-k" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 21] boro - 마지카 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/v4_QV87j478" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=v4_QV87j478" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 22] 달다너구리 - Fuel -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/4M9ah0m3WQE" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=4M9ah0m3WQE" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 23] Enryu - 당사자 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/E1pCZOGREEI" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=E1pCZOGREEI" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 24] 헤라헤라 - Iris Out -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Vifg1ZwH_KQ" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=Vifg1ZwH_KQ" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 25] 초연 - 괴피숲 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/S9TzDlTUfkg" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=S9TzDlTUfkg" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 26] 달다너구리 - 조화 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Elv8XYyvegg" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=Elv8XYyvegg" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 27] 이상 - 로원호  -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/t3JReoWheTk" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=t3JReoWheTk" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 28] 달의하루-프시   -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Gs0EHbt873k" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=Gs0EHbt873k" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 29] 하토하토- 프시 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/9ffuan83EWM" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=9ffuan83EWM" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 30] 사랑의말 - 아이미 | Edit + Mix + Master -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/XPcWIDJjEMQ" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=XPcWIDJjEMQ" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 31] Sonoto - 짐승의 블루스 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/IgG1bL3_Vgw" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=IgG1bL3_Vgw" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 32] 이상 - 격창 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/JxFIIDvXSxQ" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=JxFIIDvXSxQ" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 33] ofStar - about me -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/9JUCPnFQhnE" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=9JUCPnFQhnE" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 34] Sonoto - 죄와 벌 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-jSPqhvL530" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=-jSPqhvL530" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 35] 헤라헤라 - 무지개 하늘 걸어 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/5WP9DWeZzTU" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=5WP9DWeZzTU" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 36] 프시 - fall in love -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/tpKpJj3zEoY" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=tpKpJj3zEoY" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 37] 김구름 - 히비카세  -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/rx6EsqKiLH8" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + 인공화음 + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=rx6EsqKiLH8" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 38] 루페 - 아이보리 |  -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/wK5F2mLZKOE" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=wK5F2mLZKOE" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Solo 39] 초연 - 그저 네게 맑아라 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/dfFZbD1tnJ4" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=dfFZbD1tnJ4" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+</div>
+<!-- [1-2] Duet Section -->
+<div class="section-divider" id="section-duet"> Duet</div>
+<div class="video-grid">
+<!-- [Duet 01] ofStar & 우엉 - 이치난 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/lWLtJiM82b8" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=lWLtJiM82b8" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Duet 02] 욤욤 카리오 - 멜티랜드 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/_bZ20qW4pLI" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=_bZ20qW4pLI" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Duet 03] 곤오, 산호초 - 힛온샷 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/PgJLgyQeVa4" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=PgJLgyQeVa4" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Duet 04] 욤욤,초연 - 팁시 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/04jz08YdOIM" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=04jz08YdOIM" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Duet 05] 여은 나노하 - 무한티켓 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/mfYCXYVLSBM" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=mfYCXYVLSBM" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Duet 06] 이상 ofStar - 넌센스 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/rc5qgKEUxRM" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=rc5qgKEUxRM" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+</div>
+<!-- [1-3] Group Section -->
+<div class="section-divider" id="section-group"> Group</div>
+<div class="video-grid">
+<!-- [Group 01] 디피에스 - 앨인뉴 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/H1rmhyh5ois" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">(4인)Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=H1rmhyh5ois" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Group 02] 원오즈 - 지금부터 오래도록 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/cdpdanFRy7g" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">(4인)Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=cdpdanFRy7g" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Group 03] 타나베하루 - 쌀숭이땅 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/RvhsYZwLjFc" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">(3인)Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=RvhsYZwLjFc" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Group 04] 타나베하루 - 미메크 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/8yqcarVC82I" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">(3인)Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=8yqcarVC82I" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Group 05] 케이팝조음이 야르렁 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/qq79OlfEzeI" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">(6인)Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=qq79OlfEzeI" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Group 06] 디피에스 페인터 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/NoKIkpBmDUU" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">(21인)Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=NoKIkpBmDUU" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+</div>
+</div>
+<!-- ================================================================= -->
+<!-- 2. Master Work -->
+<!-- ================================================================= -->
+<div class="sub-tab-content" id="tab-master">
+<div class="video-grid">
+<!-- [Master 01] 디피에스 - 슈가송과 비터스텝-->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/HVqbJdv2n0Y" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=HVqbJdv2n0Y" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Master 02] 여은 メビウス / キライ-->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/UvWKn9bG1_A" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=UvWKn9bG1_A" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Master 03] 피타 - 생명에게 미움 받고 있어-->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Cf6MVbfQx6A" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=Cf6MVbfQx6A" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Master 04] 【Team DPS】シンデレラ (Giga First Night Remix) -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/vXBubBbxTiE" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=vXBubBbxTiE" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Master 05] GETCHA! / SWGR x KOMORI-->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/dcXo5Fe5cSc" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=dcXo5Fe5cSc" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Master 06] 피타 그당행 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/3nWK2mACD7g" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=3nWK2mACD7g" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+</div>
+</div>
+<!-- ================================================================= -->
+<!-- 3. Shorts & Clip -->
+<!-- ================================================================= -->
+<div class="sub-tab-content" id="tab-shorts">
+<!-- [3-1] YouTube Shorts Section -->
+<div class="section-divider"> YouTube Shorts</div>
+<div class="shorts-grid">
+<!-- [Shorts 01] Sonoto - 어떻게든 될것 같아 -->
+<div class="shorts-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/TXeiDRy6t9U" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=TXeiDRy6t9U" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Shorts 02] 욤욤 - 모니터링리메이크 -->
+<div class="shorts-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/lcD7SHuOu0I" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=lcD7SHuOu0I" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Shorts 03] LMmJuwxYa3g | Edit + Mix + Master -->
+<div class="shorts-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/LMmJuwxYa3g" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=LMmJuwxYa3g" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Shorts 04] KiFbtRu9FRg | Mix + Master -->
+<div class="shorts-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/KiFbtRu9FRg" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=KiFbtRu9FRg" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Shorts 05] 4147JRp6l8U | Edit + Mix + Master -->
+<div class="shorts-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/4147JRp6l8U" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=4147JRp6l8U" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Shorts 06] M12S1PWQ_PM | Edit + Mix + Master -->
+<div class="shorts-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/M12S1PWQ_PM" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=M12S1PWQ_PM" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Shorts 07] qbunv1WmeUo | Mix + Master -->
+<div class="shorts-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/qbunv1WmeUo" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=qbunv1WmeUo" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Shorts 08] lV-_DCEqGG4 | Edit + Mix + Master -->
+<div class="shorts-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/we5CPYq7oHU" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=we5CPYq7oHU" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Shorts 09] 김구름 | Mix + Master -->
+<div class="shorts-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/vHr3jzxzj40" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=vHr3jzxzj40" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Shorts 10] CEF8zuEwTT4 | Edit + Mix + Master -->
+<div class="shorts-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/CEF8zuEwTT4" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=CEF8zuEwTT4" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+</div>
+<!-- [3-2] Twitter / X Clips Section -->
+<div class="section-divider"> Twitter / X Clips(음질 열화시 X에서 시청하기로 들어주세요!)</div>
+<div class="sns-grid">
+<!-- [Twitter 01] 우엉(@Wooung_twt) - Hello, Worker | Vocal Edit + Mix -->
+<div class="sns-card">
+<blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
+<p dir="ltr" lang="ja">Hello, Worker - KEI feat.巡音ルカ / 歌ってみた<a href="https://x.com/hashtag/%E3%82%A8%E3%82%A4%E3%83%97%E3%83%AA%E3%83%AB%E3%83%95%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#エイプリルフル</a> <a href="https://x.com/hashtag/cover?src=hash&amp;ref_src=twsrc%5Etfw">#cover</a> <a href="https://t.co/iaL9OmJEva">pic.twitter.com/iaL9OmJEva</a>
+</p>— 우엉 Wooung (@Wooung_twt) 
+            <a href="https://x.com/Wooung_twt/status/2039308311632429486?ref_src=twsrc%5Etfw">April 1, 2026</a>
+</blockquote>
+<div class="video-info" style="margin-top: 8px; border-radius: 8px;">
+<span class="work-tag">Mix + Master</span>
+<a aria-label="X에서 원본 보기" class="external-icon" href="https://x.com/Wooung_twt/status/2039308311632429486?ref_src=twsrc%5Etfw" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="X에서 원본 보기">↗</a></div>
+</div>
+<!-- [Twitter 02] 콰(@kwad_ays) - マジか！ | Edit + Mix + Master -->
+<div class="sns-card">
+<blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
+<p dir="ltr" lang="ja">マジか！- Azusagawa <br/><br/>죄송합니다 재업합ㄴ디다<br/>다시 관심을 주세요 ..... <a href="https://t.co/jv6xg9JNQR">pic.twitter.com/jv6xg9JNQR</a></p>— 콰 (@kwad_ays) <a href="https://x.com/kwad_ays/status/1972657278642716694?ref_src=twsrc%5Etfw">September 29, 2025</a>
+</blockquote>
+<div class="video-info" style="margin-top: 8px; border-radius: 8px;">
+<span class="work-tag">Edit + Mix + Master</span>
+<a aria-label="X에서 원본 보기" class="external-icon" href="https://x.com/kwad_ays/status/1972657278642716694?ref_src=twsrc%5Etfw" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="X에서 원본 보기">↗</a></div>
+</div>
+<!-- [Twitter 03] 준비 중 빈 카드 -->
+<div class="sns-card placeholder">
+<div class="placeholder-content">
+<div class="placeholder-icon"></div>
+<div class="placeholder-text">COMING SOON</div>
+<div class="placeholder-subtext">새로운 클립 작업물이 업데이트될 예정입니다.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ================================================================= -->
+<!-- 4. Multi-Track Work -->
+<!-- ================================================================= -->
+<div class="sub-tab-content" id="tab-multitrack">
+<div class="video-grid">
+<!-- [Multi-Track 01] Snowa - 5월의 꽃 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/dipqyUvUGNo" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">(Album)Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=dipqyUvUGNo" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Multi-Track 02] 바사삭 - 아훔의 비트 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/3InPXYiMz6w" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">(Cover)Edit + Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=3InPXYiMz6w" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Multi-Track 03] 스칼렛킴 - 바람에게 묻는다 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/01Ivq45ZHIw" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">(Album)Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=01Ivq45ZHIw" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Multi-Track 04] 겨울에 피는 꽃 - 종이거울 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/UlVb1wk2So4" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">(Vocaro Album)Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=UlVb1wk2So4" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Multi-Track 05] 지현 - FFS -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Q3irTvOTTiE" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">(Album)Mix</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=Q3irTvOTTiE" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Multi-Track 06] 스칼렛 킴 - 그 봄 위에 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/p3M2fjLuMyQ" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info"><span class="work-tag">(Album)Mix + Master</span><a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=p3M2fjLuMyQ" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+</div>
+</div>
+<!-- ================================================================= -->
+<!-- 5. Live Track Work -->
+<!-- ================================================================= -->
+<div class="sub-tab-content" id="tab-livetrack">
+<!-- [5-1] Live Performance (YouTube) Section -->
+<div class="section-divider">Live Performance (YouTube)</div>
+<div class="video-grid" style="margin-bottom: 24px;">
+<!-- [Live YT 01] 우엉 - 괴수의 꽃 노래 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/fKGld8q6a6k" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info">
+<span class="work-tag">악천후 2 Live Edit + Mix + Mastering</span>
+<a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=fKGld8q6a6k" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Live YT 02] 부꼬 - 늘 -->
+<div class="video-item">
+<div class="media"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Q8inAnwtuLs" title="YouTube 작업 샘플"></iframe></div>
+<div class="video-info">
+<span class="work-tag">OffLive Live Edit + Mix + Mastering</span>
+<a aria-label="YouTube에서 원본 보기" class="external-icon" href="https://www.youtube.com/watch?v=Q8inAnwtuLs" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="YouTube에서 원본 보기">↗</a></div>
+</div>
+<!-- [Live YT 03] 준비 중 빈 카드 -->
+<div class="sns-card placeholder" style="min-height: auto; height: 100%;">
+<div class="placeholder-content">
+<div class="placeholder-text">COMING SOON</div>
+<div class="placeholder-subtext">샘플 영상 준비 중입니다.</div>
+</div>
+</div>
+</div>
+<!-- [5-2] Live Clips (Twitter / X) Section -->
+<div class="section-divider">Live Clips (Twitter / X)(음질 열화시 X에서 시청하기로 들어주세요!)</div>
+<div class="sns-grid">
+<!-- [Live Twitter 01] 이상(@PAPER_B0XxXxX) - 악천후 LIVE 3 (フクロウ) | Live Audio Editing -->
+<div class="sns-card">
+<blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
+<p dir="ltr" lang="ja">악천후 LIVE 3<br/>2026. 02. 14~15<br/>フクロウ～フクロウが知らせる客가たと～ <a href="https://t.co/qrkGenGDOV">pic.twitter.com/qrkGenGDOV</a></p>— 이상 (@PAPER_B0XxXxX) <a href="https://x.com/PAPER_B0XxXxX/status/2036382726828568747?ref_src=twsrc%5Etfw">March 24, 2026</a>
+</blockquote>
+<div class="video-info" style="margin-top: 8px; border-radius: 8px;">
+<span class="work-tag">악천후 3 Live Edit + Mix + Mastering</span>
+<a aria-label="X에서 원본 보기" class="external-icon" href="https://x.com/PAPER_B0XxXxX/status/2036382726828568747?ref_src=twsrc%5Etfw" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="X에서 원본 보기">↗</a></div>
+</div>
+<!-- [Live Twitter 02] ofStar(@ofStar_Sing) - 히로인 (악천후 3 Live ver.) | Live Audio Editing -->
+<div class="sns-card">
+<blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
+<p dir="ltr" lang="ja">ヒロイン(히로인) - 악천후 3 Live ver. <a href="https://t.co/l8PSUJEX4K">pic.twitter.com/l8PSUJEX4K</a></p>— ofStar / off LIVE 8.23 (@ofStar_Sing) <a href="https://x.com/ofStar_Sing/status/2040015477150552235?ref_src=twsrc%5Etfw">April 3, 2026</a>
+</blockquote>
+<div class="video-info" style="margin-top: 8px; border-radius: 8px;">
+<span class="work-tag">악천후 3 Live Edit + Mix + Mastering</span>
+<a aria-label="X에서 원본 보기" class="external-icon" href="https://x.com/ofStar_Sing/status/2040015477150552235?ref_src=twsrc%5Etfw" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="X에서 원본 보기">↗</a></div>
+</div>
+<!-- [Live Twitter 03] ofStar(@ofStar_Sing) - Fairytale, (악천후 3 Live ver.) | Live Audio Editing -->
+<div class="sns-card">
+<blockquote class="twitter-tweet" style="margin: 0; background: transparent;">
+<p dir="ltr" lang="ko">Fairytale, - 악천후 3 Live ver. <a href="https://t.co/qdK3nCKTdg">pic.twitter.com/qdK3nCKTdg</a></p>— ofStar / off LIVE 8.23 (@ofStar_Sing) <a href="https://x.com/ofStar_Sing/status/2058517191369388088?ref_src=twsrc%5Etfw">May 24, 2026</a>
+</blockquote>
+<div class="video-info" style="margin-top: 8px; border-radius: 8px;">
+<span class="work-tag">악천후 3 Live Edit + Mix + Mastering</span>
+<a aria-label="X에서 원본 보기" class="external-icon" href="https://x.com/ofStar_Sing/status/2058517191369388088?ref_src=twsrc%5Etfw" referrerpolicy="strict-origin-when-cross-origin" rel="noopener" target="_blank" title="X에서 원본 보기">↗</a></div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">HR SOUND · VOCAL EDITING / MIXING / MASTERING</footer></div>
 <!-- Twitter Widgets 스크립트 -->
-<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
-
+<script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
 <script>
-  function openTab(tabId, btnElement) {
-    var panels = document.querySelectorAll('.tab-panel');
-    panels.forEach(function(panel) {
-      panel.classList.remove('active');
-    });
+function scrollToElement(id){document.getElementById(id)?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});}
+function stopVideos(root){root?.querySelectorAll('.media iframe').forEach(f=>{if(f.getAttribute('src')){let src=f.getAttribute('src');f.setAttribute('src',src);}});}
+function openTab(id,btn){document.querySelectorAll('.tab-panel').forEach(p=>{if(p.id!==id)stopVideos(p);p.classList.toggle('active',p.id===id);});document.querySelectorAll('.tab-btn:not(.scroll-link-btn)').forEach(b=>{b.classList.toggle('active',b===btn);b.setAttribute('aria-pressed',b===btn);});}
+function goPrice(){openTab('price',document.querySelector('.tab-btn[onclick*="price"]'));scrollToElement('price');}
+function openSubTab(id,btn){document.querySelectorAll('.sub-tab-content').forEach(p=>{if(p.id!==id)stopVideos(p);p.classList.toggle('active',p.id===id);});document.querySelectorAll('.sub-tab-btn').forEach(b=>{b.classList.toggle('active',b===btn);b.setAttribute('aria-pressed',b===btn);});document.getElementById('portfolio-search').value='';filterWorks();if(window.twttr?.widgets)window.twttr.widgets.load(document.getElementById(id));}
+function filterWorks(){let panel=document.querySelector('.sub-tab-content.active');let q=document.getElementById('portfolio-search').value.trim().toLowerCase();let n=0;panel.querySelectorAll('.video-item,.shorts-item,.sns-card').forEach(c=>{let placeholder=c.classList.contains('placeholder');let show=placeholder?!q:c.textContent.toLowerCase().includes(q);if(!show)stopVideos(c);c.hidden=!show;if(show&&!placeholder)n++;});document.getElementById('result-count').textContent=n+'개 작업물';}
+async function copyForm(btn){let text='1. 곡 제목 / 원곡 링크\n\n2. 업로드 예정 플랫폼 주소\n\n3. 보컬 에디팅 및 인공화음 여부\n\n4. 작업 방향 및 요청 사항 (선택 Type 기재)\n\n5. 빠른마감 여부';try{await navigator.clipboard.writeText(text);btn.textContent='복사 완료';setTimeout(()=>btn.textContent='문의 양식 복사',1800);}catch(e){let t=document.createElement('textarea');t.value=text;btn.after(t);t.select();btn.textContent='양식을 선택했습니다. 직접 복사해 주세요.';}}
+const rates={Premium:[65000,40000,85000,50000],Standard:[35000,25000,40000,25000],Lite:[25000,20000,15000,10000]};function estimate(){let r=rates[document.getElementById('est-type').value],s=document.getElementById('est-service').value,n=Math.max(1,Math.min(100,Math.floor(Number(document.getElementById('est-people').value)||1)))-1;let total=(s==='mix'?0:r[0]+n*r[1])+(s==='edit'?0:r[2]+n*r[3]);document.getElementById('est-result').textContent=total.toLocaleString('ko-KR')+'원';}document.querySelectorAll('.estimate select,.estimate input').forEach(e=>e.addEventListener('input',estimate));document.getElementById('portfolio-search').addEventListener('input',filterWorks);document.querySelectorAll('.tab-btn:not(.scroll-link-btn),.sub-tab-btn').forEach(b=>b.setAttribute('aria-pressed',b.classList.contains('active')));estimate();filterWorks();
 
-    var buttons = document.querySelectorAll('.tab-btn');
-    buttons.forEach(function(btn) {
-      if (!btn.classList.contains('scroll-link-btn')) {
-        btn.classList.remove('active');
+// ===== Google Calendar 공개 일정 연동: OPEN / WORK / FULL / OFF =====
+const scheduleConfig = {dates:{}};
+const calendarId = '7436af1631a54786d1452bce0262ee2998bbac06f4a31d50b84e78fe4ca15042@group.calendar.google.com';
+const calendarApiKey = 'AIzaSyAfrx6wIA5ih1YarVz3ZHJ4NintgaBJRU0';
+const labels={open:'가능',busy:'작업 중',full:'마감',off:'휴무',unknown:'미정'};
+const koreanToday=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+const kt=Object.fromEntries(koreanToday.map(p=>[p.type,p.value]));
+const todayKey=`${kt.year}-${kt.month}-${kt.day}`;
+let calYear=Number(kt.year),calMonth=Number(kt.month)-1;
+let selectedDate='';
+function drawCalendar(){const grid=document.getElementById('calendar-grid');grid.replaceChildren();document.getElementById('cal-month').textContent=`${calYear}년 ${calMonth+1}월`;for(const name of ['일','월','화','수','목','금','토']){const d=document.createElement('div');d.className='weekday';d.textContent=name;grid.append(d);}let first=new Date(calYear,calMonth,1).getDay(),last=new Date(calYear,calMonth+1,0).getDate();for(let i=0;i<first;i++)grid.append(document.createElement('div'));for(let day=1;day<=last;day++){const key=`${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;let status=scheduleConfig.dates[key]||'unknown';if(!Object.hasOwn(labels,status))status='unknown';const b=document.createElement('button');b.type='button';b.className='calendar-day '+status+(key===todayKey?' today':'')+(key===selectedDate?' selected':'');b.setAttribute('aria-label',key+' '+labels[status]);b.setAttribute('aria-pressed',key===selectedDate);const number=document.createElement('span');number.textContent=day;const tag=document.createElement('small');tag.textContent=labels[status];b.append(number,tag);b.onclick=()=>{selectedDate=key;document.getElementById('calendar-detail').textContent=key+' · '+labels[status]+(status==='unknown'?' — 문의 후 확인 가능합니다.':' — 최종 확정은 문의 바랍니다.');drawCalendar();};grid.append(b);}}
+function shiftCalendar(n){const date=new Date(calYear,calMonth+n,1);calYear=date.getFullYear();calMonth=date.getMonth();selectedDate="";drawCalendar();loadSchedule();}
+const syncNote=document.getElementById('sync-note');
+let requestSeq=0;
+const dateKey=d=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(d);
+const monthKey=(y,m)=>{const d=new Date(Date.UTC(y,m,1));return d.toISOString().slice(0,10);};
+const rank={open:1,busy:2,off:3,full:4};
+async function loadSchedule(){
+  const seq=++requestSeq;
+  const start=[monthKey(calYear,calMonth),todayKey].sort()[0];
+  const end=[monthKey(calYear,calMonth+1),monthKey(Number(kt.year),Number(kt.month)+5)].sort().pop();
+  syncNote.textContent='Google Calendar 일정 확인 중…';
+  try {
+    let token='', dates={};
+    do {
+      const url=new URL('https://www.googleapis.com/calendar/v3/calendars/'+encodeURIComponent(calendarId)+'/events');
+      url.search=new URLSearchParams({key:calendarApiKey,timeMin:start+'T00:00:00+09:00',timeMax:end+'T00:00:00+09:00',singleEvents:'true',maxResults:'2500',timeZone:'Asia/Seoul',...(token?{pageToken:token}:{})});
+      const res=await fetch(url,{cache:'no-store',referrerPolicy:'strict-origin-when-cross-origin'});
+      if(!res.ok)throw Error('HTTP '+res.status);
+      const data=await res.json();
+      for(const e of data.items||[]){
+        if(e.status==='cancelled')continue;
+        const status=({OPEN:'open',WORK:'busy',FULL:'full',OFF:'off'})[(e.summary||'').trim().toUpperCase()];
+        if(!status||!e.start||!e.end)continue;
+        const first=e.start.date||dateKey(new Date(e.start.dateTime));
+        const last=e.end.date?new Date(Date.parse(e.end.date+'T00:00:00Z')-86400000).toISOString().slice(0,10):dateKey(new Date(Date.parse(e.end.dateTime)-1));
+        for(let d=new Date(Math.max(Date.parse(first),Date.parse(start)));d.getTime()<=Math.min(Date.parse(last),Date.parse(end)-86400000);d.setUTCDate(d.getUTCDate()+1)){
+          const k=d.toISOString().slice(0,10);if(!dates[k]||rank[status]>rank[dates[k]])dates[k]=status;
+        }
       }
-    });
-
-    var targetPanel = document.getElementById(tabId);
-    if (targetPanel) {
-      targetPanel.classList.add('active');
-    }
-    if (btnElement && !btnElement.classList.contains('scroll-link-btn')) {
-      btnElement.classList.add('active');
-    }
-  }
-
-  function openSubTab(subTabId, btnElement) {
-    var subPanels = document.querySelectorAll('.sub-tab-content');
-    subPanels.forEach(function(panel) {
-      panel.classList.remove('active');
-    });
-
-    var subButtons = document.querySelectorAll('.sub-tab-btn');
-    subButtons.forEach(function(btn) {
-      btn.classList.remove('active');
-    });
-
-    var targetSubPanel = document.getElementById(subTabId);
-    if (targetSubPanel) {
-      targetSubPanel.classList.add('active');
-    }
-    if (btnElement) {
-      btnElement.classList.add('active');
-    }
-    
-    // 탭 전환 직후 트위터 위젯 높이 재계산 렌더링
-    setTimeout(function() {
-      if (window.twttr && window.twttr.widgets) {
-        window.twttr.widgets.load(targetSubPanel);
-      }
-    }, 50);
-  }
-
-  function scrollToElement(elementId) {
-    var targetElement = document.getElementById(elementId);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
+      token=data.nextPageToken||'';
+    }while(token);
+    if(seq!==requestSeq)return;
+    scheduleConfig.dates=dates;
+    const next=Object.keys(dates).sort().find(k=>k>=todayKey&&dates[k]==='open');
+    document.getElementById('schedule-status').textContent=next?'예약 일정 확인 가능':'문의 후 안내';
+    document.getElementById('schedule-next').textContent=next||'문의 후 안내';
+    syncNote.textContent='Google Calendar 연동 · '+new Date().toLocaleTimeString('ko-KR',{timeZone:'Asia/Seoul'})+' 업데이트';
+    drawCalendar();
+  }catch(err){if(seq!==requestSeq)return;scheduleConfig.dates={};document.getElementById('schedule-status').textContent='일정 확인 불가';document.getElementById('schedule-next').textContent='문의 후 안내';syncNote.textContent='일정을 불러오지 못했습니다. 캘린더 공개 설정 및 API 키 웹사이트 제한을 확인해 주세요.';drawCalendar();}
+}
+document.getElementById('cal-prev').onclick=()=>shiftCalendar(-1);document.getElementById('cal-next').onclick=()=>shiftCalendar(1);document.getElementById('cal-today').onclick=()=>{calYear=Number(kt.year);calMonth=Number(kt.month)-1;selectedDate='';drawCalendar();loadSchedule();};
+drawCalendar();loadSchedule();setInterval(loadSchedule,300000);if(location.protocol==='file:')document.getElementById('local-video-note').hidden=false;
 </script>
-
 </body>
 </html>
